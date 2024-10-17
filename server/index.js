@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config()
 const cors = require("cors");
 const pool = require("./db");
 
@@ -28,6 +29,6 @@ app.get("/products", async(req, res)=>{
 })
 
 
-app.listen(5000,()=>{
+app.listen(process.env.DB_PORT,()=>{
     console.log("server has started on port 5000");
 })
