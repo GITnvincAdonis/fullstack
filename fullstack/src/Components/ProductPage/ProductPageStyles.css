@@ -1,0 +1,13 @@
+
+.product-page-container{
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+        
+}
+.product-page-title{
+    font-family: DegReg;
+    margin-top: 15rem;
+    width: 85%;
+}

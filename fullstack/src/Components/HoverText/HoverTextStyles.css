@@ -1,0 +1,18 @@
+.text-span{
+    
+    overflow-y: hidden;
+    padding: .1rem ;
+  
+}
+.top-text-slider,.bottom-text-slider{
+    font-family: BDOLight;
+}
+.bottom-text-slider{
+
+    font-weight: 600;
+    color: white;
+    height: 0;
+}
+.top-text-slider{
+    font-weight: 600;
+}

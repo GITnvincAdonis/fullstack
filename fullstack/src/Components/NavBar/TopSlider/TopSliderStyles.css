@@ -1,0 +1,42 @@
+.search-slider-container{
+    
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+
+}
+.search-slider,.blur-filter{
+    width: 100%;
+
+  
+}
+.search-slider{
+  background: linear-gradient(-180deg, rgba(207,207,207,1) 0%, rgba(247,247,247,1) 11%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%);
+  border-bottom: 1px solid black;  
+  height: 35%;
+    padding: 17vh 20vw 0 20vw;
+}
+.blur-filter{
+   
+
+    filter: blur(10px);
+    backdrop-filter: blur(10px);
+    height: 65%;
+}
+.input-form {
+    background: none;
+    border: unset;
+    border: 0;
+    height: 2rem;border: 0;
+    box-shadow: none;
+    
+}
+@media screen and (max-width:400px) {
+    .search-slider{
+        background: linear-gradient(-180deg, rgba(207,207,207,1) 0%, rgba(247,247,247,1) 11%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%);
+        border-bottom: 1px solid black;  
+        height: 35%;
+          padding: 20vh 20vw 0 20vw;
+      }
+}

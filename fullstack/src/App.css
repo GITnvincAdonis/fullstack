@@ -1,0 +1,36 @@
+@font-face {
+    font-family: DegDisplay;
+    src: url(../public/DegularFonts/DegularDisplay-Black.otf);
+    
+
+}
+@font-face {
+    font-family: DegLight;
+    src: url(../public/DegularFonts/DegularDisplay-Light.otf);
+    
+
+}
+@font-face {
+    font-family: DegReg;
+    src: url(../public/DegularFonts/DegularDisplay-Medium.otf);
+    
+
+}
+@font-face {
+    font-family: BDOMedium;
+    src: url(../public/BDOGroteskFonts/BDOGrotesk-Medium-BF648a656f49882.otf);
+    
+
+}
+@font-face {
+    font-family: BDOBold;
+    src: url(../public/BDOGroteskFonts/BDOGrotesk-Bold-BF648a656f312c4.otf);
+    
+
+}
+@font-face {
+    font-family: BDOLight;
+    src: url(../public/BDOGroteskFonts/BDOGrotesk-Light-BF648a656f46f93.otf);
+    
+
+}

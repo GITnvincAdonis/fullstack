@@ -1,0 +1,83 @@
+.checkout-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding: 9rem 0 0 10rem;
+    height: 100vh;
+}
+.checkout-title{
+    font-family: DegReg;
+    padding-bottom: 3rem;
+    margin: 0%;
+}
+.checkout-items{
+    height: 80vh;
+    width: 40vw;
+}
+.payment-container{
+    height: 40rem;
+    width: 30vw;
+}
+.c{
+    display: flex;
+    justify-content: space-around;
+    height: 100vh;
+    width: 80vw;
+}
+.credit-checkout{
+    margin-top: 3rem;
+
+    border-radius: .41rem;
+}
+.credit-cards-container{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: .51rem;
+}
+.credit-card{
+    border: 1px solid black;
+    height: 3rem;
+    width: 100%;
+}
+.list-item-shipping{
+    font-size: 1.2rem;
+}
+.list-item-total{
+    font-family: BDOMedium;
+    font-size: 2rem;
+}
+.list-item-price{
+    font-family: BDOLight;
+    font-size: 1.2rem;
+}
+@media screen and (max-width:400px) {
+    .c{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+           
+    }
+    .checkout-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        padding: 0;
+       height: max-content;
+    }
+    .checkout-title{
+     
+        margin-bottom: 0;
+        padding-bottom: 1rem;
+    }
+    .checkout-items{
+        padding: 3rem;
+        margin-top: 4rem;
+        width: 100%;
+    }
+    .payment-container{
+        width: 100%;
+    }
+}

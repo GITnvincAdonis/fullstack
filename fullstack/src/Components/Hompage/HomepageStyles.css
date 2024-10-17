@@ -1,0 +1,96 @@
+
+.starter-container{
+    height: 75vh;
+}
+.starter-text:nth-child(1){
+    font-family: DegReg;
+    margin: 0;
+    font-size: 4rem;
+}
+.starter-text:nth-child(2){
+    font-family: BDOLight;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+.starter-background-container{
+ 
+   
+   
+    
+    height: 0;
+    margin: 0%;
+    padding: 0%;
+   
+}
+.starter-background{
+    margin: 0%;
+    padding: 0%;
+    height: 72vh;
+    background-color: rgb(65, 119, 172);
+}
+.starter-button{
+    width: max-content;
+    padding: 1rem 6rem;
+    border: none;
+    color: white;
+    border: 1px solid black;
+    background-color: rgb(125, 125, 125);
+    border-radius: .51rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+
+}
+.intro-item-button-text{
+    
+    color: rgb(2, 2, 2);
+    font-family: BDOLight;
+    font-size: 1.2rem;
+
+}
+.shopping-option-container{
+    margin-top: 20rem;
+    margin-bottom: 10rem;
+ 
+}
+.option-text{
+   
+    font-family: DegReg;
+    padding-left: 8vw;
+    height: 100%;
+    width: 100%;
+  
+}
+.shopping-options{
+    margin: .4rem;
+    width: 41vw;
+    border: 1px solid black;
+    height: 70vh;
+}
+.option-button{
+    border: 1px solid black;
+
+}
+.nav-labels{
+    font-family: DegReg;
+}
+@media screen and (max-width:500px) {
+    .shopping-options-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+    .shopping-options{
+        margin: .4rem;
+        width: 90vw;
+        border: 1px solid black;
+        height: 70vh;
+    }
+    .shopping-option-container{
+        margin-top: 13rem;
+        margin-bottom: 5rem;
+     
+    }
+    .option-text{
+        padding: 0;
+        text-align: center;
+    }
+}

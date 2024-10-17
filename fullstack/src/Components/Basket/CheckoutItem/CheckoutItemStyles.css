@@ -1,0 +1,30 @@
+.c-item-image{
+    margin-right: 2rem;
+    width: 7rem;
+    height: 7rem;
+}
+.c-item-name, .c-item-size{
+    font-family: BDOLight;
+    margin: 0%;
+    font-size: 1rem;
+}
+.c-item-price{
+    font-size: 1rem;
+}
+.c-item-size{
+    font-weight: 400;
+    color: rgb(174, 174, 174);
+}
+.item-count-wrapper{
+    transform-origin: 0 0;
+    scale: 2;
+}
+@media screen and (max-width:400px) {
+    .item-count-wrapper{
+        transform-origin: 0 0;
+        scale: 1.82;
+    }
+    .item-count-wrapper svg{
+        margin: 0 .3rem;
+    }
+}
