@@ -24,7 +24,7 @@ app.post("/products", async(req, res)=>{
 
 app.get("/products", async(req, res)=>{
     try {
-        const products = await pool.query("SELECT * FROM test_table")
+        const products = await pool.query("SELECT * FROM items")
         console.log(products.rows)
         res.json(products.rows)
         

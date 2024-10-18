@@ -3,7 +3,13 @@ import "./CardStyles.css";
 import Review from "../../Review/Reveiw";
 import AddSVG from "../../SVGs/Add";
 import { Link } from "react-router-dom";
-export default function Card() {
+export default function Card(props: {
+  name: string;
+  price: number;
+  starCount: number;
+}) {
+  const { name, price, starCount } = props;
+  console.log(starCount);
   return (
     <>
       <div className="card-container ">
@@ -27,8 +33,8 @@ export default function Card() {
         <div className="card-body ">
           <Review></Review>
           <Link to={"/item"} className="product-hyperlinks">
-            <h3 className="product-name m-0 mt-2">PRODUCT NAME</h3>
-            <h3 className="product-price m-0">$---,---,---</h3>
+            <h3 className="product-name m-0 mt-2">{name}</h3>
+            <h3 className="product-price m-0">{`$${price}`}</h3>
           </Link>
         </div>
       </div>
