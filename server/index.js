@@ -6,10 +6,7 @@ const pool = require("./db");
 
 
 
-app.use(cors({
-    
-    methods: 'GET,POST,PUT,DELETE,OPTIONS',
-}));
+app.use(cors());
 app.use(express.json());
 
 ///routes
