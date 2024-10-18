@@ -31,12 +31,14 @@ export default function ProductPage() {
         <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
         {info?.map((info) => {
           console.log(info.id);
+
           return (
             <span>
               <Card
                 name={info.name}
                 price={info.price}
                 starCount={info.star_count}
+                reviewNumber={info.review_count}
               />
             </span>
           );

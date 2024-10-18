@@ -3,6 +3,7 @@ interface itemInfo {
   name: string;
   price: number;
   star_count: number;
+  review_count: number;
 }
 export const GetItems = async (): Promise<itemInfo[]> => {
   try {

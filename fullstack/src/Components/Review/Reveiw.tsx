@@ -1,6 +1,9 @@
+
 import Star from "../SVGs/Star";
 import "./ReviewStyles.css";
-export default function Review() {
+export default function Review(props: { reviewNumber: number }) {
+  const { reviewNumber } = props;
+
   return (
     <div className="review-container">
       <div className="stars pt-3">
@@ -10,7 +13,7 @@ export default function Review() {
         <Star></Star>
         <Star></Star>
       </div>
-      <div className="review-count pt-3 px-3">{`(no reviews)`}</div>
+      <div className="review-count pt-3 px-3">{`(${reviewNumber} reviews)`}</div>
     </div>
   );
 }
