@@ -4,7 +4,8 @@
     justify-content: center;
     align-items: start;
     padding: 9rem 0 0 10rem;
-    height: 100vh;
+    height: max-content;
+
 }
 .checkout-title{
     font-family: DegReg;
@@ -20,9 +21,10 @@
     width: 30vw;
 }
 .c{
+  
     display: flex;
     justify-content: space-around;
-    height: 100vh;
+    
     width: 80vw;
 }
 .credit-checkout{
@@ -74,7 +76,7 @@
     }
     .checkout-items{
         padding: 3rem;
-        margin-top: 4rem;
+        margin-top: 10rem;
         width: 100%;
     }
     .payment-container{
