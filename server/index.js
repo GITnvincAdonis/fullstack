@@ -6,7 +6,10 @@ const pool = require("./db");
 
 
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://skincare-application.netlify.app',
+    methods: 'GET,POST,PUT,DELETE,OPTIONS',
+}));
 app.use(express.json());
 
 ///routes
@@ -30,6 +33,6 @@ app.get("/products", async(req, res)=>{
 })
 
 
-app.listen(process.env.DB_PORT,"0.0.0.0",()=>{
+app.listen(process.env.DB_PORT,()=>{
     console.log(`server has started on port ${process.env.DB_PORT} `);
 })
