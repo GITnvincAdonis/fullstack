@@ -7,7 +7,7 @@ const pool = require("./db");
 
 
 app.use(cors({
-    origin: '*',
+    origin: 'https://skincare-application.netlify.app/home',
     methods: 'GET,POST,PUT,DELETE,OPTIONS',
 }));
 

@@ -6,6 +6,7 @@ export async function GetItems() {
     console.log(items.json());
     return items.json();
   } catch (error) {
-    return console.log(error);
+    console.log(error);
+    return [1, 1, 1, 1];
   }
 }

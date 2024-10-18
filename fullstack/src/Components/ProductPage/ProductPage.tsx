@@ -18,14 +18,14 @@ export default function ProductPage() {
     return <div>is loading....</div>;
   }
 
-  
+
   return (
     <>
       <Navbar></Navbar>
 
       <div className="product-page-container mb-5 ">
         <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
-        {info?.map((_item: any, index: Key | null | undefined) => {
+        {info?.map((_item: any, index: Key) => {
           return (
             <span key={index}>
               <Card />
