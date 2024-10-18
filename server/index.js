@@ -30,6 +30,6 @@ app.get("/products", async(req, res)=>{
 })
 
 
-app.listen(process.env.DB_PORT,()=>{
+app.listen(process.env.DB_PORT,"0.0.0.0",()=>{
     console.log(`server has started on port ${process.env.DB_PORT} `);
 })
