@@ -10,6 +10,7 @@ export async function GetItems() {
     
     console.log(data);
     return data;
+    
   } catch (error) {
     console.log(error);
     return [1, 1, 1, 1];

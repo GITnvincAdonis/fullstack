@@ -12,16 +12,19 @@ interface itemInfo {
   id: number;
   name: string;
   price: number;
-  starCount: number;
+  star_count: number;
 }
 
 function setCards(info: any) {
+  if (!info || !Array.isArray(info)) {
+    return []; // Return an empty array if `info` is undefined or not an array
+  }
   const dataContainer = info.map(
-    (item: { id: number; name: string; price: number; stars: number }) => ({
+    (item: { id: number; name: string; price: number; starcount: number }) => ({
       id: item.id,
       name: item.name,
       price: item.price,
-      starCount: item.stars,
+      star_count: item.starcount,
     })
   );
   return dataContainer;
@@ -30,26 +33,22 @@ function setCards(info: any) {
 //const products = [1, 1, 1, 1, 1, 1];
 export default function ProductPage() {
   const [objects, SetObjects] = useState<itemInfo[]>([]);
+  
   const {
     data: info,
     isLoading,
     isError,
     error,
   } = useQuery({
-    queryFn: async () => {
-      await GetItems();
-      SetObjects(setCards(info));
-    },
+    queryFn: async () => GetItems(),
     queryKey: ["product-page-item"],
     staleTime: Infinity,
   });
-  if (isError) {
-    return <div>{`error: ${error}`}</div>;
-  }
-  if (isLoading) {
-    return <div>is loading....</div>;
-  }
 
+  if (isError) return <div>{`error: ${error}`}</div>;
+  if (isLoading) return <div>is loading....</div>;
+
+  SetObjects(info ? setCards(info) : []);
   return (
     <>
       <Navbar></Navbar>
@@ -60,7 +59,7 @@ export default function ProductPage() {
           const name = item.name;
           const id = item.id;
           const price = item.price;
-          const stars = item.starCount;
+          const stars = item.star_count;
           console.log(id);
           return (
             <span key={index}>
