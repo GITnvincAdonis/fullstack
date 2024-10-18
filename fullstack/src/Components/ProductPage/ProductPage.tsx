@@ -14,13 +14,14 @@ export default function ProductPage() {
     data: info,
     isLoading,
     isError,
+    error,
   } = useQuery({
     queryFn: () => GetItems(),
     queryKey: ["product-page-item"],
     staleTime: Infinity,
   });
   if (isError) {
-    return <div>error occured</div>;
+    return <div>{`error: ${error}`}</div>;
   }
   if (isLoading) {
     return <div>is loading....</div>;
