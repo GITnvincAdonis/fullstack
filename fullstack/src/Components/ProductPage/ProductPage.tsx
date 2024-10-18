@@ -10,14 +10,21 @@ import { Key } from "react";
 
 //const products = [1, 1, 1, 1, 1, 1];
 export default function ProductPage() {
-  const { data: info, isLoading } = useQuery({
+  const {
+    data: info,
+    isLoading,
+    isError,
+  } = useQuery({
     queryFn: () => GetItems(),
     queryKey: ["product-page-item"],
+    staleTime: Infinity,
   });
+  if (isError) {
+    return <div>error occured</div>;
+  }
   if (isLoading) {
     return <div>is loading....</div>;
   }
-
 
   return (
     <>
