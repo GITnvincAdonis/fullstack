@@ -3,8 +3,9 @@ export async function GetItems() {
     const items = await fetch(
       `https://fullstack-production-95cf.up.railway.app/products`
     );
-    console.log(items.json());
-    return items.json();
+    const data = items.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
     return [1, 1, 1, 1];
