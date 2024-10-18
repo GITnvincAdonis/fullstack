@@ -4,19 +4,8 @@ require("dotenv").config()
 const cors = require("cors");
 const pool = require("./db");
 
-const allowedOrigins = ['http://localhost:5173', 'https://skincare-application.netlify.app'];
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-          callback(null, true);
-        } else {
-          callback(new Error('Not allowed by CORS'));
-        }
-      },
-      methods: 'GET,POST,PUT,DELETE',
-      credentials: true,
-    
-  }));
+
+
 app.use(express.json());
 
 ///routes
