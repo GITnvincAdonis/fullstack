@@ -6,6 +6,7 @@ const pool = require("./db");
 
 
 
+app.use(cors());
 app.use(express.json());
 
 ///routes
@@ -30,5 +31,5 @@ app.get("/products", async(req, res)=>{
 
 
 app.listen(process.env.DB_PORT,()=>{
-    console.log("server has started on port 5000");
+    console.log(`server has started on port ${process.env.DB_PORT} `);
 })
