@@ -20,9 +20,11 @@ export default function Homepage() {
         </h4>
         <SwipeButton
           textContent={
-            <h2 className="m-0 p-0 intro-item-button-text">
-              <Hovertext text="CHECK OUR PRODUCTS" offset={1.6}></Hovertext>
-            </h2>
+            <Link to={"/home"}>
+              <h2 className="m-0 p-0 intro-item-button-text">
+                <Hovertext text="CHECK OUR PRODUCTS" offset={1.6}></Hovertext>
+              </h2>
+            </Link>
           }
         ></SwipeButton>
       </div>
