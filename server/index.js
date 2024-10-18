@@ -5,7 +5,11 @@ const cors = require("cors");
 const pool = require("./db");
 
 
-app.use(cors());
+app.use(cors({
+    origin: 'https://skincare-application.netlify.app', // Replace with your frontend's origin in production
+    methods: 'GET,POST,PUT,DELETE',
+    
+  }));
 app.use(express.json());
 
 ///routes
@@ -19,7 +23,7 @@ app.post("/products", async(req, res)=>{
 
 app.get("/products", async(req, res)=>{
     try {
-        const products = await pool.query("SELECT * FROM item")
+        const products = await pool.query("SELECT * FROM test_table")
         console.log(products.rows)
         res.json(products.rows)
         
