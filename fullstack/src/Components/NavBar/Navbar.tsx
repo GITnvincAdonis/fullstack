@@ -22,7 +22,7 @@ export default function Navbar() {
       </MenuContext.Provider>
       <div className="position-fixed navbar-container">
         <div className="navbar">
-          <Link to={"/1"} className="homepage-link">
+          <Link to={"/"} className="homepage-link">
             <div className="company-name">THE SKINCARE NAME</div>
           </Link>
           <span>
