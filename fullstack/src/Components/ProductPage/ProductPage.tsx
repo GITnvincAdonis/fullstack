@@ -30,14 +30,15 @@ export default function ProductPage() {
       <div className="product-page-container mb-5 ">
         <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
         {info?.map((info) => {
-          console.log(info.id);
+          console.log("star count " + info.starcount);
+          console.log("review count" + info.review_count);
 
           return (
             <span>
               <Card
                 name={info.name}
                 price={info.price}
-                starCount={info.star_count}
+                starCount={info.starcount}
                 reviewNumber={info.review_count}
               />
             </span>
