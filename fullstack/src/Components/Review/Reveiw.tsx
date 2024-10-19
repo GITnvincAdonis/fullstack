@@ -1,7 +1,6 @@
-
 import Star from "../SVGs/Star";
 import "./ReviewStyles.css";
-export default function Review(props: { reviewNumber: number }) {
+export default function Review(props: { reviewNumber?: number }) {
   const { reviewNumber } = props;
 
   return (
