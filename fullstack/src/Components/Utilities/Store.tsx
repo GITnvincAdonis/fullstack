@@ -29,7 +29,9 @@ export const useCheckoutData = create<fetchedAndReturned>((set) => ({
   incrementAsync: async (id: number) => {
     try {
       const fetchedI = await GetCheckoutItem(id);
-      if (fetchedI) set((state) => ({ fdata: [...state.fdata, fetchedI] }));
+      console.log("fetched item: ")
+      console.log(fetchedI);
+      //if (fetchedI) set((state) => ({ fdata: [...state.fdata, fetchedI] }));
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +46,7 @@ export const useCheckoutData = create<fetchedAndReturned>((set) => ({
 function GetCheckoutItem(stateID: number) {
   const DefaultItem: itemInfo = {
     id: 1,
-    name: "yy",
+    name: "yyyy",
     price: 11,
     starcount: 11,
     review_count: 1,
