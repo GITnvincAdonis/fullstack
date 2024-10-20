@@ -37,10 +37,10 @@ async function GetCheckoutItems() {
 }
 
 export function CheckOutDataContainer() {
-  const { data, isError, error, isLoading } = GlobalUseQuery();
+  const { isError, error, isLoading } = GlobalUseQuery();
   if (isError) console.log(`error occurred: ${error}`);
   if (isLoading) console.log(`is loading`);
-  console.log(data);
+
   return returnedItem;
 }
 
