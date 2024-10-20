@@ -27,8 +27,12 @@ export const useCheckoutData = create<fetchedAndReturned>((set) => ({
     },
   ],
   incrementAsync: async (id: number) => {
-    const fetchedI = await GetCheckoutItem(id);
-    if (fetchedI) set((state) => ({ fdata: [...state.fdata, fetchedI] }));
+    try {
+      const fetchedI = await GetCheckoutItem(id);
+      if (fetchedI) set((state) => ({ fdata: [...state.fdata, fetchedI] }));
+    } catch (error) {
+      console.log(error);
+    }
   },
   decrement: (id: number) => {
     set((state) => ({
