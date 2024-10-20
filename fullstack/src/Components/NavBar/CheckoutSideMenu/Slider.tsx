@@ -16,7 +16,7 @@ export default function Slider(props: { toggle: any }) {
   const menuinView = useMenuContext();
 
   const [visible, toggleVisible] = useState(true);
-
+  const fetchedCheckoutData = CheckOutDataContainer();
   console.log(CheckOutDataContainer());
 
   return (
@@ -53,9 +53,11 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            <SliderItem></SliderItem>
-            <SliderItem></SliderItem>
-            <SliderItem></SliderItem>
+            {fetchedCheckoutData.map((item) => {
+              return (
+                <SliderItem name={item.name} price={item.price}></SliderItem>
+              );
+            })}
           </motion.div>
 
           <motion.div
@@ -82,13 +84,14 @@ export default function Slider(props: { toggle: any }) {
   );
 }
 
-const SliderItem = () => {
+const SliderItem = (props: { name: string; price: number }) => {
+  const { name, price } = props;
   return (
     <div className="d-flex py-2">
       <QuantityController></QuantityController>
       <div className="ms-3">
-        <h3 className="slider-item-name">Item Name.....</h3>
-        <h3 className="slider-item-price">$---,---,---</h3>
+        <h3 className="slider-item-name">{name}</h3>
+        <h3 className="slider-item-price">${price}</h3>
       </div>
     </div>
   );
