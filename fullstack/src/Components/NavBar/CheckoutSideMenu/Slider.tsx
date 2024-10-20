@@ -53,8 +53,10 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            {fetchedCheckoutData.map((item, _index) => {
+            {fetchedCheckoutData.map((item) => {
               console.log(item);
+              console.log(item.name);
+
               return (
                 <SliderItem name={item.name} price={item.price}></SliderItem>
               );
