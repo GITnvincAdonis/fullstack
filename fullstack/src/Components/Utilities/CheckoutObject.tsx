@@ -5,27 +5,36 @@ interface IndexedItem {
   id: number;
   count: number;
 }
-// interface itemInfo {
-//   id: number;
-//   name: string;
-//   price: number;
-//   starcount: number;
-//   review_count: number;
-// }
+interface itemInfo {
+  id: number;
+  name: string;
+  price: number;
+  starcount: number;
+  review_count: number;
+}
 
 //local array
 const item: IndexedItem[] = [
   { id: 1, count: 1 },
   { id: 2, count: 2 },
 ];
-//const returnedItem: itemInfo[] = [];
 
 export function CheckOutDataContainer() {
-  const { data, isError, error, isLoading } = GlobalUseQuery(1);
-  if (isError) console.log(`error occurred: ${error}`);
-  if (isLoading) console.log(`is loading`);
+  const returnedItem: itemInfo[] = [];
+  item.map((item) => {
+    const { data, isError, error, isLoading } = GlobalUseQuery(item.id);
+    if (isError) {
+      console.log(`error occurred: ${error}`);
+      return;
+    }
+    if (isLoading) {
+      console.log(`is loading`);
+      return;
+    }
+    if (data) returnedItem.push(data);
+  });
 
-  return data;
+  return returnedItem;
 }
 
 const GlobalUseQuery = (id: number) => {
