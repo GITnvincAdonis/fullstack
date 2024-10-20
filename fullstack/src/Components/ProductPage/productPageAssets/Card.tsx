@@ -25,7 +25,7 @@ export default function Card(props: {
                   addItem(id);
                   console.log(itemArray);
 
-                  console.log("clicked");
+                  console.log("clicked: " + id);
                 }}
                 className="add-button "
               >
