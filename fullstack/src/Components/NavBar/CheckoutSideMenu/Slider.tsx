@@ -2,7 +2,7 @@ import "./Slider.css";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import QuantityController from "../../SVGs/QuantityController";
 import { useMenuContext } from "../../Contexts/Contexts";
@@ -16,9 +16,8 @@ export default function Slider(props: { toggle: any }) {
   const menuinView = useMenuContext();
 
   const [visible, toggleVisible] = useState(true);
-  useEffect(() => {
-    console.log(CheckOutDataContainer());
-  }, []);
+  console.log(CheckOutDataContainer());
+
 
   return (
     <>

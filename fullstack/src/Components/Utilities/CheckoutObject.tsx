@@ -5,49 +5,35 @@ interface IndexedItem {
   id: number;
   count: number;
 }
-interface itemInfo {
-  id: number;
-  name: string;
-  price: number;
-  starcount: number;
-  review_count: number;
-}
+// interface itemInfo {
+//   id: number;
+//   name: string;
+//   price: number;
+//   starcount: number;
+//   review_count: number;
+// }
 
 //local array
 const item: IndexedItem[] = [
   { id: 1, count: 1 },
   { id: 2, count: 2 },
 ];
-const returnedItem: itemInfo[] = [];
+//const returnedItem: itemInfo[] = [];
 
-async function GetCheckoutItems() {
-  const fetchedItemsPromises = item.map(async (item) => {
-    const fetchedItems = await GetAnItem(item.id);
 
-    const inReturnArray = returnedItem.find(
-      (return_item) => return_item.id === item.id
-    );
-
-    if (!inReturnArray) returnedItem.push(fetchedItems);
-    console.log(item.count); // Optional log
-  });
-
-  // Wait for all promises to resolve
-  await Promise.all(fetchedItemsPromises);
-}
 
 export function CheckOutDataContainer() {
-  const { isError, error, isLoading } = GlobalUseQuery();
+  const { data, isError, error, isLoading } = GlobalUseQuery(1);
   if (isError) console.log(`error occurred: ${error}`);
   if (isLoading) console.log(`is loading`);
 
-  return returnedItem;
+  return data;
 }
 
-const GlobalUseQuery = () => {
+const GlobalUseQuery = (id: number) => {
   const { data, isError, isLoading, error } = useQuery({
     queryFn: async () => {
-      GetCheckoutItems();
+      GetAnItem(id);
     },
     queryKey: ["checkout"],
   });
