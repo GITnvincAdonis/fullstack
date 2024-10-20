@@ -28,8 +28,8 @@ export const useCheckoutData = create<fetchedAndReturned>((set) => ({
   ],
   incrementAsync: async (id: number) => {
     try {
-      const fetchedI = await GetCheckoutItem(id);
-      console.log("fetched item: ")
+      const fetchedI = GetCheckoutItem(id);
+      console.log("fetched item: ");
       console.log(fetchedI);
       //if (fetchedI) set((state) => ({ fdata: [...state.fdata, fetchedI] }));
     } catch (error) {
@@ -55,9 +55,13 @@ function GetCheckoutItem(stateID: number) {
     queryFn: () => GetAnItem(stateID),
     queryKey: ["item", stateID],
   });
+  if (isLoading) console.log("is loading");
   if (isError) {
     console.log("error occurred: " + error);
+    return DefaultItem;
   }
-  if (!isLoading && !isError) return data;
-  else return DefaultItem;
+  if (!isError) {
+    console.log(data);
+    return data;
+  }
 }
