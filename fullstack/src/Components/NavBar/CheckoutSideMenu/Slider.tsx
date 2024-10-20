@@ -17,12 +17,8 @@ export default function Slider(props: { toggle: any }) {
 
   const [visible, toggleVisible] = useState(true);
 
-  const Checkoutitems = useCheckoutData((state) => {
-    return state.fdata;
-  });
-  const AddCheckOut = useCheckoutData((state) => {
-    return state.incrementAsync;
-  });
+  const Checkoutitems = useCheckoutData((state) => state.fdata);
+  const AddCheckOut = useCheckoutData((state) => state.incrementAsync);
   //console.log(fetchedCheckoutData);
 
   return (
