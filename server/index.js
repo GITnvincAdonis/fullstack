@@ -33,6 +33,18 @@ app.get("/products", async(req, res)=>{
     }
 })
 
+app.get("/products/:id", async(req, res)=>{
+    const id = parseInt(req.params.id);
+    try {
+        const products = await pool.query("SELECT * FROM items WHERE id=$1",[id])
+        console.log(products.rows)
+        res.json(products.rows)
+        
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
 
 app.listen(process.env.DB_PORT,()=>{
     console.log(`server has started on port ${process.env.DB_PORT} `);

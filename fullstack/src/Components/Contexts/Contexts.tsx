@@ -14,7 +14,7 @@ export function useMenuContext() {
 export function useSearchMenuContext() {
   const searchContext = useContext(SearchMenuContext);
   if (searchContext === undefined) {
-    throw new Error("useSearchMenuContext");
+    throw new Error("useSearchMenuContext must be used with SearchContext");
   }
   return searchContext;
 }
