@@ -20,7 +20,14 @@ export const GetItems = async (): Promise<itemInfo[]> => {
   }
 };
 
-export const GetAnItem = async (id: number): Promise<itemInfo[]> => {
+export const GetAnItem = async (id: number): Promise<itemInfo> => {
+  const DefaultItem: itemInfo = {
+    id: 1,
+    name: "yy",
+    price: 11,
+    starcount: 11,
+    review_count: 1,
+  };
   try {
     const items = await fetch(
       `https://fullstack-production-95cf.up.railway.app/products/${id}`
@@ -31,6 +38,6 @@ export const GetAnItem = async (id: number): Promise<itemInfo[]> => {
     return data;
   } catch (error) {
     console.log(error);
-    return [];
+    return DefaultItem;
   }
 };

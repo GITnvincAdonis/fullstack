@@ -28,7 +28,7 @@ async function GetCheckoutItems() {
       (return_item) => return_item.id === item.id
     );
 
-    if (!inReturnArray) returnedItem.push(fetchedItems[0]);
+    if (!inReturnArray) returnedItem.push(fetchedItems);
     console.log(item.count); // Optional log
   });
 
