@@ -34,24 +34,28 @@ export function CheckOutDataContainer() {
     })),
   });
 
-  // Handle loading, error, and data
+  const isLoading = queries.some((query) => query.isLoading);
+  const isError = queries.some((query) => query.isError);
+  const data = queries.map((query) => query.data).filter(Boolean) as itemInfo[];
+
+  // Use specific state variables as dependencies, not the whole `queries` object
   useEffect(() => {
-    if (queries.some((query) => query.isLoading)) {
+    if (isLoading) {
       console.log("is loading");
       return;
     }
 
-    if (queries.some((query) => query.isError)) {
+    if (isError) {
       console.log("error occurred");
       return;
     }
 
-    const data = queries
-      .map((query) => query.data)
-      .filter(Boolean) as itemInfo[]; // Filter out any undefined results
-    console.log("changing queries object");
-    setReturnedItem(data);
-  }, [queries]);
+    // If there's new data, update returnedItem
+    if (data.length > 0) {
+      console.log("changing queries object");
+      setReturnedItem(data);
+    }
+  }, [isLoading, isError, data.length]);
 
   return returnedItem.flat(1);
 }
