@@ -9,9 +9,7 @@ import { useMenuContext } from "../../Contexts/Contexts";
 import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
-import {
-  CheckOutDataContainer,
-} from "../../Utilities/CheckoutObject";
+import { useCheckoutData } from "../../Utilities/Store";
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
@@ -19,8 +17,12 @@ export default function Slider(props: { toggle: any }) {
 
   const [visible, toggleVisible] = useState(true);
 
-  const fetchedCheckoutData = CheckOutDataContainer();
-
+  const Checkoutitems = useCheckoutData((state) => {
+    return state.fdata;
+  });
+  const AddCheckOut = useCheckoutData((state) => {
+    return state.incrementAsync;
+  });
   //console.log(fetchedCheckoutData);
 
   return (
@@ -46,6 +48,7 @@ export default function Slider(props: { toggle: any }) {
           }}
           className="slider-container "
         >
+          <button onClick={() => AddCheckOut(1)}>Click to test</button>
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
@@ -57,7 +60,7 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            {fetchedCheckoutData.map((item) => {
+            {Checkoutitems.map((item) => {
               //console.log(item);
               //console.log(item.name);
 

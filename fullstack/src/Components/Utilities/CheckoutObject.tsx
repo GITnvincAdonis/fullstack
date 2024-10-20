@@ -52,7 +52,7 @@ export function CheckOutDataContainer() {
 
     // If there's new data, update returnedItem
     if (data.length > 0) {
-      //console.log("changing queries object");
+      console.log("changing queries object");
       setReturnedItem(data);
     }
   }, [isLoading, isError, data.length]);

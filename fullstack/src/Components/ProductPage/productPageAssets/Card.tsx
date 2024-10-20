@@ -3,7 +3,7 @@ import "./CardStyles.css";
 import Review from "../../Review/Reveiw";
 import AddSVG from "../../SVGs/Add";
 import { Link } from "react-router-dom";
-import { AddToLocalArray } from "../../Utilities/CheckoutObject";
+
 export default function Card(props: {
   id: number;
   name: string;
@@ -12,23 +12,15 @@ export default function Card(props: {
   reviewNumber: number;
 }) {
   const { id, name, price, starCount, reviewNumber } = props;
-  console.log(starCount);
-  const { addItem, itemArray } = AddToLocalArray();
+  console.log(starCount + id);
+
   return (
     <>
       <div className="card-container ">
         <div className="card-image-container">
           <div className="add-button-mega-container">
             <div className="add-button-container">
-              <button
-                onClick={() => {
-                  addItem(id);
-                  console.log(itemArray);
-
-                  console.log("clicked: " + id);
-                }}
-                className="add-button "
-              >
+              <button onClick={() => {}} className="add-button ">
                 <AddSVG></AddSVG>
               </button>
             </div>
