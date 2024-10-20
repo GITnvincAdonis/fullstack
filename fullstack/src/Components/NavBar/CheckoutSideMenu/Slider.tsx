@@ -23,6 +23,7 @@ export default function Slider(props: { toggle: any }) {
   const handleAddCheckOut = async () => {
     try {
       await AddCheckOut(1);
+      console.log(Checkoutitems);
       console.log("Item added successfully");
     } catch (error) {
       console.error("Error adding item:", error);
