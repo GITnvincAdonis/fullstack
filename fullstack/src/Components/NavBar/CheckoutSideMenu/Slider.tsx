@@ -16,7 +16,7 @@ export default function Slider(props: { toggle: any }) {
   const menuinView = useMenuContext();
 
   const [visible, toggleVisible] = useState(true);
-  const fetchedCheckoutData = CheckOutDataContainer();
+  const fetchedCheckoutData = CheckOutDataContainer().flat(1);
   console.log(fetchedCheckoutData);
 
   return (
