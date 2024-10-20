@@ -20,8 +20,6 @@ const item: IndexedItem[] = [
 ];
 //const returnedItem: itemInfo[] = [];
 
-
-
 export function CheckOutDataContainer() {
   const { data, isError, error, isLoading } = GlobalUseQuery(1);
   if (isError) console.log(`error occurred: ${error}`);
@@ -35,7 +33,7 @@ const GlobalUseQuery = (id: number) => {
     queryFn: async () => {
       GetAnItem(id);
     },
-    queryKey: ["checkout"],
+    queryKey: ["checkout", id],
   });
   return { data, isError, isLoading, error };
 };
