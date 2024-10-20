@@ -14,13 +14,13 @@ interface itemInfo {
 }
 
 //local array
-const item: IndexedItem[] = [
+export const item: IndexedItem[] = [
   { id: 1, count: 1 },
   { id: 2, count: 2 },
 ];
+const returnedItem: itemInfo[] = [];
 
 export function CheckOutDataContainer() {
-  const returnedItem: itemInfo[] = [];
   item.map((item) => {
     const { data, isError, error, isLoading } = GlobalUseQuery(item.id);
     if (isError) {
@@ -37,7 +37,7 @@ export function CheckOutDataContainer() {
   return returnedItem.flat(1);
 }
 
-const GlobalUseQuery = (id: number) => {
+export const GlobalUseQuery = (id: number) => {
   const { data, isError, isLoading, error } = useQuery({
     queryFn: async () => {
       return await GetAnItem(id);
@@ -52,7 +52,7 @@ const GlobalMutate = () => {
   const querClient = useQueryClient();
   const { mutateAsync } = useMutation({
     mutationFn: async () => {
-      //console.log("mutated");
+      console.log("mutated");
     },
     onSuccess: () => {
       querClient.invalidateQueries({ queryKey: ["checkout"] });
