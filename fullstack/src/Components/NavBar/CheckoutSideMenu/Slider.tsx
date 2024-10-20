@@ -9,7 +9,7 @@ import { useMenuContext } from "../../Contexts/Contexts";
 import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
-///import { CheckOutDataContainer } from "../../Utilities/CheckoutObject";
+import { CheckOutDataContainer } from "../../Utilities/CheckoutObject";
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
@@ -17,7 +17,7 @@ export default function Slider(props: { toggle: any }) {
 
   const [visible, toggleVisible] = useState(true);
 
-  //console.log(CheckOutDataContainer());
+  console.log(CheckOutDataContainer());
 
   return (
     <>
