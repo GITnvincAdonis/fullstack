@@ -10,46 +10,18 @@ import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import {
+  AddToLocalArray,
   CheckOutDataContainer,
-  item,
-  GlobalUseQuery,
 } from "../../Utilities/CheckoutObject";
-interface itemInfo {
-  id: number;
-  name: string;
-  price: number;
-  starcount: number;
-  review_count: number;
-}
-interface resultType {
-  data: itemInfo | undefined;
-  isError: boolean;
-  isLoading: boolean;
-  error: Error | null;
-}
-[];
+
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
   const menuinView = useMenuContext();
 
   const [visible, toggleVisible] = useState(true);
 
-  const [returnedItem, setReturnedItem] = useState<resultType[]>([]);
-  // Your array of items
-
-  const handleClick = async () => {
-    try {
-      // Triggering the fetching of all items when the button is clicked
-      const promises = item.map((item) => GlobalUseQuery(item.id)); // Call your async function
-      const results = await Promise.all(promises); // Wait for all fetches to complete
-      const validResults = results.filter((result) => result.data); // Filter out successful results
-      setReturnedItem(validResults.flat()); // Set the fetched data in state
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   const fetchedCheckoutData = CheckOutDataContainer();
+  AddToLocalArray(5);
   console.log(fetchedCheckoutData);
 
   return (
@@ -75,14 +47,6 @@ export default function Slider(props: { toggle: any }) {
           }}
           className="slider-container "
         >
-          <button
-            onClick={() => {
-              handleClick();
-              console.log(returnedItem);
-            }}
-          >
-            adad
-          </button>
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
@@ -94,7 +58,7 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            {fetchedCheckoutData?.map((item) => {
+            {fetchedCheckoutData.map((item) => {
               console.log(item);
               console.log(item.name);
 

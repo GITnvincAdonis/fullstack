@@ -50,7 +50,7 @@ export const GlobalUseQuery = (id: number) => {
 
 const GlobalMutate = () => {
   const querClient = useQueryClient();
-  const { mutateAsync } = useMutation({
+  const { error, mutateAsync } = useMutation({
     mutationFn: async () => {
       console.log("mutated");
     },
@@ -58,17 +58,19 @@ const GlobalMutate = () => {
       querClient.invalidateQueries({ queryKey: ["checkout"] });
     },
   });
+  if (error) console.log(`mutate error: ${error}`);
   return { mutateAsync };
 };
 
 export function AddToLocalArray(index: number) {
+  const { mutateAsync } = GlobalMutate();
   const itemToUpdate = item.find((item) => item.id === index);
   if (itemToUpdate) {
     itemToUpdate.count++;
   } else {
     const newItem: IndexedItem = { id: index, count: 1 };
     item.push(newItem);
-    GlobalMutate();
+    mutateAsync();
   }
 }
 
