@@ -43,6 +43,7 @@ const GlobalUseQuery = (id: number) => {
       return await GetAnItem(id);
     },
     queryKey: ["checkout", id],
+    staleTime: Infinity,
   });
   return { data, isError, isLoading, error };
 };
