@@ -34,7 +34,7 @@ export function CheckOutDataContainer() {
     if (data) returnedItem.push(data);
   });
 
-  return returnedItem;
+  return returnedItem.flat(1);
 }
 
 const GlobalUseQuery = (id: number) => {

@@ -3,13 +3,15 @@ import "./CardStyles.css";
 import Review from "../../Review/Reveiw";
 import AddSVG from "../../SVGs/Add";
 import { Link } from "react-router-dom";
+import { AddToLocalArray } from "../../Utilities/CheckoutObject";
 export default function Card(props: {
+  id: number;
   name: string;
   price: number;
   starCount: number;
   reviewNumber: number;
 }) {
-  const { name, price, starCount, reviewNumber } = props;
+  const { id, name, price, starCount, reviewNumber } = props;
   console.log(starCount);
   return (
     <>
@@ -19,6 +21,7 @@ export default function Card(props: {
             <div className="add-button-container">
               <button
                 onClick={() => {
+                  AddToLocalArray(id);
                   console.log("clicked");
                 }}
                 className="add-button "

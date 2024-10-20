@@ -36,6 +36,7 @@ export default function ProductPage() {
           return (
             <span>
               <Card
+                id={info.id}
                 name={info.name}
                 price={info.price}
                 starCount={info.starcount}
