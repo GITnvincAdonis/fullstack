@@ -45,10 +45,13 @@ function GetCheckoutItem(stateID: number) {
     starcount: 11,
     review_count: 1,
   };
-  const { isError, isLoading, data } = useQuery({
+  const { isError, isLoading, data, error } = useQuery({
     queryFn: () => GetAnItem(stateID),
     queryKey: ["item", stateID],
   });
+  if (isError) {
+    console.log("error occurred: " + error);
+  }
   if (!isLoading && !isError) return data;
   else return DefaultItem;
 }
