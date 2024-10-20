@@ -17,8 +17,6 @@ export default function Slider(props: { toggle: any }) {
 
   const [visible, toggleVisible] = useState(true);
 
-  console.log(CheckOutDataContainer());
-
   return (
     <>
       <div className="slider-mega-container">
@@ -42,6 +40,13 @@ export default function Slider(props: { toggle: any }) {
           }}
           className="slider-container "
         >
+          <button
+            onClick={() => {
+              console.log(CheckOutDataContainer());
+            }}
+          >
+            ada
+          </button>
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
