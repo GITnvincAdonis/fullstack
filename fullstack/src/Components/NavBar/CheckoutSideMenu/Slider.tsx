@@ -17,7 +17,7 @@ export default function Slider(props: { toggle: any }) {
 
   const [visible, toggleVisible] = useState(true);
 
-  console.log(`item fetched: ${CheckOutDataContainer()}`);
+  console.log(CheckOutDataContainer());
 
   return (
     <>
