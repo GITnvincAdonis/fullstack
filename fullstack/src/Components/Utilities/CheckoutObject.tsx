@@ -31,7 +31,7 @@ export function CheckOutDataContainer() {
 const GlobalUseQuery = (id: number) => {
   const { data, isError, isLoading, error } = useQuery({
     queryFn: async () => {
-      GetAnItem(id);
+      return await GetAnItem(id);
     },
     queryKey: ["checkout", id],
   });
