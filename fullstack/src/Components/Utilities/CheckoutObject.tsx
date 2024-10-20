@@ -49,11 +49,11 @@ export function CheckOutDataContainer() {
     const data = queries
       .map((query) => query.data)
       .filter(Boolean) as itemInfo[]; // Filter out any undefined results
-
+    console.log("changing queries object");
     setReturnedItem(data);
   }, [queries]);
 
-  return returnedItem;
+  return returnedItem.flat(1);
 }
 
 // Mutation for invalidating queries

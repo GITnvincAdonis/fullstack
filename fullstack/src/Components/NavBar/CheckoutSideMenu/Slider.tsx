@@ -22,7 +22,7 @@ export default function Slider(props: { toggle: any }) {
 
   const fetchedCheckoutData = CheckOutDataContainer();
   AddToLocalArray(5);
-  console.log(fetchedCheckoutData);
+  //console.log(fetchedCheckoutData);
 
   return (
     <>
@@ -59,8 +59,8 @@ export default function Slider(props: { toggle: any }) {
               </div>
             </h2>
             {fetchedCheckoutData.map((item) => {
-              console.log(item);
-              console.log(item.name);
+              //console.log(item);
+              //console.log(item.name);
 
               return (
                 <SliderItem name={item.name} price={item.price}></SliderItem>
