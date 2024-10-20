@@ -19,6 +19,15 @@ export default function Slider(props: { toggle: any }) {
 
   const Checkoutitems = useCheckoutData((state) => state.fdata);
   const AddCheckOut = useCheckoutData((state) => state.incrementAsync);
+
+  const handleAddCheckOut = async () => {
+    try {
+      await AddCheckOut(1);
+      console.log("Item added successfully");
+    } catch (error) {
+      console.error("Error adding item:", error);
+    }
+  };
   //console.log(fetchedCheckoutData);
 
   return (
@@ -44,7 +53,7 @@ export default function Slider(props: { toggle: any }) {
           }}
           className="slider-container "
         >
-          <button onClick={() => AddCheckOut(1)}>Click to test</button>
+          <button onClick={handleAddCheckOut}>Click to test</button>
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
