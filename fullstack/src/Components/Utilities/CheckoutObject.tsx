@@ -36,28 +36,23 @@ async function GetCheckoutItems() {
   await Promise.all(fetchedItemsPromises);
 }
 
-
 export function CheckOutDataContainer() {
-  const { isError, error, isLoading } = GlobalUseQuery();
+  const { data, isError, error, isLoading } = GlobalUseQuery();
   if (isError) console.log(`error occurred: ${error}`);
   if (isLoading) console.log(`is loading`);
-
+  console.log(data);
   return returnedItem;
 }
 
-
-
-
 const GlobalUseQuery = () => {
-  const { isError, isLoading, error } = useQuery({
+  const { data, isError, isLoading, error } = useQuery({
     queryFn: async () => {
       GetCheckoutItems();
     },
     queryKey: ["checkout"],
   });
-  return { isError, isLoading, error };
+  return { data, isError, isLoading, error };
 };
-
 
 const GlobalMutate = () => {
   const querClient = useQueryClient();
@@ -72,13 +67,6 @@ const GlobalMutate = () => {
   return { mutateAsync };
 };
 
-
-
-
-
-
-
-
 export function AddToLocalArray(index: number) {
   const itemToUpdate = item.find((item) => item.id === index);
   if (itemToUpdate) {
@@ -89,7 +77,6 @@ export function AddToLocalArray(index: number) {
     GlobalMutate();
   }
 }
-
 
 export function decrementLocalArray(index: number) {
   const itemToUpdate = item.find((item) => item.id === index);
