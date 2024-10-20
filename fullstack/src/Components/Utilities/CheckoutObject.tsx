@@ -20,24 +20,6 @@ const item: IndexedItem[] = [
 ];
 const returnedItem: itemInfo[] = [];
 
-const querClient = useQueryClient();
-
-const { isError, isLoading, error } = useQuery({
-  queryFn: async () => {
-    GetCheckoutItems();
-  },
-  queryKey: ["checkout"],
-});
-
-const mutateAsync = useMutation({
-  mutationFn: async () => {
-    console.log("mutated");
-  },
-  onSuccess: () => {
-    querClient.invalidateQueries({ queryKey: ["checkout"] });
-  },
-});
-
 async function GetCheckoutItems() {
   const fetchedItemsPromises = item.map(async (item) => {
     const fetchedItems = await GetAnItem(item.id);
@@ -54,12 +36,48 @@ async function GetCheckoutItems() {
   await Promise.all(fetchedItemsPromises);
 }
 
+
 export function CheckOutDataContainer() {
+  const { isError, error, isLoading } = GlobalUseQuery();
   if (isError) console.log(`error occurred: ${error}`);
   if (isLoading) console.log(`is loading`);
-  
+
   return returnedItem;
 }
+
+
+
+
+const GlobalUseQuery = () => {
+  const { isError, isLoading, error } = useQuery({
+    queryFn: async () => {
+      GetCheckoutItems();
+    },
+    queryKey: ["checkout"],
+  });
+  return { isError, isLoading, error };
+};
+
+
+const GlobalMutate = () => {
+  const querClient = useQueryClient();
+  const { mutateAsync } = useMutation({
+    mutationFn: async () => {
+      console.log("mutated");
+    },
+    onSuccess: () => {
+      querClient.invalidateQueries({ queryKey: ["checkout"] });
+    },
+  });
+  return { mutateAsync };
+};
+
+
+
+
+
+
+
 
 export function AddToLocalArray(index: number) {
   const itemToUpdate = item.find((item) => item.id === index);
@@ -68,9 +86,11 @@ export function AddToLocalArray(index: number) {
   } else {
     const newItem: IndexedItem = { id: index, count: 1 };
     item.push(newItem);
-    mutateAsync;
+    GlobalMutate();
   }
 }
+
+
 export function decrementLocalArray(index: number) {
   const itemToUpdate = item.find((item) => item.id === index);
 
