@@ -44,7 +44,7 @@ const GlobalMutate = () => {
   const querClient = useQueryClient();
   const { mutateAsync } = useMutation({
     mutationFn: async () => {
-      console.log("mutated");
+      //console.log("mutated");
     },
     onSuccess: () => {
       querClient.invalidateQueries({ queryKey: ["checkout"] });
