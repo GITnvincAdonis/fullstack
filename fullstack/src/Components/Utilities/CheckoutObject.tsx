@@ -20,9 +20,9 @@ const initialItems: IndexedItem[] = [
   { id: 2, count: 2 },
 ];
 
-const [itemArray, setItemArray] = useState<IndexedItem[]>(initialItems);
 // Main Checkout Data Component
 export function CheckOutDataContainer() {
+  const [itemArray, _setItemArray] = useState<IndexedItem[]>(initialItems);
   const [returnedItem, setReturnedItem] = useState<itemInfo[]>([]);
 
   // Fetch data for each item using useQueries
@@ -72,6 +72,7 @@ const useGlobalMutate = () => {
 // Function to add item to the local array and trigger mutation
 export function AddToLocalArray(index: number) {
   const { mutateAsync } = useGlobalMutate();
+  const [itemArray, setItemArray] = useState<IndexedItem[]>(initialItems);
 
   const addItem = async () => {
     const itemToUpdate = itemArray.find((item) => item.id === index);
@@ -95,6 +96,8 @@ export function AddToLocalArray(index: number) {
 
 // Function to decrement item count or remove from array
 export function DecrementLocalArray(index: number) {
+  const [itemArray, setItemArray] = useState<IndexedItem[]>(initialItems);
+
   const decrementItem = () => {
     const itemToUpdate = itemArray.find((item) => item.id === index);
     if (itemToUpdate && itemToUpdate.count > 1) {
