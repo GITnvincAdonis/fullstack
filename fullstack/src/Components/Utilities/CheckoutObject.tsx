@@ -52,7 +52,7 @@ export function CheckOutDataContainer() {
 
     // If there's new data, update returnedItem
     if (data.length > 0) {
-      console.log("changing queries object");
+      //console.log("changing queries object");
       setReturnedItem(data);
     }
   }, [isLoading, isError, data.length]);
@@ -74,11 +74,11 @@ const useGlobalMutate = () => {
 };
 
 // Function to add item to the local array and trigger mutation
-export function AddToLocalArray(index: number) {
+export function AddToLocalArray() {
   const { mutateAsync } = useGlobalMutate();
   const [itemArray, setItemArray] = useState<IndexedItem[]>(initialItems);
 
-  const addItem = async () => {
+  const addItem = async (index: number) => {
     const itemToUpdate = itemArray.find((item) => item.id === index);
     if (itemToUpdate) {
       setItemArray((prev) =>
@@ -95,14 +95,14 @@ export function AddToLocalArray(index: number) {
     await mutateAsync();
   };
 
-  return { addItem };
+  return { addItem, itemArray };
 }
 
 // Function to decrement item count or remove from array
-export function DecrementLocalArray(index: number) {
+export function DecrementLocalArray() {
   const [itemArray, setItemArray] = useState<IndexedItem[]>(initialItems);
 
-  const decrementItem = () => {
+  const decrementItem = (index: number) => {
     const itemToUpdate = itemArray.find((item) => item.id === index);
     if (itemToUpdate && itemToUpdate.count > 1) {
       setItemArray((prev) =>
@@ -115,5 +115,5 @@ export function DecrementLocalArray(index: number) {
     }
   };
 
-  return { decrementItem };
+  return { decrementItem, itemArray };
 }

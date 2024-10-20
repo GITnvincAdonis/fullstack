@@ -13,6 +13,7 @@ export default function Card(props: {
 }) {
   const { id, name, price, starCount, reviewNumber } = props;
   console.log(starCount);
+  const { addItem, itemArray } = AddToLocalArray();
   return (
     <>
       <div className="card-container ">
@@ -21,8 +22,9 @@ export default function Card(props: {
             <div className="add-button-container">
               <button
                 onClick={() => {
-                  AddToLocalArray(id);
-                  
+                  addItem(id);
+                  console.log(itemArray);
+
                   console.log("clicked");
                 }}
                 className="add-button "

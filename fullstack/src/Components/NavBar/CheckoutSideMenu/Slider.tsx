@@ -10,7 +10,6 @@ import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import {
-  AddToLocalArray,
   CheckOutDataContainer,
 } from "../../Utilities/CheckoutObject";
 
@@ -21,7 +20,7 @@ export default function Slider(props: { toggle: any }) {
   const [visible, toggleVisible] = useState(true);
 
   const fetchedCheckoutData = CheckOutDataContainer();
-  AddToLocalArray(5);
+
   //console.log(fetchedCheckoutData);
 
   return (
