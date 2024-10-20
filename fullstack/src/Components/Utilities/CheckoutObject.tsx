@@ -1,5 +1,6 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient, useQueries } from "@tanstack/react-query";
 import { GetAnItem } from "../APIs";
+import { useState, useEffect } from "react";
 
 interface IndexedItem {
   id: number;
@@ -13,74 +14,99 @@ interface itemInfo {
   review_count: number;
 }
 
-//local array
-export const item: IndexedItem[] = [
+// Local array for item counts
+const initialItems: IndexedItem[] = [
   { id: 1, count: 1 },
   { id: 2, count: 2 },
 ];
-const returnedItem: itemInfo[] = [];
 
+const [itemArray, setItemArray] = useState<IndexedItem[]>(initialItems);
+// Main Checkout Data Component
 export function CheckOutDataContainer() {
-  item.map((item) => {
-    const { data, isError, error, isLoading } = GlobalUseQuery(item.id);
-    if (isError) {
-      console.log(`error occurred: ${error}`);
-      return;
-    }
-    if (isLoading) {
-      console.log(`is loading`);
-      return;
-    }
-    if (data) returnedItem.push(data);
+  const [returnedItem, setReturnedItem] = useState<itemInfo[]>([]);
+
+  // Fetch data for each item using useQueries
+  const queries = useQueries({
+    queries: itemArray.map((item) => ({
+      queryFn: () => GetAnItem(item.id), // Ensure this function returns a promise
+      queryKey: ["checkout", item.id],
+      staleTime: Infinity,
+    })),
   });
 
-  return returnedItem.flat(1);
+  // Handle loading, error, and data
+  useEffect(() => {
+    if (queries.some((query) => query.isLoading)) {
+      console.log("is loading");
+      return;
+    }
+
+    if (queries.some((query) => query.isError)) {
+      console.log("error occurred");
+      return;
+    }
+
+    const data = queries
+      .map((query) => query.data)
+      .filter(Boolean) as itemInfo[]; // Filter out any undefined results
+
+    setReturnedItem(data);
+  }, [queries]);
+
+  return returnedItem;
 }
 
-export const GlobalUseQuery = (id: number) => {
-  const { data, isError, isLoading, error } = useQuery({
-    queryFn: async () => {
-      return await GetAnItem(id);
-    },
-    queryKey: ["checkout", id],
-    staleTime: Infinity,
-  });
-  return { data, isError, isLoading, error };
-};
-
-const GlobalMutate = () => {
-  const querClient = useQueryClient();
-  const { error, mutateAsync } = useMutation({
+// Mutation for invalidating queries
+const useGlobalMutate = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
     mutationFn: async () => {
       console.log("mutated");
     },
     onSuccess: () => {
-      querClient.invalidateQueries({ queryKey: ["checkout"] });
+      queryClient.invalidateQueries({ queryKey: ["checkout"] });
     },
   });
-  if (error) console.log(`mutate error: ${error}`);
-  return { mutateAsync };
 };
 
+// Function to add item to the local array and trigger mutation
 export function AddToLocalArray(index: number) {
-  const { mutateAsync } = GlobalMutate();
-  const itemToUpdate = item.find((item) => item.id === index);
-  if (itemToUpdate) {
-    itemToUpdate.count++;
-  } else {
-    const newItem: IndexedItem = { id: index, count: 1 };
-    item.push(newItem);
-    mutateAsync();
-  }
+  const { mutateAsync } = useGlobalMutate();
+
+  const addItem = async () => {
+    const itemToUpdate = itemArray.find((item) => item.id === index);
+    if (itemToUpdate) {
+      setItemArray((prev) =>
+        prev.map((item) =>
+          item.id === index ? { ...item, count: item.count + 1 } : item
+        )
+      );
+    } else {
+      const newItem: IndexedItem = { id: index, count: 1 };
+      setItemArray((prev) => [...prev, newItem]);
+    }
+
+    // Trigger mutation to invalidate queries
+    await mutateAsync();
+  };
+
+  return { addItem };
 }
 
-export function decrementLocalArray(index: number) {
-  const itemToUpdate = item.find((item) => item.id === index);
+// Function to decrement item count or remove from array
+export function DecrementLocalArray(index: number) {
+  const decrementItem = () => {
+    const itemToUpdate = itemArray.find((item) => item.id === index);
+    if (itemToUpdate && itemToUpdate.count > 1) {
+      setItemArray((prev) =>
+        prev.map((item) =>
+          item.id === index ? { ...item, count: item.count - 1 } : item
+        )
+      );
+    } else if (itemToUpdate && itemToUpdate.count === 1) {
+      setItemArray((prev) => prev.filter((item) => item.id !== index));
+    }
+  };
 
-  if (itemToUpdate !== undefined && itemToUpdate.count > 1) {
-    itemToUpdate.count--;
-  } else if (itemToUpdate && itemToUpdate.count == 1) {
-    const indexOfItem = item.findIndex((item) => item.id === index);
-    item.splice(indexOfItem, 1);
-  }
+  return { decrementItem };
 }
