@@ -17,7 +17,7 @@ export default function Slider(props: { toggle: any }) {
 
   const [visible, toggleVisible] = useState(true);
   const fetchedCheckoutData = CheckOutDataContainer();
-  console.log(CheckOutDataContainer());
+  console.log(fetchedCheckoutData);
 
   return (
     <>
@@ -54,6 +54,8 @@ export default function Slider(props: { toggle: any }) {
               </div>
             </h2>
             {fetchedCheckoutData.map((item) => {
+              console.log(item.name);
+              console.log(item.price);
               return (
                 <SliderItem name={item.name} price={item.price}></SliderItem>
               );
