@@ -22,6 +22,7 @@ export default function Card(props: {
               <button
                 onClick={() => {
                   AddToLocalArray(id);
+                  
                   console.log("clicked");
                 }}
                 className="add-button "
