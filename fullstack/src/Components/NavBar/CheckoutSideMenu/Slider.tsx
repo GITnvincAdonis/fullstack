@@ -2,14 +2,14 @@ import "./Slider.css";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import QuantityController from "../../SVGs/QuantityController";
 import { useMenuContext } from "../../Contexts/Contexts";
 import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
-import { useCheckoutData } from "../../Utilities/Store";
+import { GetCheckoutItems, useCheckoutData } from "../../Utilities/Store";
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
@@ -18,7 +18,28 @@ export default function Slider(props: { toggle: any }) {
   const [visible, toggleVisible] = useState(true);
 
   const Checkoutitems = useCheckoutData((state) => state.fdata);
+  const CheckoutCount = useCheckoutData((state) => state.fdata_count);
 
+  const AddToCart = useCheckoutData((state) => state.incrementAsync);
+  const Decrement = useCheckoutData((state) => state.decrement);
+
+  const { updateCart } = GetCheckoutItems(Checkoutitems);
+
+  useEffect(() => {
+    const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
+      if (prevState.fdata_count != state.fdata_count) {
+        console.log(
+          `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
+        );
+        updateCart();
+      }
+    });
+
+    // Return a cleanup function that calls unsubscribe
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <>
@@ -44,16 +65,45 @@ export default function Slider(props: { toggle: any }) {
           className="slider-container "
         >
           <span>
-            item:
+            <div>item count: {CheckoutCount}</div>
             {Checkoutitems.map((item) => {
               return (
                 <>
-                  id: {item.id}/ count: {item.count}
+                  <div>
+                    id: {item.id}/ id count: {item.count}
+                  </div>
                 </>
               );
             })}
           </span>
-          
+          <button
+            onClick={() => {
+              AddToCart(2);
+            }}
+          >
+            increment id 2
+          </button>
+          <button
+            onClick={() => {
+              Decrement(2);
+            }}
+          >
+            decrement id 2
+          </button>
+          <button
+            onClick={() => {
+              AddToCart(3);
+            }}
+          >
+            increment id 3
+          </button>
+          <button
+            onClick={() => {
+              Decrement(3);
+            }}
+          >
+            decrement id 3
+          </button>
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
