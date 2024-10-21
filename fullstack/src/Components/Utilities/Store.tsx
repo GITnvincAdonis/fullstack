@@ -42,7 +42,18 @@ export const useCheckoutData = create<fetchedAndReturned>((set, get) => ({
     const stateData = get().fdata;
     const itemAtId = stateData.find((item) => item.id === id);
     if (itemAtId) {
-      itemAtId.count--;
+      const updatedFdata = stateData.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item, // Spread the current properties of the item
+            count: item.count - 1, // Increment the count property
+          };
+        }
+        return item; // Return the item unchanged if the id doesn't match
+      });
+
+      // Update the state with the modified array
+      set((_state) => ({ fdata: updatedFdata }));
     }
     if (itemAtId?.count === 0) {
       set((state) => ({
