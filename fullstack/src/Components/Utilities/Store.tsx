@@ -29,7 +29,7 @@ export const useCheckoutData = create<fetchedAndReturned>((set) => ({
   incrementAsync: async (id: number) => {
     try {
       const fetchedI = GetCheckoutItem(id);
-      console.log("fetched item: ");
+      console.log("zustand dest / fetched item: ");
       console.log(fetchedI);
       //if (fetchedI) set((state) => ({ fdata: [...state.fdata, fetchedI] }));
     } catch (error) {
@@ -61,6 +61,7 @@ function GetCheckoutItem(stateID: number) {
     return DefaultItem;
   }
   if (!isError) {
+    console.log("store dest");
     console.log(data);
     return data;
   }
