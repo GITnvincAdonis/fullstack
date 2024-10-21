@@ -52,6 +52,7 @@ export default function Slider(props: { toggle: any }) {
               </div>
             </h2>
             {CartItems.map((cart_item) => {
+              console.log(cart_item);
               return (
                 <>
                   <SliderItem
