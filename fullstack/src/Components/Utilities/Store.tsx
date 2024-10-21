@@ -2,7 +2,6 @@ import { create } from "zustand";
 import { GetAnItem } from "../APIs";
 import { useMutation, useQueries } from "@tanstack/react-query";
 import { subscribeWithSelector } from "zustand/middleware";
-import { useState } from "react";
 
 interface itemInfo {
   id: number;
@@ -82,7 +81,13 @@ export const useCheckoutData = create(
 );
 
 export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
-  const [returnedData, setReturnedItem] = useState<itemInfo[]>([]);
+  const DefaultItem: itemInfo = {
+    id: 1,
+    name: "yyyy",
+    price: 11,
+    starcount: 11,
+    review_count: 1,
+  };
 
   const Newqueries = useQueries({
     queries: arrayOfItems.map((item) => ({
@@ -99,18 +104,16 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
 
   const isLoading = Newqueries.some((query) => query.isLoading);
   const isError = Newqueries.some((query) => query.isError);
-  const data = Newqueries.map((query) => query.data).filter(
-    Boolean
-  ) as itemInfo[];
+  const data = Newqueries.map((query) => query.data);
 
   // Use specific state variables as dependencies, not the whole `queries` object
   if (isLoading) console.log("some things are loading");
   if (isError) console.log("error somewhere");
   if (!isError && data) {
+    console.log("store dest");
     console.log(data);
-    setReturnedItem(data);
-    return { updateCart, returnedData };
+    return { updateCart, data };
   } else {
-    return { updateCart, returnedData };
+    return { updateCart, DefaultItem };
   }
 }

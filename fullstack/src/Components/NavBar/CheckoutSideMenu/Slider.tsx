@@ -23,7 +23,7 @@ export default function Slider(props: { toggle: any }) {
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
   const Decrement = useCheckoutData((state) => state.decrement);
 
-  const { updateCart, returnedData } = GetCheckoutItems(Checkoutitems);
+  const { updateCart, data } = GetCheckoutItems(Checkoutitems);
 
   useEffect(() => {
     const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
@@ -32,7 +32,8 @@ export default function Slider(props: { toggle: any }) {
           `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
         );
         updateCart();
-        console.log(returnedData);
+        console.log("slider dest");
+        console.log(data);
       }
     });
 
