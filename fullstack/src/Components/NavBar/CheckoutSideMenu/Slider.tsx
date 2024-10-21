@@ -2,62 +2,21 @@ import "./Slider.css";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import QuantityController from "../../SVGs/QuantityController";
 import { useMenuContext } from "../../Contexts/Contexts";
 import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
-import { GetCheckoutItems, useCheckoutData } from "../../Utilities/Store";
-
-interface itemInfo {
-  id: number;
-  name: string;
-  price: number;
-  starcount: number;
-  review_count: number;
-}
+import { useCartItem } from "../../Utilities/Store";
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
   const menuinView = useMenuContext();
   const [visible, toggleVisible] = useState(true);
+  const { localdata: CartItems } = useCartItem();
 
-  const Checkoutitems = useCheckoutData((state) => state.fdata);
-  const CheckoutCount = useCheckoutData((state) => state.fdata_count);
-  const AddToCart = useCheckoutData((state) => state.incrementAsync);
-  const Decrement = useCheckoutData((state) => state.decrement);
-  const { updateCart, data } = GetCheckoutItems(Checkoutitems);
-
-  const [localdata, setData] = useState<itemInfo[]>(data || []);
-
-  useEffect(() => {
-    //initallially loads state with data
-    setData(data || localdata);
-    const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
-      if (prevState.fdata_count != state.fdata_count) {
-        console.log(
-          `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
-        );
-        updateCart();
-      }
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, []);
-
-  useEffect(() => {
-    console.log("first useeffect dest");
-    console.log(data);
-    if (data) setData(data);
-  }, [data?.length]);
-
-  
-  useEffect(() => {
-    console.log("localdata changed:", localdata);
-  }, [localdata]);
   return (
     <>
       <div className="slider-mega-container">
@@ -81,46 +40,6 @@ export default function Slider(props: { toggle: any }) {
           }}
           className="slider-container "
         >
-          <span>
-            <div>item count: {CheckoutCount}</div>
-            {Checkoutitems.map((item) => {
-              return (
-                <>
-                  <div>
-                    id: {item.id}/ id count: {item.count}
-                  </div>
-                </>
-              );
-            })}
-          </span>
-          <button
-            onClick={() => {
-              AddToCart(2);
-            }}
-          >
-            increment id 2
-          </button>
-          <button
-            onClick={() => {
-              Decrement(2);
-            }}
-          >
-            decrement id 2
-          </button>
-          <button
-            onClick={() => {
-              AddToCart(3);
-            }}
-          >
-            increment id 3
-          </button>
-          <button
-            onClick={() => {
-              Decrement(3);
-            }}
-          >
-            decrement id 3
-          </button>
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
@@ -132,9 +51,16 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            <SliderItem name={"wa"} price={1}></SliderItem>
-            <SliderItem name={"wa"} price={1}></SliderItem>;
-            <SliderItem name={"wa"} price={1}></SliderItem>;
+            {CartItems.map((cart_item) => {
+              return (
+                <>
+                  <SliderItem
+                    name={cart_item.name}
+                    price={cart_item.price}
+                  ></SliderItem>
+                </>
+              );
+            })}
           </motion.div>
 
           <motion.div

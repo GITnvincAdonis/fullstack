@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { GetAnItem } from "../APIs";
 import { useMutation, useQueries } from "@tanstack/react-query";
 import { subscribeWithSelector } from "zustand/middleware";
+import { useEffect, useState } from "react";
 
 interface itemInfo {
   id: number;
@@ -118,4 +119,38 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
   } else {
     return { updateCart, DefaultItem };
   }
+}
+
+export function useCartItem() {
+
+
+  const Checkoutitems = useCheckoutData((state) => state.fdata);
+  const { updateCart, data } = GetCheckoutItems(Checkoutitems);
+
+  const [localdata, setData] = useState<itemInfo[]>(data || []);
+
+  useEffect(() => {
+    //initallially loads state with data
+    setData(data || localdata);
+    const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
+      if (prevState.fdata_count != state.fdata_count) {
+        console.log(
+          `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
+        );
+        updateCart();
+      }
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
+  useEffect(() => {
+    //console.log("first useeffect dest");
+    //console.log(data);
+    if (data) setData(data);
+  }, [data?.length]);
+  
+  return {localdata}
+
 }
