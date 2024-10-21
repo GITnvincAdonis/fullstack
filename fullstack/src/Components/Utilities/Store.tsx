@@ -2,21 +2,42 @@ import { create } from "zustand";
 // import { GetAnItem } from "../APIs";
 // import { useQuery } from "@tanstack/react-query";
 
+interface checkoutItem {
+  id: number;
+  count: number;
+}
 type fetchedAndReturned = {
-  fdata: number[];
+  fdata: checkoutItem[];
   incrementAsync: (id: number) => Promise<void>;
   decrement: (id: number) => void;
 };
 
-export const useCheckoutData = create<fetchedAndReturned>((set) => ({
-  fdata: [0],
+export const useCheckoutData = create<fetchedAndReturned>((set, get) => ({
+  fdata: [],
   incrementAsync: async (id: number) => {
-    set((state) => ({ fdata: [...state.fdata,id] }));
+    const stateData = get().fdata;
+    const itemAtId = stateData.find((item) => item.id === id);
+    if (itemAtId) {
+      itemAtId.count++;
+    } else {
+      const newItem: checkoutItem = {
+        id: id,
+        count: 1,
+      };
+      set((state) => ({ fdata: [...state.fdata, newItem] }));
+    }
   },
   decrement: (id: number) => {
-    set((state) => ({
-      fdata: state.fdata.filter((item) => item !== id),
-    }));
+    const stateData = get().fdata;
+    const itemAtId = stateData.find((item) => item.id === id);
+    if (itemAtId) {
+      itemAtId.count--;
+    }
+    if (itemAtId?.count === 0) {
+      set((state) => ({
+        fdata: state.fdata.filter((item) => item !== itemAtId),
+      }));
+    }
   },
 }));
 

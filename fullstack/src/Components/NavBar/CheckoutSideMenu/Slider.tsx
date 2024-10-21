@@ -22,7 +22,6 @@ export default function Slider(props: { toggle: any }) {
   const AddCheckOut = useCheckoutData((state) => state.incrementAsync);
   const DecrementButton = useCheckoutData((state) => state.decrement);
 
- 
   return (
     <>
       <div className="slider-mega-container">
@@ -46,7 +45,12 @@ export default function Slider(props: { toggle: any }) {
           }}
           className="slider-container "
         >
-          <span>{Checkoutitems}</span>
+          <span>
+            item:
+            {Checkoutitems[0].id}
+            count:
+            {Checkoutitems[0].count}
+          </span>
           <button
             onClick={() => {
               AddCheckOut(2);
