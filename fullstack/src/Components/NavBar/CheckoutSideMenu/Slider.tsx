@@ -47,9 +47,9 @@ export default function Slider(props: { toggle: any }) {
         >
           <span>
             item:
-            {Checkoutitems[0].id}
+            {Checkoutitems ? Checkoutitems[0].id : "not here yet"}
             count:
-            {Checkoutitems[0].count}
+            {Checkoutitems ? Checkoutitems[0].count : "not here yet"}
           </span>
           <button
             onClick={() => {
