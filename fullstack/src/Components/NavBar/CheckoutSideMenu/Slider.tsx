@@ -28,14 +28,13 @@ export default function Slider(props: { toggle: any }) {
   const CheckoutCount = useCheckoutData((state) => state.fdata_count);
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
   const Decrement = useCheckoutData((state) => state.decrement);
-  const { updateCart } = GetCheckoutItems(Checkoutitems);
+  const { updateCart, data } = GetCheckoutItems(Checkoutitems);
 
   //const [localdata, setData] = useState([]);
 
   useEffect(() => {
-    const { data: fetchedData } = GetCheckoutItems(Checkoutitems);
     console.log("first useeffect dest");
-    console.log(fetchedData);
+    console.log(data);
     // Fallback to an empty array
   }, [Checkoutitems]);
 
