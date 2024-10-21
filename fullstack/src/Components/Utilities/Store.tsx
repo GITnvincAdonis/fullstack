@@ -3,19 +3,20 @@ import { create } from "zustand";
 // import { useQuery } from "@tanstack/react-query";
 
 type fetchedAndReturned = {
-  fdata: number;
+  fdata: number[];
   incrementAsync: (id: number) => Promise<void>;
   decrement: (id: number) => void;
 };
 
 export const useCheckoutData = create<fetchedAndReturned>((set) => ({
-  fdata: 0,
+  fdata: [0],
   incrementAsync: async (id: number) => {
-    set((state) => ({ fdata: state.fdata + id }));
+    set((state) => ({ fdata: [...state.fdata,id] }));
   },
   decrement: (id: number) => {
-    set((state) => ({ fdata: state.fdata - id }));
-    console.log();
+    set((state) => ({
+      fdata: state.fdata.filter((item) => item !== id),
+    }));
   },
 }));
 
