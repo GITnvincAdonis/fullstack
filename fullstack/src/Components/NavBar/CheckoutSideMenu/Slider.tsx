@@ -41,9 +41,6 @@ export default function Slider(props: { toggle: any }) {
           `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
         );
         updateCart();
-        setData(data || localdata);
-        console.log("first useeffect dest");
-        console.log(data);
       }
     });
     return () => {
@@ -51,6 +48,10 @@ export default function Slider(props: { toggle: any }) {
     };
   }, []);
 
+  useEffect(() => {
+    console.log("first useeffect dest");
+    console.log(data);
+  }, [data?.length]);
   return (
     <>
       <div className="slider-mega-container">
