@@ -22,7 +22,7 @@ export default function Slider(props: { toggle: any }) {
   const AddCheckOut = useCheckoutData((state) => state.incrementAsync);
   const DecrementButton = useCheckoutData((state) => state.decrement);
 
-  AddCheckOut(2);
+ 
   return (
     <>
       <div className="slider-mega-container">
