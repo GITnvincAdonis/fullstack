@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { GetAnItem } from "../APIs";
 import { useMutation, useQueries } from "@tanstack/react-query";
 import { subscribeWithSelector } from "zustand/middleware";
+import { useState } from "react";
 
 interface itemInfo {
   id: number;
@@ -81,13 +82,7 @@ export const useCheckoutData = create(
 );
 
 export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
-  const DefaultItem: itemInfo = {
-    id: 1,
-    name: "yyyy",
-    price: 11,
-    starcount: 11,
-    review_count: 1,
-  };
+  const [returnedData, setReturnedItem] = useState<itemInfo[]>([]);
 
   const Newqueries = useQueries({
     queries: arrayOfItems.map((item) => ({
@@ -113,8 +108,9 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
   if (isError) console.log("error somewhere");
   if (!isError && data) {
     console.log(data);
-    return { updateCart, data };
+    setReturnedItem(data);
+    return { updateCart, returnedData };
   } else {
-    return { updateCart, DefaultItem };
+    return { updateCart, returnedData };
   }
 }

@@ -9,16 +9,7 @@ import { useMenuContext } from "../../Contexts/Contexts";
 import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
-import { useCheckoutData } from "../../Utilities/Store";
-import { useMutation, useQueries } from "@tanstack/react-query";
-import { GetAnItem } from "../../APIs";
-interface itemInfo {
-  id: number;
-  name: string;
-  price: number;
-  starcount: number;
-  review_count: number;
-}
+import { GetCheckoutItems, useCheckoutData } from "../../Utilities/Store";
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
@@ -32,6 +23,8 @@ export default function Slider(props: { toggle: any }) {
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
   const Decrement = useCheckoutData((state) => state.decrement);
 
+  const { updateCart, returnedData } = GetCheckoutItems(Checkoutitems);
+
   useEffect(() => {
     const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
       if (prevState.fdata_count != state.fdata_count) {
@@ -39,7 +32,7 @@ export default function Slider(props: { toggle: any }) {
           `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
         );
         updateCart();
-        console.log(data);
+        console.log(returnedData);
       }
     });
 
@@ -48,41 +41,6 @@ export default function Slider(props: { toggle: any }) {
       unsubscribe();
     };
   }, []);
-
-
-  
-  const Newqueries = useQueries({
-    queries: Checkoutitems.map((item) => ({
-      queryFn: () => GetAnItem(item.id),
-      queryKey: ["item", item.id],
-      staleTime: Infinity,
-    })),
-  });
-
-  const { mutateAsync: updateCart } = useMutation({
-    mutationFn: async () => console.log("mutated"),
-    mutationKey: ["item"],
-  });
-
-  const isLoading = Newqueries.some((query) => query.isLoading);
-  const isError = Newqueries.some((query) => query.isError);
-  const data = Newqueries.map((query) => query.data).filter(
-    Boolean
-  ) as itemInfo[];
-
-  // Use specific state variables as dependencies, not the whole `queries` object
-  if (isLoading) console.log("some things are loading");
-  if (isError) console.log("error somewhere");
-  if (!isError && data) console.log(data);
-
-
-
-
-
-
-
-
-
 
   return (
     <>
