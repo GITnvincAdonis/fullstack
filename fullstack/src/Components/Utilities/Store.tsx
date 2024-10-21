@@ -93,6 +93,7 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
     queries: arrayOfItems.map((item) => ({
       queryFn: () => GetAnItem(item.id),
       queryKey: ["item", item.id],
+      staleTime: Infinity,
     })),
   });
 
