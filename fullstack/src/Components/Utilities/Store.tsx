@@ -24,8 +24,8 @@ interface fetchedAndReturned {
 
 export const useCheckoutData = create(
   subscribeWithSelector<fetchedAndReturned>((set, get) => ({
-    fdata: [{ id: 2, count: 1 }],
-    fdata_count: 1,
+    fdata: [],
+    fdata_count: 0,
 
     incrementAsync: async (id: number) => {
       const stateData = get().fdata;
