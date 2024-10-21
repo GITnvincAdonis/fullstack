@@ -51,7 +51,7 @@ export default function Slider(props: { toggle: any }) {
   useEffect(() => {
     console.log("first useeffect dest");
     console.log(data);
-    setData(data || []);
+    if (data) setData(data);
     console.log(localdata);
   }, [data?.length]);
   return (
