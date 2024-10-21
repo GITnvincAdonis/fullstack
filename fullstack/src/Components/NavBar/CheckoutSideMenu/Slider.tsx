@@ -36,6 +36,8 @@ export default function Slider(props: { toggle: any }) {
     console.log("first useeffect dest");
     console.log(data);
     setData(data ? data : []);
+    console.log("usestateData");
+    console.log(localdata);
   }, [Checkoutitems]);
 
   useEffect(() => {
@@ -45,7 +47,6 @@ export default function Slider(props: { toggle: any }) {
           `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
         );
         updateCart();
-        console.log(localdata);
       }
     });
     return () => {
