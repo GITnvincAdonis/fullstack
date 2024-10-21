@@ -33,14 +33,6 @@ export default function Slider(props: { toggle: any }) {
   const [localdata, setData] = useState<itemInfo[]>(data || []);
 
   useEffect(() => {
-    console.log("first useeffect dest");
-    console.log(data);
-    setData(data || localdata);
-    console.log("usestateData");
-    console.log(localdata);
-  }, [Checkoutitems]);
-
-  useEffect(() => {
     //initallially loads state with data
     setData(data || localdata);
     const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
@@ -49,6 +41,9 @@ export default function Slider(props: { toggle: any }) {
           `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
         );
         updateCart();
+        setData(data || localdata);
+        console.log("first useeffect dest");
+        console.log(data);
       }
     });
     return () => {
