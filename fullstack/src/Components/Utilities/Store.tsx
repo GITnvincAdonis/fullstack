@@ -55,7 +55,8 @@ export const useCheckoutData = create<fetchedAndReturned>((set, get) => ({
       // Update the state with the modified array
       set((_state) => ({ fdata: updatedFdata }));
     }
-    if (itemAtId?.count === 0) {
+    if (itemAtId && itemAtId.count == 1) {
+      console.log("at 0");
       set((state) => ({
         fdata: state.fdata.filter((item) => item !== itemAtId),
       }));

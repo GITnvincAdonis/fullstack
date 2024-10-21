@@ -19,8 +19,6 @@ export default function Slider(props: { toggle: any }) {
 
   const Checkoutitems = useCheckoutData((state) => state.fdata);
 
-  const AddCheckOut = useCheckoutData((state) => state.incrementAsync);
-  const DecrementButton = useCheckoutData((state) => state.decrement);
 
   return (
     <>
@@ -55,20 +53,7 @@ export default function Slider(props: { toggle: any }) {
               );
             })}
           </span>
-          <button
-            onClick={() => {
-              AddCheckOut(2);
-            }}
-          >
-            Click to increment
-          </button>
-          <button
-            onClick={() => {
-              DecrementButton(2);
-            }}
-          >
-            Click to derement
-          </button>
+          
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}

@@ -3,6 +3,7 @@ import "./CardStyles.css";
 import Review from "../../Review/Reveiw";
 import AddSVG from "../../SVGs/Add";
 import { Link } from "react-router-dom";
+import { useCheckoutData } from "../../Utilities/Store";
 
 export default function Card(props: {
   id: number;
@@ -13,14 +14,19 @@ export default function Card(props: {
 }) {
   const { id, name, price, starCount, reviewNumber } = props;
   console.log(starCount + id);
-
+  const AddToCart = useCheckoutData((state) => state.incrementAsync);
   return (
     <>
       <div className="card-container ">
         <div className="card-image-container">
           <div className="add-button-mega-container">
             <div className="add-button-container">
-              <button onClick={() => {}} className="add-button ">
+              <button
+                onClick={() => {
+                  AddToCart(id);
+                }}
+                className="add-button "
+              >
                 <AddSVG></AddSVG>
               </button>
             </div>
