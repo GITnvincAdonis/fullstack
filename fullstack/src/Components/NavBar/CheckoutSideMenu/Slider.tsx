@@ -30,17 +30,19 @@ export default function Slider(props: { toggle: any }) {
   const Decrement = useCheckoutData((state) => state.decrement);
   const { updateCart, data } = GetCheckoutItems(Checkoutitems);
 
-  const [localdata, setData] = useState<itemInfo[]>([]);
+  const [localdata, setData] = useState<itemInfo[]>(data || []);
 
   useEffect(() => {
     console.log("first useeffect dest");
     console.log(data);
-    setData(data ? data : []);
+    setData(data || localdata);
     console.log("usestateData");
     console.log(localdata);
   }, [Checkoutitems]);
 
   useEffect(() => {
+    //initallially loads state with data
+    setData(data || localdata);
     const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
       if (prevState.fdata_count != state.fdata_count) {
         console.log(
