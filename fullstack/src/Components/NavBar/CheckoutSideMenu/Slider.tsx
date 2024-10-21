@@ -10,20 +10,32 @@ import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import { GetCheckoutItems, useCheckoutData } from "../../Utilities/Store";
+interface itemInfo {
+  id: number;
+  name: string;
+  price: number;
+  starcount: number;
+  review_count: number;
+}
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
   const menuinView = useMenuContext();
-
   const [visible, toggleVisible] = useState(true);
 
   const Checkoutitems = useCheckoutData((state) => state.fdata);
   const CheckoutCount = useCheckoutData((state) => state.fdata_count);
-
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
   const Decrement = useCheckoutData((state) => state.decrement);
+  const { updateCart } = GetCheckoutItems(Checkoutitems);
 
-  const { updateCart, data } = GetCheckoutItems(Checkoutitems);
+  const [localdata, setData] = useState<itemInfo[]>([]);
+
+  useEffect(() => {
+    const { data: fetchedData } = GetCheckoutItems(Checkoutitems);
+    console.log("first useeffect dest");
+    setData(fetchedData || []); // Fallback to an empty array
+  }, [Checkoutitems]);
 
   useEffect(() => {
     const unsubscribe = useCheckoutData.subscribe((state, prevState) => {
@@ -33,7 +45,7 @@ export default function Slider(props: { toggle: any }) {
         );
         updateCart();
         console.log("slider dest");
-        console.log(data);
+        console.log(localdata);
       }
     });
 
