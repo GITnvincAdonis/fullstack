@@ -2,10 +2,10 @@ import { create } from "zustand";
 // import { GetAnItem } from "../APIs";
 // import { useQuery } from "@tanstack/react-query";
 
-interface checkoutItem {
+type checkoutItem = {
   id: number;
   count: number;
-}
+};
 type fetchedAndReturned = {
   fdata: checkoutItem[];
   incrementAsync: (id: number) => Promise<void>;

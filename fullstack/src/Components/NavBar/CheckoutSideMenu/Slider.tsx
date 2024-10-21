@@ -47,9 +47,13 @@ export default function Slider(props: { toggle: any }) {
         >
           <span>
             item:
-            {Checkoutitems[0].id}
-            count:
-            {Checkoutitems[0].count}
+            {Checkoutitems.map((item) => {
+              return (
+                <>
+                  id: {item.id}/ count: {item.count}
+                </>
+              );
+            })}
           </span>
           <button
             onClick={() => {
