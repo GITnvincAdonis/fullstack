@@ -31,7 +31,7 @@ export const useCheckoutData = create<fetchedAndReturned>((set) => ({
       const fetchedI = GetCheckoutItem(id);
       console.log("zustand dest / fetched item: ");
       console.log(fetchedI);
-      if (fetchedI) set((state) => ({ fdata: [...state.fdata, fetchedI] }));
+      if (fetchedI) set(() => ({ fdata: [fetchedI] }));
     } catch (error) {
       console.log(error);
     }
