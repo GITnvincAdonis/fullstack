@@ -52,8 +52,12 @@ export default function Slider(props: { toggle: any }) {
     console.log("first useeffect dest");
     console.log(data);
     if (data) setData(data);
-    console.log(localdata);
   }, [data?.length]);
+
+  
+  useEffect(() => {
+    console.log("localdata changed:", localdata);
+  }, [localdata]);
   return (
     <>
       <div className="slider-mega-container">
