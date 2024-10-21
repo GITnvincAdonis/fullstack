@@ -13,7 +13,7 @@ type fetchedAndReturned = {
 };
 
 export const useCheckoutData = create<fetchedAndReturned>((set, get) => ({
-  fdata: [],
+  fdata: [{ id: 2, count: 1 }],
   incrementAsync: async (id: number) => {
     const stateData = get().fdata;
     const itemAtId = stateData.find((item) => item.id === id);
