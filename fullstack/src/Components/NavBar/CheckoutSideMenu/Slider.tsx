@@ -51,8 +51,7 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            {CartItems.map((cart_item) => {
-              console.log(cart_item);
+            {CartItems.flat(1).map((cart_item) => {
               return (
                 <>
                   <SliderItem
