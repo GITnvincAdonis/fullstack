@@ -20,18 +20,7 @@ export default function Slider(props: { toggle: any }) {
   const Checkoutitems = useCheckoutData((state) => state.fdata);
   const AddCheckOut = useCheckoutData((state) => state.incrementAsync);
 
-  const handleAddCheckOut = async () => {
-    try {
-      await AddCheckOut(2);
-      console.log("Slider dest /Item added successfully");
-      console.log(Checkoutitems);
-      console.log("Slider dest /Item added successfully");
-    } catch (error) {
-      console.error("Error adding item:", error);
-    }
-  };
-  //console.log(fetchedCheckoutData);
-  handleAddCheckOut();
+  AddCheckOut(2);
   return (
     <>
       <div className="slider-mega-container">
