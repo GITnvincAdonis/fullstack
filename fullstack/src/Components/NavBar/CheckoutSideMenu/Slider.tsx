@@ -11,13 +11,13 @@ import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import { GetCheckoutItems, useCheckoutData } from "../../Utilities/Store";
 
-// interface itemInfo {
-//   id: number;
-//   name: string;
-//   price: number;
-//   starcount: number;
-//   review_count: number;
-// }
+interface itemInfo {
+  id: number;
+  name: string;
+  price: number;
+  starcount: number;
+  review_count: number;
+}
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
@@ -30,12 +30,12 @@ export default function Slider(props: { toggle: any }) {
   const Decrement = useCheckoutData((state) => state.decrement);
   const { updateCart, data } = GetCheckoutItems(Checkoutitems);
 
-  //const [localdata, setData] = useState([]);
+  const [localdata, setData] = useState<itemInfo[]>([]);
 
   useEffect(() => {
     console.log("first useeffect dest");
     console.log(data);
-    // Fallback to an empty array
+    setData(data ? data : []);
   }, [Checkoutitems]);
 
   useEffect(() => {
@@ -45,12 +45,9 @@ export default function Slider(props: { toggle: any }) {
           `previous State: ${prevState.fdata_count}, current State: ${state.fdata_count}`
         );
         updateCart();
-        console.log("slider dest");
-        //console.log(localdata);
+        console.log(localdata);
       }
     });
-
-    // Return a cleanup function that calls unsubscribe
     return () => {
       unsubscribe();
     };

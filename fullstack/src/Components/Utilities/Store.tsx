@@ -112,8 +112,8 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
   if (isLoading) console.log("some things are loading");
   if (isError) console.log("error somewhere");
   if (!isError && data) {
-    console.log("store dest");
-    console.log(data);
+    //console.log("store dest");
+    //console.log(data);
     return { updateCart, data };
   } else {
     return { updateCart, DefaultItem };
