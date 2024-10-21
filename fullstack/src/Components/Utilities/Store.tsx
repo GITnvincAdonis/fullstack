@@ -41,7 +41,7 @@ export const useCheckoutData = create<fetchedAndReturned>((set, get) => ({
   decrement: (id: number) => {
     const stateData = get().fdata;
     const itemAtId = stateData.find((item) => item.id === id);
-    if (itemAtId) {
+    if (itemAtId && itemAtId?.count > 1) {
       const updatedFdata = stateData.map((item) => {
         if (item.id === id) {
           return {
