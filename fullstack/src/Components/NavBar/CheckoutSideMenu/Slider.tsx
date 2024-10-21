@@ -10,13 +10,14 @@ import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import { GetCheckoutItems, useCheckoutData } from "../../Utilities/Store";
-interface itemInfo {
-  id: number;
-  name: string;
-  price: number;
-  starcount: number;
-  review_count: number;
-}
+
+// interface itemInfo {
+//   id: number;
+//   name: string;
+//   price: number;
+//   starcount: number;
+//   review_count: number;
+// }
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
@@ -29,12 +30,13 @@ export default function Slider(props: { toggle: any }) {
   const Decrement = useCheckoutData((state) => state.decrement);
   const { updateCart } = GetCheckoutItems(Checkoutitems);
 
-  const [localdata, setData] = useState<itemInfo[]>([]);
+  //const [localdata, setData] = useState([]);
 
   useEffect(() => {
     const { data: fetchedData } = GetCheckoutItems(Checkoutitems);
     console.log("first useeffect dest");
-    setData(fetchedData || []); // Fallback to an empty array
+    console.log(fetchedData);
+    // Fallback to an empty array
   }, [Checkoutitems]);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ export default function Slider(props: { toggle: any }) {
         );
         updateCart();
         console.log("slider dest");
-        console.log(localdata);
+        //console.log(localdata);
       }
     });
 
