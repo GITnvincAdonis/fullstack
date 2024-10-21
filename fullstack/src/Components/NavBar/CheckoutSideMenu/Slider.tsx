@@ -18,7 +18,9 @@ export default function Slider(props: { toggle: any }) {
   const [visible, toggleVisible] = useState(true);
 
   const Checkoutitems = useCheckoutData((state) => state.fdata);
+
   const AddCheckOut = useCheckoutData((state) => state.incrementAsync);
+  const DecrementButton = useCheckoutData((state) => state.decrement);
 
   AddCheckOut(2);
   return (
@@ -44,7 +46,21 @@ export default function Slider(props: { toggle: any }) {
           }}
           className="slider-container "
         >
-          {/* <button onClick={handleAddCheckOut}>Click to test</button> */}
+          <span>{Checkoutitems}</span>
+          <button
+            onClick={() => {
+              AddCheckOut(2);
+            }}
+          >
+            Click to increment
+          </button>
+          <button
+            onClick={() => {
+              DecrementButton(2);
+            }}
+          >
+            Click to derement
+          </button>
           <motion.div
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
@@ -56,14 +72,9 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            {Checkoutitems.map((item) => {
-              //console.log(item);
-              //console.log(item.name);
-
-              return (
-                <SliderItem name={item.name} price={item.price}></SliderItem>
-              );
-            })}
+            <SliderItem name={"wa"} price={1}></SliderItem>
+            <SliderItem name={"wa"} price={1}></SliderItem>;
+            <SliderItem name={"wa"} price={1}></SliderItem>;
           </motion.div>
 
           <motion.div
