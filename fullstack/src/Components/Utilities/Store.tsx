@@ -111,8 +111,10 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
   // Use specific state variables as dependencies, not the whole `queries` object
   if (isLoading) console.log("some things are loading");
   if (isError) console.log("error somewhere");
-  if (!isError && data) return { updateCart, data };
-  else {
+  if (!isError && data) {
+    console.log(data);
+    return { updateCart, data };
+  } else {
     return { updateCart, DefaultItem };
   }
 }
