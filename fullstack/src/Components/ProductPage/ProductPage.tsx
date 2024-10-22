@@ -1,6 +1,7 @@
 import "./ProductPageStyles.css";
 
 import Card from "./productPageAssets/Card";
+import { DefaultCard } from "./productPageAssets/Card";
 import Navbar from "../NavBar/Navbar";
 import Footer from "../Footer/Footer";
 
@@ -21,7 +22,24 @@ export default function ProductPage() {
   });
 
   if (isError) return <div>{`error: ${error}`}</div>;
-  if (isLoading) return <div>is loading....</div>;
+  if (isLoading)
+    return (
+      <>
+        <Navbar></Navbar>
+
+        <div className="product-page-container mb-5 ">
+          <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
+
+          <DefaultCard />
+          <DefaultCard />
+          <DefaultCard />
+          <DefaultCard />
+          <DefaultCard />
+          <DefaultCard />
+        </div>
+        <Footer></Footer>
+      </>
+    );
 
   return (
     <>
@@ -29,7 +47,7 @@ export default function ProductPage() {
 
       <div className="product-page-container mb-5 ">
         <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
-        
+
         {info?.map((info) => {
           console.log("star count " + info.starcount);
           console.log("review count" + info.review_count);

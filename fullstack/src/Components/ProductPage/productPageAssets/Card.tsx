@@ -4,6 +4,7 @@ import Review from "../../Review/Reveiw";
 import AddSVG from "../../SVGs/Add";
 import { Link } from "react-router-dom";
 import { useAddfeedback, useCheckoutData } from "../../Utilities/Store";
+import { motion } from "framer-motion";
 
 export default function Card(props: {
   id: number;
@@ -48,6 +49,35 @@ export default function Card(props: {
           <Link to={"/item"} className="product-hyperlinks">
             <h3 className="product-name m-0 mt-2">{name}</h3>
             <h3 className="product-price m-0">{`$${price}`}</h3>
+          </Link>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export function DefaultCard() {
+  return (
+    <>
+      <div className="card-container ">
+        <div className="card-image-container border ">
+          <div className="placeholder col-7 glow-container placeholder-wave">
+            <span className="placeholder w-100  placeholder-container"></span>
+          </div>
+        </div>
+
+        <div className="card-body pt-4 ">
+          <Link to={"/item"} className="product-hyperlinks">
+            <div className="placeholder-wave">
+              <span className="placeholder col-6  placeholder-container"></span>
+            </div>
+
+            <div className="placeholder-wave">
+              <span className="placeholder w-100  placeholder-container"></span>
+            </div>
+            <div className="placeholder-wave">
+              <motion.span className="placeholder w-25  placeholder-container"></motion.span>
+            </div>
           </Link>
         </div>
       </div>

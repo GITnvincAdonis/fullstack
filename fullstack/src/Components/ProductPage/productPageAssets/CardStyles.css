@@ -48,6 +48,16 @@
     font-family: BDOMedium;
     font-size: 1.2rem;
 }
+
+.placeholder-container{
+    height: 2rem;
+    margin: .2rem;
+}
+.glow-container{
+    height: 100%;
+    width: 100%;
+    opacity: .13;
+}
 @media screen and (max-width:400px) {
     .add-button-container{
         border: 2px solid black;
