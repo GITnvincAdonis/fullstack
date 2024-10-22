@@ -53,11 +53,10 @@ export default function Slider(props: { toggle: any }) {
             </h2>
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(CountedData.flat(1));
-              console.log(CountedData.flat(1)[index].id);
+              console.log(CountedData.flat(1)[index]);
               return (
                 <>
                   <SliderItem
-                    id={CountedData.flat(1)[index].id}
                     name={cart_item.name}
                     price={cart_item.price}
                   ></SliderItem>
@@ -90,16 +89,11 @@ export default function Slider(props: { toggle: any }) {
   );
 }
 
-const SliderItem = (props: {
-  name: string;
-  price: number;
-  id: number;
-  
-}) => {
-  const { name, price, id } = props;
+const SliderItem = (props: { name: string; price: number }) => {
+  const { name, price } = props;
   return (
     <div className="d-flex py-2">
-      <QuantityController id={id} ></QuantityController>
+      <QuantityController></QuantityController>
       <div className="ms-3">
         <h3 className="slider-item-name">{name}</h3>
         <h3 className="slider-item-price">${price}</h3>
