@@ -29,6 +29,7 @@ export default function ProductPage() {
 
       <div className="product-page-container mb-5 ">
         <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
+        
         {info?.map((info) => {
           console.log("star count " + info.starcount);
           console.log("review count" + info.review_count);

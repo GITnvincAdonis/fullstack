@@ -1,0 +1,32 @@
+.popup-container{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    display: flex;
+    place-content: center;
+
+}
+
+.popup-text{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.537);
+    border-radius: 3rem;
+    padding: 1.1rem 5vw;
+    font-weight: 600;
+   
+    height: max-content;
+    font-size: 1rem;
+    text-transform: capitalize;
+    color: white;
+}
+.popup-exit{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    margin: 0 1rem;
+    color: white;
+    fill: white;
+}

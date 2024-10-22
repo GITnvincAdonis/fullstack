@@ -3,7 +3,7 @@ import "./CardStyles.css";
 import Review from "../../Review/Reveiw";
 import AddSVG from "../../SVGs/Add";
 import { Link } from "react-router-dom";
-import { useCheckoutData } from "../../Utilities/Store";
+import { useAddfeedback, useCheckoutData } from "../../Utilities/Store";
 
 export default function Card(props: {
   id: number;
@@ -15,6 +15,8 @@ export default function Card(props: {
   const { id, name, price, starCount, reviewNumber } = props;
   console.log(starCount + id);
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
+
+  const toggleAddFeedback = useAddfeedback((state) => state.toggleClickOn);
   return (
     <>
       <div className="card-container ">
@@ -27,7 +29,13 @@ export default function Card(props: {
                 }}
                 className="add-button "
               >
-                <AddSVG></AddSVG>
+                <span
+                  onClick={() => {
+                    toggleAddFeedback(true);
+                  }}
+                >
+                  <AddSVG></AddSVG>
+                </span>
               </button>
             </div>
           </div>

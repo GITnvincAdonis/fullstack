@@ -6,14 +6,16 @@ import Slider from "./CheckoutSideMenu/Slider";
 import { MenuContext, SearchMenuContext } from "../Contexts/Contexts";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Popup from "../AddFeedback/AddPopup";
 import TopSlider from "./TopSlider/TopSlider";
 
 export default function Navbar() {
   const [MenuinView, toggleView] = useState(false);
   const [SearchInView, toggleSearchView] = useState(false);
+
   return (
     <>
+   
       <SearchMenuContext.Provider value={SearchInView}>
         <TopSlider></TopSlider>
       </SearchMenuContext.Provider>
@@ -45,6 +47,7 @@ export default function Navbar() {
           </span>
         </div>
       </div>
+      <Popup></Popup>
     </>
   );
 }

@@ -151,3 +151,16 @@ export function useCartItem() {
 
   return { localdata, Checkoutitems };
 }
+
+type feedinfo = {
+  isClicked: boolean;
+  //duration: number;
+  toggleClickOn: (target: boolean) => void;
+  //interruptOnToggle: () => void;
+};
+export const useAddfeedback = create<feedinfo>((set) => ({
+  isClicked: false,
+  toggleClickOn: (target) => {
+    set(() => ({ isClicked: target }));
+  },
+}));
