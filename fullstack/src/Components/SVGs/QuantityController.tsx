@@ -35,7 +35,7 @@ export default function QuantityController(props: { id: number }) {
         fill="black"
       />
 
-      <div>{item?.count}</div>
+      <div>{item ? item.count : 0}</div>
 
       <path
         onClick={() => {
@@ -43,7 +43,7 @@ export default function QuantityController(props: { id: number }) {
         }}
         d="M36.5682 22.9659V26.0909H23.8409V22.9659H36.5682Z"
         fill="black"
-      ></path>
+      />
     </svg>
   );
 }
