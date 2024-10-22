@@ -51,13 +51,13 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            {CartItems.flat(1).map((cart_item) => {
+            {CartItems.flat(1).map((cart_item, index) => {
               console.log(CountedData.flat(1));
-              console.log(CountedData.flat(1)[cart_item.id]);
+              console.log(CountedData.flat(1)[index].id);
               return (
                 <>
                   <SliderItem
-                    id={CountedData.flat(1)[cart_item.id].id}
+                    id={CountedData.flat(1)[index].id}
                     name={cart_item.name}
                     price={cart_item.price}
                   ></SliderItem>
