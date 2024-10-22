@@ -1,5 +1,13 @@
+import { useEffect, useState } from "react";
+
 export default function QuantityController(props: { count: number }) {
   const { count } = props;
+  const [localNumber, SetLocalNumber] = useState(count);
+
+  useEffect(() => {
+    if (count) SetLocalNumber(count);
+    else SetLocalNumber(0);
+  }, [count]);
   return (
     <svg
       width="75"
@@ -22,7 +30,7 @@ export default function QuantityController(props: { count: number }) {
         d="M50.9432 16.5455V34H48.8295V18.7614H48.7273L44.4659 21.5909V19.4432L48.8295 16.5455H50.9432Z"
         fill="black"
       />
-      {count}
+      {localNumber}
       <path
         d="M36.5682 22.9659V26.0909H23.8409V22.9659H36.5682Z"
         fill="black"
