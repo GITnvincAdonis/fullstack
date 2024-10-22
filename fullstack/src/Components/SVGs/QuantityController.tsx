@@ -1,8 +1,14 @@
 import { useCheckoutData } from "../Utilities/Store";
 
-export default function QuantityController(props: { id: number }) {
+export default function QuantityController(props: {
+  id: number;
+
+}) {
   const { id } = props;
   const CheckoutItemCount = useCheckoutData((state) => state.fdata);
+
+  const item = CheckoutItemCount.find((item) => item.id === id);
+
   const incrementAsync = useCheckoutData((state) => state.incrementAsync);
   const decrement = useCheckoutData((state) => state.decrement);
   return (
@@ -34,7 +40,7 @@ export default function QuantityController(props: { id: number }) {
         />
       </button>
 
-      <div>{CheckoutItemCount[id].count}</div>
+      <div>{item?.count}</div>
       <button
         onClick={() => {
           decrement(id);

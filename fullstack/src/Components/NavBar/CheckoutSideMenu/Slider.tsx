@@ -90,11 +90,16 @@ export default function Slider(props: { toggle: any }) {
   );
 }
 
-const SliderItem = (props: { name: string; price: number; id: number }) => {
+const SliderItem = (props: {
+  name: string;
+  price: number;
+  id: number;
+  
+}) => {
   const { name, price, id } = props;
   return (
     <div className="d-flex py-2">
-      <QuantityController id={id}></QuantityController>
+      <QuantityController id={id} ></QuantityController>
       <div className="ms-3">
         <h3 className="slider-item-name">{name}</h3>
         <h3 className="slider-item-price">${price}</h3>
