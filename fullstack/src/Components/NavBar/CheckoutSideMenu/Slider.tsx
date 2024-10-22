@@ -2,7 +2,7 @@ import "./Slider.css";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import QuantityController from "../../SVGs/QuantityController";
 import { useMenuContext } from "../../Contexts/Contexts";
@@ -11,12 +11,30 @@ import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import { useCartItem, useCheckoutData } from "../../Utilities/Store";
 
+type checkoutItem = {
+  id: number;
+  count: number;
+};
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
   const menuinView = useMenuContext();
   const [visible, toggleVisible] = useState(true);
 
   const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
+  const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
+  
+  useEffect(() => {
+    const DefaultItem: checkoutItem[] = [
+      {
+        id: 1,
+        count: 1,
+      },
+    ];
+
+    if (CountedData) {
+      setlocalData(CountedData);
+    } else setlocalData(DefaultItem);
+  }, [CountedData]);
 
   return (
     <>
@@ -53,13 +71,13 @@ export default function Slider(props: { toggle: any }) {
               </div>
             </h2>
             {CartItems.flat(1).map((cart_item, index) => {
-              console.log(CountedData.flat(1));
-              console.log(CountedData.flat(1)[index].id);
-              const id = CountedData.flat(1)[index].id;
+              console.log(localData.flat(1));
+              console.log(localData.flat(1)[index].id);
+              const id = localData.flat(1)[index].id;
               return (
                 <>
                   <SliderItem
-                    count={CountedData.flat(1)[index].count}
+                    count={localData.flat(1)[index].count}
                     id={id}
                     name={cart_item.name}
                     price={cart_item.price}
