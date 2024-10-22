@@ -4,9 +4,29 @@ import CheckoutItem from "./CheckoutItem/CheckoutItem";
 import { Dropdown } from "../ItemPage/Instructions/ItemInstructions";
 import Hovertext from "../HoverText/HoverText";
 import SwipeButton from "../button/Swipebutton";
+import { useCartItem } from "../Utilities/Store";
+import { useEffect, useState } from "react";
 
+type checkoutItem = {
+  id: number;
+  count: number;
+};
 export default function CheckoutPage() {
-  const list = [1, 1, 1, 1];
+  const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
+  const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
+
+  useEffect(() => {
+    const DefaultItem: checkoutItem[] = [
+      {
+        id: 1,
+        count: 1,
+      },
+    ];
+
+    if (CountedData) {
+      setlocalData(CountedData);
+    } else setlocalData(DefaultItem);
+  }, [CountedData]);
   return (
     <>
       <Navbar />
@@ -14,16 +34,26 @@ export default function CheckoutPage() {
         <div className="c">
           <div className="checkout-items d-flex flex-column ">
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
-            {list.map((_item, index) => {
+
+            {CartItems.flat(1).map((cart_item, index) => {
+              console.log(localData.flat(1));
+              console.log(localData.flat(1)[index].count);
+              const id = localData.flat(1)[index].id;
               return (
-                <span key={index}>
-                  <CheckoutItem />
-                </span>
+                <>
+                  <span key={index}>
+                    <CheckoutItem
+                      name={cart_item.name}
+                      price={cart_item.price}
+                      count={localData.flat(1)[index].count}
+                      id={id}
+                    />
+                  </span>
+                </>
               );
             })}
           </div>
           <div className="payment-wrapper">
-            
             <div className="payment-container border p-5">
               <h3 className="list-item-total">SUB-TOTAL</h3>
               <h4 className="list-item-shipping">*excludes shipping</h4>

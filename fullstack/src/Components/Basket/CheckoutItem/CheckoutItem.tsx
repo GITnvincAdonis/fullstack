@@ -1,16 +1,24 @@
 import "./CheckoutItemStyles.css";
+import QuantityController from "../../SVGs/QuantityController";
 
-export default function CheckoutItem() {
+export default function CheckoutItem(props: {
+  name: string;
+  price: number;
+  id: number;
+  count: number;
+}) {
+  const { name, price, id, count } = props;
   return (
     <>
       <div className="d-inline-flex m-1 ">
         <img src="" alt="" className="c-item-image " />
         <div className="item-info">
-          <h3 className="c-item-name">Item-Name</h3>
+          <h3 className="c-item-name">{name}</h3>
           <h3 className="c-item-size">Size</h3>
-          <h3 className="c-item-price m-0">$---,---,---</h3>
+          <h3 className="c-item-price m-0">${price}</h3>
           <div className="item-count-wrapper">
             <Mypath></Mypath>
+            <QuantityController id={id} count={count}></QuantityController>
           </div>
         </div>
       </div>
@@ -20,7 +28,6 @@ export default function CheckoutItem() {
 const Mypath = () => {
   return (
     <>
-    
       <svg
         width="28"
         height="24"
@@ -43,36 +50,6 @@ const Mypath = () => {
           stroke="#1E1E1E"
           strokeLinecap="round"
           strokeLinejoin="round"
-        />
-      </svg>
-      <svg
-        width="47"
-        height="24"
-        viewBox="0 0 47 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          opacity="0.1"
-          x="0.5"
-          y="0.5"
-          width="46"
-          height="23"
-          rx="11.5"
-          fill="#D9D9D9"
-          stroke="black"
-        />
-        <path
-          d="M22.9716 7.27273V16H21.9148V8.38068H21.8636L19.733 9.79545V8.72159L21.9148 7.27273H22.9716Z"
-          fill="black"
-        />
-        <path
-          d="M30.4773 14.4034V8.77841H31.4318V14.4034H30.4773ZM28.142 12.0682V11.1136H33.767V12.0682H28.142Z"
-          fill="black"
-        />
-        <path
-          d="M14.6705 11.7898V12.7273H10.8523V11.7898H14.6705Z"
-          fill="black"
         />
       </svg>
     </>
