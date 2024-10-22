@@ -1,4 +1,5 @@
-export default function QuantityController() {
+export default function QuantityController(props: { count: number }) {
+  const { count } = props;
   return (
     <svg
       width="75"
@@ -21,10 +22,7 @@ export default function QuantityController() {
         d="M50.9432 16.5455V34H48.8295V18.7614H48.7273L44.4659 21.5909V19.4432L48.8295 16.5455H50.9432Z"
         fill="black"
       />
-      <path
-        d="M67.9545 29.8068V18.5568H69.8636V29.8068H67.9545ZM63.2841 25.1364V23.2273H74.5341V25.1364H63.2841Z"
-        fill="black"
-      />
+      {count}
       <path
         d="M36.5682 22.9659V26.0909H23.8409V22.9659H36.5682Z"
         fill="black"

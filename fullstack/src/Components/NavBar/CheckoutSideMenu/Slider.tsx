@@ -15,6 +15,7 @@ export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
   const menuinView = useMenuContext();
   const [visible, toggleVisible] = useState(true);
+
   const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
 
   return (
@@ -58,6 +59,7 @@ export default function Slider(props: { toggle: any }) {
               return (
                 <>
                   <SliderItem
+                    count={CountedData.flat(1)[index].count}
                     id={id}
                     name={cart_item.name}
                     price={cart_item.price}
@@ -91,9 +93,15 @@ export default function Slider(props: { toggle: any }) {
   );
 }
 
-const SliderItem = (props: { name: string; price: number; id: number }) => {
-  const { name, price, id } = props;
+const SliderItem = (props: {
+  name: string;
+  price: number;
+  id: number;
+  count: number;
+}) => {
+  const { name, price, id, count } = props;
   const decrement = useCheckoutData((state) => state.decrement);
+
   return (
     <div className="d-flex py-2">
       <button
@@ -101,7 +109,7 @@ const SliderItem = (props: { name: string; price: number; id: number }) => {
           decrement(id);
         }}
       >
-        <QuantityController></QuantityController>
+        <QuantityController count={count}></QuantityController>
       </button>
 
       <div className="ms-3">
