@@ -122,8 +122,6 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
 }
 
 export function useCartItem() {
-
-
   const Checkoutitems = useCheckoutData((state) => state.fdata);
   const { updateCart, data } = GetCheckoutItems(Checkoutitems);
 
@@ -150,7 +148,6 @@ export function useCartItem() {
     //console.log(data);
     if (data) setData(data);
   }, [data?.length]);
-  
-  return {localdata}
 
+  return { localdata, Checkoutitems };
 }

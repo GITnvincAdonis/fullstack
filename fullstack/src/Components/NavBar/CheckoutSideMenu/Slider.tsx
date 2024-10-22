@@ -15,7 +15,7 @@ export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
   const menuinView = useMenuContext();
   const [visible, toggleVisible] = useState(true);
-  const { localdata: CartItems } = useCartItem();
+  const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
 
   return (
     <>
@@ -55,6 +55,7 @@ export default function Slider(props: { toggle: any }) {
               return (
                 <>
                   <SliderItem
+                    id={CountedData[cart_item.id].id}
                     name={cart_item.name}
                     price={cart_item.price}
                   ></SliderItem>
@@ -87,11 +88,11 @@ export default function Slider(props: { toggle: any }) {
   );
 }
 
-const SliderItem = (props: { name: string; price: number }) => {
-  const { name, price } = props;
+const SliderItem = (props: { name: string; price: number; id: number }) => {
+  const { name, price, id } = props;
   return (
     <div className="d-flex py-2">
-      <QuantityController></QuantityController>
+      <QuantityController id={id}></QuantityController>
       <div className="ms-3">
         <h3 className="slider-item-name">{name}</h3>
         <h3 className="slider-item-price">${price}</h3>
