@@ -52,7 +52,8 @@ export default function Slider(props: { toggle: any }) {
               </div>
             </h2>
             {CartItems.flat(1).map((cart_item) => {
-              console.log(CountedData);
+              console.log(CountedData.flat(1));
+              console.log(CountedData.flat(1)[1]);
               return (
                 <>
                   <SliderItem
