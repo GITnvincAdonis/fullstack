@@ -1,0 +1,16 @@
+.control-buttons{
+    display: flex;
+  
+    width: 1.2rem;
+    height: 1.2rem;
+}
+.item-count{
+    margin: 0 .51rem;
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+.control-container{
+    padding: .4rem;
+    border: 2px solid black;
+    border-radius: .7rem;
+}

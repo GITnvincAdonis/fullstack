@@ -9,7 +9,7 @@ import { useMenuContext } from "../../Contexts/Contexts";
 import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
-import { useCartItem, useCheckoutData } from "../../Utilities/Store";
+import { useCartItem } from "../../Utilities/Store";
 
 type checkoutItem = {
   id: number;
@@ -70,6 +70,8 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
+            
+
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(localData.flat(1));
               console.log(localData.flat(1)[index].count);
@@ -118,17 +120,10 @@ const SliderItem = (props: {
   count: number;
 }) => {
   const { name, price, id, count } = props;
-  const decrement = useCheckoutData((state) => state.decrement);
 
   return (
     <div className="d-flex py-2">
-      <button
-        onClick={() => {
-          decrement(id);
-        }}
-      >
-        <QuantityController id={id} count={count}></QuantityController>
-      </button>
+      <QuantityController id={id} count={count}></QuantityController>
 
       <div className="ms-3">
         <h3 className="slider-item-name">{name}</h3>
