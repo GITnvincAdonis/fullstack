@@ -22,7 +22,7 @@ export default function Slider(props: { toggle: any }) {
 
   const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
   const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
-  
+
   useEffect(() => {
     const DefaultItem: checkoutItem[] = [
       {
@@ -72,7 +72,7 @@ export default function Slider(props: { toggle: any }) {
             </h2>
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(localData.flat(1));
-              console.log(localData.flat(1)[index].id);
+              console.log(localData.flat(1)[index].count);
               const id = localData.flat(1)[index].id;
               return (
                 <>
