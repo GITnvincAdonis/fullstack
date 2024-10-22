@@ -45,12 +45,12 @@ const AddControl = () => {
     <>
       <svg
         className="border control-buttons"
-        viewBox="0 0 34 34"
+        viewBox="0 0 32 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M11.3333 16.9999H22.6666M31.1666 16.9999C31.1666 24.824 24.824 31.1666 16.9999 31.1666C9.17588 31.1666 2.83325 24.824 2.83325 16.9999C2.83325 9.17588 9.17588 2.83325 16.9999 2.83325C24.824 2.83325 31.1666 9.17588 31.1666 16.9999Z"
+          d="M16 2V30M2 16H30"
           stroke="#1E1E1E"
           stroke-width="4"
           stroke-linecap="round"
@@ -65,12 +65,12 @@ const DecrementControl = () => {
     <>
       <svg
         className="border control-buttons"
-        viewBox="0 0 32 32"
+        viewBox="0 0 34 34"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M16 2V30M2 16H30"
+          d="M11.3333 16.9999H22.6666M31.1666 16.9999C31.1666 24.824 24.824 31.1666 16.9999 31.1666C9.17588 31.1666 2.83325 24.824 2.83325 16.9999C2.83325 9.17588 9.17588 2.83325 16.9999 2.83325C24.824 2.83325 31.1666 9.17588 31.1666 16.9999Z"
           stroke="#1E1E1E"
           stroke-width="4"
           stroke-linecap="round"
