@@ -127,7 +127,7 @@ const SliderItem = (props: {
           decrement(id);
         }}
       >
-        <QuantityController count={count}></QuantityController>
+        <QuantityController id={id} count={count}></QuantityController>
       </button>
 
       <div className="ms-3">

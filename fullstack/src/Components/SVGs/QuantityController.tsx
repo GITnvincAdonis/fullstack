@@ -1,40 +1,76 @@
 import { useEffect, useState } from "react";
+import { useCheckoutData } from "../Utilities/Store";
 
-export default function QuantityController(props: { count: number }) {
-  const { count } = props;
+export default function QuantityController(props: {
+  count: number;
+  id: number;
+}) {
+  const { count, id } = props;
   const [localNumber, SetLocalNumber] = useState(count);
+  const incrementAsync = useCheckoutData((state) => state.incrementAsync);
+  const decrement = useCheckoutData((state) => state.decrement);
 
   useEffect(() => {
     if (count) SetLocalNumber(count);
     else SetLocalNumber(0);
   }, [count]);
+
   return (
-    <svg
-      width="75"
-      height="37"
-      viewBox="0 0 99 49"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="1"
-        y="1"
-        width="97"
-        height="47"
-        rx="16"
-        fill="#D9D9D9"
-        stroke="black"
-        strokeWidth="2"
-      />
-      <path
-        d="M50.9432 16.5455V34H48.8295V18.7614H48.7273L44.4659 21.5909V19.4432L48.8295 16.5455H50.9432Z"
-        fill="black"
-      />
+    <>
+      <span
+        onClick={() => {
+          incrementAsync(id);
+        }}
+      >
+        <AddControl></AddControl>
+      </span>
+
       {localNumber}
-      <path
-        d="M36.5682 22.9659V26.0909H23.8409V22.9659H36.5682Z"
-        fill="black"
-      />
-    </svg>
+
+      <span
+        onClick={() => {
+          decrement(id);
+        }}
+      >
+        <DecrementControl></DecrementControl>
+      </span>
+    </>
   );
 }
+
+const AddControl = () => {
+  return (
+    <>
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M36.5682 22.9659V26.0909H23.8409V22.9659H36.5682Z"
+          fill="black"
+        ></path>
+      </svg>
+    </>
+  );
+};
+const DecrementControl = () => {
+  return (
+    <>
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4.95455 11.8068V0.556818H6.86364V11.8068H4.95455ZM0.284091 7.13636V5.22727H11.5341V7.13636H0.284091Z"
+          fill="black"
+        />
+      </svg>
+    </>
+  );
+};
