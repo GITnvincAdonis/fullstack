@@ -1,9 +1,6 @@
 import { useCheckoutData } from "../Utilities/Store";
 
-export default function QuantityController(props: {
-  id: number;
-
-}) {
+export default function QuantityController(props: { id: number }) {
   const { id } = props;
   const CheckoutItemCount = useCheckoutData((state) => state.fdata);
 
@@ -29,28 +26,24 @@ export default function QuantityController(props: {
         stroke="black"
         strokeWidth="2"
       />
-      <button
+
+      <path
         onClick={() => {
           incrementAsync(id);
         }}
-      >
-        <path
-          d="M50.9432 16.5455V34H48.8295V18.7614H48.7273L44.4659 21.5909V19.4432L48.8295 16.5455H50.9432Z"
-          fill="black"
-        />
-      </button>
+        d="M50.9432 16.5455V34H48.8295V18.7614H48.7273L44.4659 21.5909V19.4432L48.8295 16.5455H50.9432Z"
+        fill="black"
+      />
 
       <div>{item?.count}</div>
-      <button
+
+      <path
         onClick={() => {
           decrement(id);
         }}
-      >
-        <path
-          d="M36.5682 22.9659V26.0909H23.8409V22.9659H36.5682Z"
-          fill="black"
-        />
-      </button>
+        d="M36.5682 22.9659V26.0909H23.8409V22.9659H36.5682Z"
+        fill="black"
+      ></path>
     </svg>
   );
 }
