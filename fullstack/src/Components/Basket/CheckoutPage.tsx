@@ -35,6 +35,7 @@ export default function CheckoutPage() {
           <div className="checkout-items d-flex flex-column ">
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
 
+   
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(localData.flat(1));
               console.log(localData.flat(1)[index].count);

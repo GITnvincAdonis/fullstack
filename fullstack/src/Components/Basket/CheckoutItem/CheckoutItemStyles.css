@@ -16,13 +16,20 @@
     color: rgb(174, 174, 174);
 }
 .item-count-wrapper{
+    margin-top: .6rem;
+    display: flex;
     transform-origin: 0 0;
-    scale: 2;
+    scale: 1.62;
+}
+.checkout-control{
+    margin-left: .3rem;
+    transform-origin: 0 0;
+    scale: .42;
 }
 @media screen and (max-width:400px) {
     .item-count-wrapper{
         transform-origin: 0 0;
-        scale: 1.82;
+        scale: 1.52;
     }
     .item-count-wrapper svg{
         margin: 0 0rem;

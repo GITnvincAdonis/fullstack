@@ -16,9 +16,11 @@ export default function CheckoutItem(props: {
           <h3 className="c-item-name">{name}</h3>
           <h3 className="c-item-size">Size</h3>
           <h3 className="c-item-price m-0">${price}</h3>
-          <div className="item-count-wrapper">
+          <div className="item-count-wrapper ">
             <Mypath></Mypath>
-            <QuantityController id={id} count={count}></QuantityController>
+            <div className="checkout-control border">
+              <QuantityController id={id} count={count}></QuantityController>
+            </div>
           </div>
         </div>
       </div>
