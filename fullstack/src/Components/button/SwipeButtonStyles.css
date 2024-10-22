@@ -12,6 +12,7 @@ background-color: rgba(108, 101, 113, 0.511);
 
 }
 .button-container{
+    border-radius: .51rem;
     border: 2px solid black;
     background: none;
     overflow: hidden;
@@ -21,7 +22,7 @@ background-color: rgba(108, 101, 113, 0.511);
     background: none;
     width: max-content;
     padding: .31rem ;
-   
+    border-radius: .71rem;
 
     border: 1px dashed black;
     

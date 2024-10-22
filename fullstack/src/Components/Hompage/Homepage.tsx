@@ -5,8 +5,13 @@ import { Link } from "react-router-dom";
 import Hovertext from "../HoverText/HoverText";
 
 import SwipeButton from "../button/Swipebutton";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Homepage() {
+  const [onContainer, SetOnContainer] = useState(false);
+  const [onContainer2, SetOnContainer2] = useState(false);
+
   return (
     <>
       <div className="starter-background-container">
@@ -32,30 +37,68 @@ export default function Homepage() {
       <div className="d-flex justify-content-center align-items-center flex-column shopping-option-container">
         <h2 className="option-text">SHOPPING OPTIONS</h2>
         <div className="shopping-options-wrapper d-flex justify-content-center">
-          <div className="shopping-options d-flex flex-column justify-content-end align-items-start p-3">
-            <h3 className="nav-labels">Single Items</h3>
-            <Link to={"/home"}>
-              {" "}
+          <div
+            onMouseEnter={() => {
+              console.log("mouse enter");
+              SetOnContainer(true);
+            }}
+            onMouseLeave={() => {
+              console.log("mouse enter");
+              SetOnContainer(false);
+            }}
+            className="shopping-options d-flex flex-column justify-content-end align-items-start p-3"
+          >
+            <motion.div
+              animate={
+                onContainer
+                  ? { y: "0px", opacity: 1 }
+                  : { y: "-10px", opacity: 0 }
+              }
+              transition={{ type: "tween", ease: "circInOut" }}
+            >
+              <h3 className="nav-labels">Single Items</h3>
+              <Link to={"/home"}>
+                {" "}
+                <SwipeButton
+                  textContent={
+                    <Hovertext
+                      text="Navigate to Single options"
+                      offset={1.6}
+                    ></Hovertext>
+                  }
+                ></SwipeButton>
+              </Link>
+            </motion.div>
+          </div>
+          <div
+            onMouseEnter={() => {
+              console.log("mouse enter");
+              SetOnContainer2(true);
+            }}
+            onMouseLeave={() => {
+              console.log("mouse enter");
+              SetOnContainer2(false);
+            }}
+            className="shopping-options d-flex flex-column justify-content-end align-items-start p-3"
+          >
+            <motion.div
+              animate={
+                onContainer2
+                  ? { y: "0px", opacity: 1 }
+                  : { y: "-10px", opacity: 0 }
+              }
+              transition={{ type: "tween", ease: "circInOut" }}
+            >
+              <h3 className="nav-labels">Skincare Bundles</h3>
               <SwipeButton
                 textContent={
                   <Hovertext
-                    text="Navigate to Single options"
+                    text="Navigate to bundle options"
                     offset={1.6}
                   ></Hovertext>
                 }
               ></SwipeButton>
-            </Link>
-          </div>
-          <div className="shopping-options d-flex flex-column justify-content-end align-items-start p-3">
-            <h3 className="nav-labels">Skincare Bundles</h3>
-            <SwipeButton
-              textContent={
-                <Hovertext
-                  text="Navigate to bundle options"
-                  offset={1.6}
-                ></Hovertext>
-              }
-            ></SwipeButton>
+            </motion.div>
           </div>
         </div>
       </div>
