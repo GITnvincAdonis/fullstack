@@ -9,7 +9,7 @@ import { useMenuContext } from "../../Contexts/Contexts";
 import Exitbutton from "../../SVGs/Exit";
 import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
-import { useCartItem } from "../../Utilities/Store";
+import { useCartItem, useCheckoutData } from "../../Utilities/Store";
 
 export default function Slider(props: { toggle: any }) {
   const { toggle } = props;
@@ -53,10 +53,12 @@ export default function Slider(props: { toggle: any }) {
             </h2>
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(CountedData.flat(1));
-              console.log(CountedData.flat(1)[index]);
+              console.log(CountedData.flat(1)[index].id);
+              const id = CountedData.flat(1)[index].id;
               return (
                 <>
                   <SliderItem
+                    id={id}
                     name={cart_item.name}
                     price={cart_item.price}
                   ></SliderItem>
@@ -89,11 +91,19 @@ export default function Slider(props: { toggle: any }) {
   );
 }
 
-const SliderItem = (props: { name: string; price: number }) => {
-  const { name, price } = props;
+const SliderItem = (props: { name: string; price: number; id: number }) => {
+  const { name, price, id } = props;
+  const decrement = useCheckoutData((state) => state.decrement);
   return (
     <div className="d-flex py-2">
-      <QuantityController></QuantityController>
+      <button
+        onClick={() => {
+          decrement(id);
+        }}
+      >
+        <QuantityController></QuantityController>
+      </button>
+
       <div className="ms-3">
         <h3 className="slider-item-name">{name}</h3>
         <h3 className="slider-item-price">${price}</h3>
