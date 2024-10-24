@@ -46,8 +46,9 @@ export default function Homepage() {
               console.log("mouse enter");
               SetOnContainer(false);
             }}
-            className="shopping-options d-flex flex-column justify-content-end align-items-start p-3"
+            className="shopping-options shopping-options-1 d-flex flex-column justify-content-end align-items-start p-3"
           >
+            {" "}
             <motion.div
               animate={
                 onContainer
@@ -56,15 +57,17 @@ export default function Homepage() {
               }
               transition={{ type: "tween", ease: "circInOut" }}
             >
-              <h3 className="nav-labels">Single Items</h3>
-              <Link to={"/home"}>
+              <h3 className="nav-labels text-white">Single Items</h3>
+              <Link to={"/home"} className="">
                 {" "}
                 <SwipeButton
                   textContent={
-                    <Hovertext
-                      text="Navigate to Single options"
-                      offset={1.6}
-                    ></Hovertext>
+                    <h5 className="text-white p-0 m-0">
+                      <Hovertext
+                        text="Navigate to Single options"
+                        offset={1.6}
+                      ></Hovertext>
+                    </h5>
                   }
                 ></SwipeButton>
               </Link>
@@ -79,8 +82,9 @@ export default function Homepage() {
               console.log("mouse enter");
               SetOnContainer2(false);
             }}
-            className="shopping-options d-flex flex-column justify-content-end align-items-start p-3"
+            className="shopping-options shopping-options-2 d-flex flex-column justify-content-end align-items-start p-3"
           >
+           
             <motion.div
               animate={
                 onContainer2
@@ -89,13 +93,15 @@ export default function Homepage() {
               }
               transition={{ type: "tween", ease: "circInOut" }}
             >
-              <h3 className="nav-labels">Skincare Bundles</h3>
+              <h3 className="nav-labels text-white">Skincare Bundles</h3>
               <SwipeButton
                 textContent={
-                  <Hovertext
-                    text="Navigate to bundle options"
-                    offset={1.6}
-                  ></Hovertext>
+                  <h5 className="p-0 m-0 text-white">
+                    <Hovertext
+                      text="Navigate to bundle options"
+                      offset={1.6}
+                    ></Hovertext>
+                  </h5>
                 }
               ></SwipeButton>
             </motion.div>

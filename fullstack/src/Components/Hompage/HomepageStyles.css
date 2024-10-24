@@ -48,6 +48,7 @@
 
 }
 .shopping-option-container{
+
     margin-top: 20rem;
     margin-bottom: 10rem;
  
@@ -61,10 +62,36 @@
   
 }
 .shopping-options{
+    
     margin: .4rem;
     width: 41vw;
-    border: 1px solid black;
+  border-radius: .81rem;
     height: 70vh;
+}
+.shopping-options-1{
+    
+    background-size: cover;
+    background-image: url(../../assets/SinglesSkincareRender.png);
+    background-color: rgba(0, 0, 0, 0.1);
+    background-blend-mode: multiply;
+    transition-duration: 200ms;
+}
+
+.shopping-options-2{
+    
+    background-size: cover;
+    background-color: rgba(1, 1, 1, 0.1);
+    background-blend-mode: multiply;
+    background-image: url(../../assets/BundleSkinCareRender.png);
+    transition-duration: 200ms;
+}
+
+
+.shopping-options-2:hover,.shopping-options-1:hover{
+    
+
+    background-color: rgb(48, 48, 48);
+   
 }
 .option-button{
     border: 1px solid black;
@@ -72,6 +99,25 @@
 }
 .nav-labels{
     font-family: DegReg;
+}
+
+.first-image{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.option-tint-container{
+   
+    justify-self: flex-start;
+    align-self: flex-start;
+    height: 0;
+    width: 100%;
+    position: relative;
+}
+.option-tint{
+    border: 2px solid black;
+    height: 10rem;
 }
 @media screen and (max-width:500px) {
     .shopping-options-wrapper{
