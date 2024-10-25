@@ -8,7 +8,7 @@ export default function Popup() {
   const Cancel = useAddfeedback((state) => state.toggleClickOn);
 
   useEffect(() => {
-    let time: number | undefined;
+    let time: any | undefined;
     if (FeedbackBool) {
       time = setTimeout(() => {
         Cancel(false);
