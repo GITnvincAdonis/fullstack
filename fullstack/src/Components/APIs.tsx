@@ -7,7 +7,9 @@ interface itemInfo {
 }
 export const GetItems = async (): Promise<itemInfo[]> => {
   try {
-    const items = await fetch(`${import.meta.env.VITE_FETCH_ORIGIN}/products`);
+    const items = await fetch(
+      `${import.meta.env.REACT_APP_FETCH_ORIGIN}/products`
+    );
     const data = items.json();
 
     console.log(data);
@@ -28,7 +30,7 @@ export const GetAnItem = async (id: number): Promise<itemInfo> => {
   };
   try {
     const items = await fetch(
-      `${import.meta.env.VITE_FETCH_ORIGIN}/products/${id}`
+      `${import.meta.env.REACT_APP_FETCH_ORIGIN}/products/${id}`
     );
     const data = items.json();
 

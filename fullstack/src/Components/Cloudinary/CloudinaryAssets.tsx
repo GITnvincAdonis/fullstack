@@ -7,7 +7,7 @@ export function CImage(props: { CloudinaryImageID: string }) {
 
   const cld = new Cloudinary({
     cloud: {
-      cloudName: `${import.meta.env.VITE_CLOUDINARY_NAME}`,
+      cloudName: `${import.meta.env.REACT_APP_CLOUDINARY_NAME}`,
     },
   });
 
