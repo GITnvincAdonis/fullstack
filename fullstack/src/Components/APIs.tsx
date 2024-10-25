@@ -7,9 +7,7 @@ interface itemInfo {
 }
 export const GetItems = async (): Promise<itemInfo[]> => {
   try {
-    const items = await fetch(
-      `https://fullstack-production-95cf.up.railway.app/products`
-    );
+    const items = await fetch(`${import.meta.env.VITE_FETCH_ORIGIN}/products`);
     const data = items.json();
 
     console.log(data);
@@ -30,7 +28,7 @@ export const GetAnItem = async (id: number): Promise<itemInfo> => {
   };
   try {
     const items = await fetch(
-      `https://fullstack-production-95cf.up.railway.app/products/${id}`
+      `${import.meta.env.VITE_FETCH_ORIGIN}/products/${id}`
     );
     const data = items.json();
 

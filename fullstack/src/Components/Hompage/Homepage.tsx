@@ -7,6 +7,7 @@ import Hovertext from "../HoverText/HoverText";
 import SwipeButton from "../button/Swipebutton";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { CImage } from "../Cloudinary/CloudinaryAssets";
 
 export default function Homepage() {
   const [onContainer, SetOnContainer] = useState(false);
@@ -38,6 +39,81 @@ export default function Homepage() {
         <h2 className="option-text">SHOPPING OPTIONS</h2>
         <div className="shopping-options-wrapper d-flex justify-content-center">
           <div
+            className="card text-bg-dark shopping-options"
+            onMouseEnter={() => {
+              console.log("mouse enter");
+              SetOnContainer(true);
+            }}
+            onMouseLeave={() => {
+              console.log("mouse enter");
+              SetOnContainer(false);
+            }}
+          >
+            <CImage CloudinaryImageID="libs4amozqfjmwsp9xjc"></CImage>
+            <div className="card-img-overlay d-flex align-items-end">
+              <motion.div
+                animate={
+                  onContainer
+                    ? { y: "0px", opacity: 1 }
+                    : { y: "-10px", opacity: 0 }
+                }
+                transition={{ type: "tween", ease: "circInOut" }}
+              >
+                <h3 className=" card-title nav-labels text-white">
+                  Single Items
+                </h3>
+                <Link to={"/home"} className="">
+                  {" "}
+                  <SwipeButton
+                    textContent={
+                      <h5 className="text-white p-0 m-0">
+                        <Hovertext
+                          text="Navigate to Single options"
+                          offset={1.6}
+                        ></Hovertext>
+                      </h5>
+                    }
+                  ></SwipeButton>
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+          <div
+            className="card text-bg-dark shopping-options"
+            onMouseEnter={() => {
+              console.log("mouse enter");
+              SetOnContainer2(true);
+            }}
+            onMouseLeave={() => {
+              console.log("mouse enter");
+              SetOnContainer2(false);
+            }}
+          >
+            <CImage CloudinaryImageID="v5eqwsliso9oehkixe0t"></CImage>
+            <div className="card-img-overlay d-flex align-items-end">
+              <motion.div
+                animate={
+                  onContainer2
+                    ? { y: "0px", opacity: 1 }
+                    : { y: "-10px", opacity: 0 }
+                }
+                transition={{ type: "tween", ease: "circInOut" }}
+              >
+                <h3 className="nav-labels text-white">Skincare Bundles</h3>
+                <SwipeButton
+                  textContent={
+                    <h5 className="p-0 m-0 text-white">
+                      <Hovertext
+                        text="Navigate to bundle options"
+                        offset={1.6}
+                      ></Hovertext>
+                    </h5>
+                  }
+                ></SwipeButton>
+              </motion.div>
+            </div>
+          </div>
+          {/* <div
             onMouseEnter={() => {
               console.log("mouse enter");
               SetOnContainer(true);
@@ -48,7 +124,10 @@ export default function Homepage() {
             }}
             className="shopping-options shopping-options-1 d-flex flex-column justify-content-end align-items-start p-3"
           >
-            {" "}
+            <div className="optimized-image-container">
+              <CImage CloudinaryImageID="libs4amozqfjmwsp9xjc"></CImage>
+            </div>
+
             <motion.div
               animate={
                 onContainer
@@ -72,40 +151,7 @@ export default function Homepage() {
                 ></SwipeButton>
               </Link>
             </motion.div>
-          </div>
-          <div
-            onMouseEnter={() => {
-              console.log("mouse enter");
-              SetOnContainer2(true);
-            }}
-            onMouseLeave={() => {
-              console.log("mouse enter");
-              SetOnContainer2(false);
-            }}
-            className="shopping-options shopping-options-2 d-flex flex-column justify-content-end align-items-start p-3"
-          >
-           
-            <motion.div
-              animate={
-                onContainer2
-                  ? { y: "0px", opacity: 1 }
-                  : { y: "-10px", opacity: 0 }
-              }
-              transition={{ type: "tween", ease: "circInOut" }}
-            >
-              <h3 className="nav-labels text-white">Skincare Bundles</h3>
-              <SwipeButton
-                textContent={
-                  <h5 className="p-0 m-0 text-white">
-                    <Hovertext
-                      text="Navigate to bundle options"
-                      offset={1.6}
-                    ></Hovertext>
-                  </h5>
-                }
-              ></SwipeButton>
-            </motion.div>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />

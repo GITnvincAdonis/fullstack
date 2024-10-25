@@ -10,13 +10,6 @@ require('dotenv').config();
      database: process.env.DB_DATABASE,
    
  });
-// const pool = new Pool({
-//     user: "postgres",
-//     password: "0129",
-//     host: "localhost",
-//     port: 5432,
-//     database: "item_database",
-   
-// });
+
 
 module.exports = pool;

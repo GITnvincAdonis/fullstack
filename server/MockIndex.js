@@ -2,14 +2,11 @@ const express = require("express");
 const app = express();
 require("dotenv").config()
 const cors = require("cors");
-const pool = require("./db");
+const pool = require("./MockDB");
 
 
 
-app.use(cors({
-    origin: 'https://skincare-application.netlify.app',
-    methods: 'GET,POST,PUT,DELETE,OPTIONS',
-}));
+app.use(cors());
 
 app.use(express.json());
 
@@ -24,7 +21,7 @@ app.post("/products", async(req, res)=>{
 
 app.get("/products", async(req, res)=>{
     try {
-        const products = await pool.query("SELECT * FROM items")
+        const products = await pool.query("SELECT * FROM item")
         console.log(products.rows)
         res.json(products.rows)
         
@@ -46,9 +43,10 @@ app.get("/products/:id", async(req, res)=>{
 })
 
 app.post("/products", async(req,res)=>{
+    console.log(req.body)
     return res.send(201);
 })
 
-app.listen(process.env.DB_PORT,()=>{
-    console.log(`server has started on port ${process.env.DB_PORT} `);
+app.listen(5000,()=>{
+    console.log(`server has started on port ${5000} `);
 })
