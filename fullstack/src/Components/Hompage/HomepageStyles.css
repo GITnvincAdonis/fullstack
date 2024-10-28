@@ -131,6 +131,9 @@
     display: flex;
     justify-content: flex-end;
     border:none
+} 
+.swipe-button{
+    font-size: 1.2rem;
 }
 @media screen and (max-width:500px) {
     .shopping-options-wrapper{
@@ -157,5 +160,20 @@
         display: flex;
         justify-content: flex-end;
         border:none
+    }
+    .starter-text:nth-child(1){
+        font-size: 2rem;
+    }
+    .starter-text:nth-child(2){
+        font-size: .9rem;
+    }
+    .intro-item-button-text{
+        font-size: 1rem;
+    }
+    .nav-labels{
+        font-size: 1.2rem;
+    }
+    .swipe-button{
+        font-size: .9rem;
     }
 }
