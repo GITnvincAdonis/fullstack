@@ -1,17 +1,22 @@
 import "./CheckoutItemStyles.css";
 import QuantityController from "../../SVGs/QuantityController";
+import { CImage } from "../../Cloudinary/CloudinaryAssets";
 
 export default function CheckoutItem(props: {
   name: string;
   price: number;
   id: number;
   count: number;
+  image_pub_id: string;
 }) {
-  const { name, price, id, count } = props;
+  const { name, price, id, count, image_pub_id } = props;
   return (
     <>
       <div className="d-inline-flex m-1 ">
-        <img src="" alt="" className="c-item-image " />
+        <span className="c-item-image ">
+          <CImage CloudinaryImageID={image_pub_id}></CImage>
+        </span>
+
         <div className="item-info">
           <h3 className="c-item-name">{name}</h3>
           <h3 className="c-item-size">Size</h3>

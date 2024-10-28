@@ -35,11 +35,11 @@ export default function CheckoutPage() {
           <div className="checkout-items d-flex flex-column ">
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
 
-   
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(localData.flat(1));
               console.log(localData.flat(1)[index].count);
               const id = localData.flat(1)[index].id;
+
               return (
                 <>
                   <span key={index}>
@@ -48,6 +48,7 @@ export default function CheckoutPage() {
                       price={cart_item.price}
                       count={localData.flat(1)[index].count}
                       id={id}
+                      image_pub_id={cart_item.image_pub_id}
                     />
                   </span>
                 </>

@@ -42,8 +42,9 @@ export default function Card(props: {
               </button>
             </div>
           </div>
-          <CImage CloudinaryImageID={image_pub_id}></CImage>
-          <img src="" alt="" className="border card-image" />
+          <span className="border card-image">
+            <CImage CloudinaryImageID={image_pub_id}></CImage>
+          </span>
         </div>
 
         <div className="card-body ">
