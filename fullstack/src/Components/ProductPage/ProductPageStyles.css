@@ -8,6 +8,49 @@
 }
 .product-page-title{
     font-family: DegReg;
-    margin-top: 15rem;
+    margin-top: 5rem;
     width: 85%;
+    text-align: center;
+}
+.video-container{
+
+    border-radius: 2rem;
+    width: 120vw;
+
+}
+.video-mega-container{
+    
+ 
+    overflow: hidden;
+    height: 40rem;
+    width: 100vw;
+    
+}
+
+@media screen and (max-width:500px) {
+    .video-mega-container{
+        margin-top: 10rem;
+        height: 18rem;
+ 
+        overflow: hidden;
+    
+        width: 100vw;
+        
+    }
+    
+    .video-container{
+
+        border-radius: 1rem;
+        width: 165vw;
+    }
+    .product-page-title{
+        font-family: DegReg;
+      
+        width: 85%;
+        text-align: center;
+        margin-top: 5rem;
+        padding: 0;
+    }
+    
+
 }

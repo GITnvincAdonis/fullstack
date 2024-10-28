@@ -26,7 +26,7 @@ export default function QuantityController(props: {
         >
           <AddControl></AddControl>
         </span>
-        <div className="item-count border">{localNumber}</div>
+        <div className="item-count">{localNumber}</div>
 
         <span
           onClick={() => {
@@ -44,7 +44,7 @@ const AddControl = () => {
   return (
     <>
       <svg
-        className="border control-buttons"
+        className="control-buttons"
         viewBox="0 0 32 32"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@ const DecrementControl = () => {
   return (
     <>
       <svg
-        className="border control-buttons"
+        className="control-buttons"
         viewBox="0 0 34 34"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

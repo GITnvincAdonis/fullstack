@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 
 import { useQuery } from "@tanstack/react-query";
 import { GetItems } from "../APIs";
+import { CVid } from "../Cloudinary/CloudinaryAssets";
 
 //const products = [1, 1, 1, 1, 1, 1];
 export default function ProductPage() {
@@ -46,6 +47,15 @@ export default function ProductPage() {
       <Navbar></Navbar>
 
       <div className="product-page-container mb-5 ">
+      
+
+        <div className=" d-flex justify-content-center align-items-center  video-mega-container ">
+          <CVid
+            classNames={"video-container m-0"}
+            CloudinaryVideoID="y8iuviswnbl0epscimhb"
+          ></CVid>
+        </div>
+
         <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
 
         {info?.map((info) => {

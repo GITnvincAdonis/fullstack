@@ -29,7 +29,6 @@ export default function Homepage() {
           }
         ></SwipeButton>
       </div>
-
       <div className="d-flex justify-content-center align-items-center flex-column shopping-option-container">
         <h2 className="option-text">SHOPPING OPTIONS</h2>
         <div className="shopping-options-wrapper d-flex justify-content-center">
