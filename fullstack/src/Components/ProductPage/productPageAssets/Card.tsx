@@ -26,7 +26,7 @@ export default function Card(props: {
         <div className="card-image-container">
           <div className="add-button-mega-container">
             <div className="add-button-container">
-              <button
+              <div
                 onClick={() => {
                   AddToCart(id);
                 }}
@@ -39,12 +39,12 @@ export default function Card(props: {
                 >
                   <AddSVG></AddSVG>
                 </span>
-              </button>
+              </div>
             </div>
           </div>
-          <span className="border card-image">
+          <div className="card-image">
             <CImage CloudinaryImageID={image_pub_id}></CImage>
-          </span>
+          </div>
         </div>
 
         <div className="card-body ">

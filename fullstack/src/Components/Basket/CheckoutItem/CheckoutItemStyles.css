@@ -1,7 +1,10 @@
 .c-item-image{
+  
     margin-right: 2rem;
-    width: 7rem;
+    width: 6rem;
     height: 7rem;
+   transform-origin: 0 0;
+    scale:.3
 }
 .c-item-name, .c-item-size{
     font-family: BDOLight;
