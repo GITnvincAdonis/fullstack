@@ -60,6 +60,7 @@ export default function ProductPage() {
                 price={info.price}
                 starCount={info.starcount}
                 reviewNumber={info.review_count}
+                image_pub_id={info.image_pub_id}
               />
             </span>
           );

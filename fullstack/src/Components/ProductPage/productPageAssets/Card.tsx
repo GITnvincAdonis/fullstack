@@ -5,6 +5,7 @@ import AddSVG from "../../SVGs/Add";
 import { Link } from "react-router-dom";
 import { useAddfeedback, useCheckoutData } from "../../Utilities/Store";
 import { motion } from "framer-motion";
+import { CImage } from "../../Cloudinary/CloudinaryAssets";
 
 export default function Card(props: {
   id: number;
@@ -12,8 +13,9 @@ export default function Card(props: {
   price: number;
   starCount: number;
   reviewNumber: number;
+  image_pub_id: string;
 }) {
-  const { id, name, price, starCount, reviewNumber } = props;
+  const { id, name, price, starCount, reviewNumber, image_pub_id } = props;
   console.log(starCount + id);
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
 
@@ -40,7 +42,7 @@ export default function Card(props: {
               </button>
             </div>
           </div>
-
+          <CImage CloudinaryImageID={image_pub_id}></CImage>
           <img src="" alt="" className="border card-image" />
         </div>
 

@@ -10,6 +10,7 @@ interface itemInfo {
   price: number;
   starcount: number;
   review_count: number;
+  image_pub_id: string;
 }
 
 type checkoutItem = {
@@ -88,6 +89,7 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
     price: 11,
     starcount: 11,
     review_count: 1,
+    image_pub_id: "bal",
   };
 
   const Newqueries = useQueries({

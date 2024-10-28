@@ -4,6 +4,7 @@ interface itemInfo {
   price: number;
   starcount: number;
   review_count: number;
+  image_pub_id: string;
 }
 export const GetItems = async (): Promise<itemInfo[]> => {
   try {
@@ -25,6 +26,7 @@ export const GetAnItem = async (id: number): Promise<itemInfo> => {
     price: 11,
     starcount: 11,
     review_count: 1,
+    image_pub_id: "yoo",
   };
   try {
     const items = await fetch(
