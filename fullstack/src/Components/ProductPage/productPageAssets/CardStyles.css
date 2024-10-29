@@ -11,6 +11,7 @@
 .card-image{
  
     
+    width: 100%;
     overflow: hidden;
   border-radius: .82rem;
   
@@ -70,7 +71,7 @@
         justify-content: end;
         align-items: end;
     
-        height: 350px;
+        height: 320px;
         width: 20vw;
         min-width: 20rem;
         min-height: 16rem;
@@ -88,12 +89,6 @@
         transition-duration: 200ms;
         opacity: 1;
     }
-    .card-image{
-        
-        
-        overflow: hidden;
+  
 
-        width: 81vw;
-      border-radius: .81rem;
-    }
 }

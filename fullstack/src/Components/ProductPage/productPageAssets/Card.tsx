@@ -42,8 +42,11 @@ export default function Card(props: {
               </div>
             </div>
           </div>
-          <div className="card-image">
-            <CImage CloudinaryImageID={image_pub_id}></CImage>
+          <div className="">
+            <CImage
+              classNames=" card-image"
+              CloudinaryImageID={image_pub_id}
+            ></CImage>
           </div>
         </div>
 

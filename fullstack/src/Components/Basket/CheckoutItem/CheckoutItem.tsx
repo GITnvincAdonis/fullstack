@@ -13,9 +13,10 @@ export default function CheckoutItem(props: {
   return (
     <>
       <div className="d-inline-flex m-1 ">
-        <span className="c-item-image ">
-          <CImage CloudinaryImageID={image_pub_id}></CImage>
-        </span>
+        <CImage
+          classNames="c-item-image"
+          CloudinaryImageID={image_pub_id}
+        ></CImage>
 
         <div className="item-info">
           <h3 className="c-item-name">{name}</h3>
