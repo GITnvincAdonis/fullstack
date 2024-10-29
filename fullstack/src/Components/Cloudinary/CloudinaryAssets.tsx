@@ -18,7 +18,7 @@ export function CImage(props: {
     const myImage = cld
       .image(CloudinaryImageID)
       .format("auto")
-      .resize(scale(1920));
+      .resize(scale(720));
 
     return (
       <AdvancedImage className={classNames} cldImg={myImage}></AdvancedImage>
