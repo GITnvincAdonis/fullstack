@@ -26,7 +26,17 @@
     margin: 0%;
     padding: 0%;
     height: 72vh;
-    background-color: rgb(65, 119, 172);
+    background-color: #ba9776;
+
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    
+}
+.b-cloud-image{
+    background-blend-mode: multiply;
+  height:  110vh;
+    transform-origin: 50% 50%;
 }
 .starter-button{
     width: max-content;
@@ -136,6 +146,24 @@
     font-size: 1.2rem;
 }
 @media screen and (max-width:500px) {
+    .starter-background{
+        margin: 0%;
+        padding: 0%;
+        height: 70vh;
+        background-color: #baa18a;
+        
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        
+    }
+    .b-cloud-image{
+        background-blend-mode: multiply;
+        
+        height:  80vw;
+        transform-origin: 50% 50%;
+    }
     .shopping-options-wrapper{
         display: flex;
         flex-direction: column;
@@ -148,7 +176,7 @@
 
     }
     .shopping-option-container{
-          
+
         margin-bottom: 5rem;
      
     }

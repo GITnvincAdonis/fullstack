@@ -2,8 +2,11 @@ import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 
-export function CImage(props: { CloudinaryImageID: string }) {
-  const { CloudinaryImageID } = props;
+export function CImage(props: {
+  CloudinaryImageID: string;
+  classNames?: string;
+}) {
+  const { CloudinaryImageID, classNames } = props;
 
   const cld = new Cloudinary({
     cloud: {
@@ -15,9 +18,11 @@ export function CImage(props: { CloudinaryImageID: string }) {
     const myImage = cld
       .image(CloudinaryImageID)
       .format("auto")
-      .resize(scale(350));
+      .resize(scale(1920));
 
-    return <AdvancedImage cldImg={myImage}></AdvancedImage>;
+    return (
+      <AdvancedImage className={classNames} cldImg={myImage}></AdvancedImage>
+    );
   } catch (error) {
     console.log("an error occured trying to use image: " + error);
     return (

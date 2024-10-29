@@ -11,7 +11,12 @@ export default function Homepage() {
   return (
     <>
       <div className="starter-background-container">
-        <div className="starter-background"></div>
+        <div className="starter-background">
+          <CImage
+            classNames={"b-cloud-image"}
+            CloudinaryImageID="swrod2asmee1xk6hmpgp"
+          ></CImage>
+        </div>
       </div>
 
       <div className=" d-flex justify-content-end flex-column align-items-center starter-container">
