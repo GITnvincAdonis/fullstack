@@ -5,8 +5,9 @@ import { scale } from "@cloudinary/url-gen/actions/resize";
 export function CImage(props: {
   CloudinaryImageID: string;
   classNames?: string;
+  image_size: number;
 }) {
-  const { CloudinaryImageID, classNames } = props;
+  const { CloudinaryImageID, classNames, image_size } = props;
 
   const cld = new Cloudinary({
     cloud: {
@@ -18,7 +19,8 @@ export function CImage(props: {
     const myImage = cld
       .image(CloudinaryImageID)
       .format("auto")
-      .resize(scale(720));
+      .quality("auto:eco")
+      .resize(scale().width(image_size));
 
     return (
       <AdvancedImage className={classNames} cldImg={myImage}></AdvancedImage>

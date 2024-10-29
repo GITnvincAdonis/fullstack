@@ -6,13 +6,23 @@ export default function Review(props: { reviewNumber?: number }) {
   return (
     <div className="review-container">
       <div className="stars pt-3">
-        <Star></Star>
-        <Star></Star>
-        <Star></Star>
-        <Star></Star>
-        <Star></Star>
+        <span>
+          <Star />
+        </span>
+        <span>
+          <Star />
+        </span>
+        <span>
+          <Star />
+        </span>
+        <span>
+          <Star />
+        </span>
+        <span>
+          <Star />
+        </span>
       </div>
-      <div className="review-count pt-3 px-3">{`(${reviewNumber} reviews)`}</div>
+      <div className="review-count pt-0 px-3">{`(${reviewNumber} reviews)`}</div>
     </div>
   );
 }

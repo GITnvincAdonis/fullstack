@@ -3,9 +3,10 @@
     margin-bottom: 5rem;
 
     width: 22rem;
+    border: 2px solid bl;
 }
 .card-image-container{
-
+    height: 350px;
     width: 99%;
 }
 .card-image{
@@ -64,6 +65,10 @@
     width: 100%;
     opacity: .13;
 }
+.product-price{
+    font-family: BDOLight;
+    font-weight: 100;
+}
 @media screen and (max-width:400px) {
     .add-button-container{
      
@@ -71,24 +76,38 @@
         justify-content: end;
         align-items: end;
     
-        height: 320px;
-        width: 20vw;
-        min-width: 20rem;
-        min-height: 16rem;
+        height: 160px;
+        width: 10vw;
+        min-width: 10rem;
+        min-height: 10rem;
     }
     .card-container{
         margin: .41rem;
-        margin-bottom: 5rem;
+        margin-bottom: 2rem;
        
-        width: 20vw;
-        min-width: 20rem;
-        min-height: 20rem;
+        width: 10vw;
+        min-width: 10rem;
+        min-height: 10rem;
     }
     .add-button{
         z-index: 9;
         transition-duration: 200ms;
         opacity: 1;
     }
-  
+    .card-image-container{
+        height: 160px;
+        width: 99%;
+    }
+    .product-name,.product-price{
+        text-align: center;
+        font-family: BDOMedium;
+        padding: .2rem;
+        font-size: .91rem;
+    }
+
+    .product-price{
+        font-family: BDOLight;
+        font-weight: 100;
+    }
 
 }

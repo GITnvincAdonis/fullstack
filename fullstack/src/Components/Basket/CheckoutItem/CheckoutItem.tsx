@@ -14,6 +14,7 @@ export default function CheckoutItem(props: {
     <>
       <div className="d-inline-flex m-1 ">
         <CImage
+          image_size={300}
           classNames="c-item-image"
           CloudinaryImageID={image_pub_id}
         ></CImage>

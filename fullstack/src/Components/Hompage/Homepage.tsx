@@ -13,6 +13,7 @@ export default function Homepage() {
       <div className="starter-background-container">
         <div className="starter-background">
           <CImage
+            image_size={1000}
             classNames={"b-cloud-image"}
             CloudinaryImageID="swrod2asmee1xk6hmpgp"
           ></CImage>
@@ -38,7 +39,10 @@ export default function Homepage() {
         <h2 className="option-text">SHOPPING OPTIONS</h2>
         <div className="shopping-options-wrapper d-flex justify-content-center">
           <div className="card text-bg-dark shopping-options">
-            <CImage CloudinaryImageID="libs4amozqfjmwsp9xjc"></CImage>
+            <CImage
+              image_size={1000}
+              CloudinaryImageID="libs4amozqfjmwsp9xjc"
+            ></CImage>
             <div className="card-img-overlay d-flex align-items-end">
               <div>
                 <h3 className=" card-title nav-labels text-white">
@@ -61,7 +65,10 @@ export default function Homepage() {
             </div>
           </div>
           <div className="card text-bg-dark shopping-options">
-            <CImage CloudinaryImageID="v5eqwsliso9oehkixe0t"></CImage>
+            <CImage
+              image_size={1000}
+              CloudinaryImageID="v5eqwsliso9oehkixe0t"
+            ></CImage>
             <div className="card-img-overlay d-flex align-items-end">
               <div>
                 <h3 className="nav-labels text-white">Skincare Bundles</h3>

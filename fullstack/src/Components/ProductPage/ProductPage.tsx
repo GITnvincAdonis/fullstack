@@ -24,6 +24,7 @@ export default function ProductPage() {
 
   if (isError) return <div>{`error: ${error}`}</div>;
   if (isLoading)
+    // if (true)
     return (
       <>
         <Navbar></Navbar>
@@ -47,6 +48,9 @@ export default function ProductPage() {
       <Navbar></Navbar>
 
       <div className="product-page-container mb-5 ">
+        <div className=" top-gradient-container">
+          <div className="top-gradient"></div>
+        </div>
         <div className=" d-flex justify-content-center align-items-center  video-mega-container ">
           <CVid
             classNames={"video-container m-0"}
@@ -55,7 +59,7 @@ export default function ProductPage() {
         </div>
 
         <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
-        
+
         {info?.map((info) => {
           console.log("star count " + info.starcount);
           console.log("review count" + info.review_count);

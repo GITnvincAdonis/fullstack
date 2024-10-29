@@ -26,7 +26,15 @@
     width: 100vw;
     
 }
-
+.top-gradient-container{
+    z-index: 10;
+    height: 0;
+}
+.top-gradient{
+   width: 100vw;
+    height: 20rem;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(255,255,255,0.0015903525026689) 84%, rgba(255,255,255,0) 100%);}
 @media screen and (max-width:500px) {
     .video-mega-container{
         margin-top: 10rem;
