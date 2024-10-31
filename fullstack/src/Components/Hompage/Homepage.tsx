@@ -72,7 +72,7 @@ export default function Homepage() {
           </div>
           <div className="d-flex justify-content-center align-items-center flex-column shopping-option-container">
             <h2 className="option-text  text-center">SHOPPING OPTIONS</h2>
-            <div className="shopping-options-wrapper border d-flex justify-content-center">
+            <div className="shopping-options-wrapper d-flex justify-content-center">
               <div className="card text-bg-dark shopping-options">
                 <CImage
                   loadFunc={handleImageLoad}
