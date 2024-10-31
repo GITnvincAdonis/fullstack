@@ -38,26 +38,33 @@ export default function Slider(props: { toggle: any }) {
 
   return (
     <>
-      <div className="slider-mega-container">
+      <motion.div
+        initial={{ x: "200%" }}
+        animate={menuinView ? { x: 0 } : { x: "200%" }}
+        transition={{ duration: 0.6, type: "tween", ease: "easeInOut" }}
+        className="slider-mega-container"
+      >
         <motion.div
-          initial={{ x: "200%", borderRadius: "190%", scaleX: 3 }}
+          initial={{ opacity: 0 }}
+          animate={visible ? { opacity: 1 } : { opacity: 0 }}
+          transition={{
+            duration: 0.51 * Number(visible),
+            delay: 0.01 * Number(visible),
+          }}
+          className="slider-tint"
+        ></motion.div>
+
+        <motion.div
+          initial={{ borderRadius: "190%", scaleX: 3 }}
           animate={
             menuinView
-              ? { x: 0, borderRadius: "0%", scaleX: 1 }
-              : { x: "200%", borderRadius: "190%", scaleX: 3 }
+              ? { borderRadius: "0%", scaleX: 1 }
+              : { borderRadius: "190%", scaleX: 3 }
           }
-          onAnimationStart={() => {
-            toggleVisible(false);
-          }}
-          onAnimationComplete={() => {
-            toggleVisible(true);
-          }}
-          transition={{
-            duration: 0.71,
-            type: "tween",
-            ease: "easeInOut",
-          }}
-          className="slider-container "
+          onAnimationStart={() => toggleVisible(false)}
+          onAnimationComplete={() => toggleVisible(true)}
+          transition={{ duration: 0.7, type: "tween", ease: "easeInOut" }}
+          className="slider-container"
         >
           <motion.div
             initial={{ opacity: 0 }}
@@ -70,7 +77,6 @@ export default function Slider(props: { toggle: any }) {
                 <Exitbutton></Exitbutton>
               </div>
             </h2>
-            
 
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(localData.flat(1));
@@ -108,7 +114,7 @@ export default function Slider(props: { toggle: any }) {
             </Link>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </>
   );
 }
