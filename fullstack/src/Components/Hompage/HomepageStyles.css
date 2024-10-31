@@ -1,21 +1,39 @@
 
 .starter-container{
-    height: 75vh;
+
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: start;
+    height: 95vh;
+    padding-left:10rem;
+
 }
 .starter-text:nth-child(1){
+    color: white;
+   
     font-family: DegReg;
     margin: 0;
-    font-size: 4rem;
+    font-size: 6rem;
 }
 .starter-text:nth-child(2){
+    color: white;
     font-family: BDOLight;
     font-weight: 400;
     text-transform: capitalize;
+    font-size: 1.6rem;
+    max-width: 25ch;
+
 }
+.starter-tint-container{
+    height: 1rem;
+
+}
+
 .starter-background-container{
  
    
-   
+  
     
     height: 0;
     margin: 0%;
@@ -25,8 +43,8 @@
 .starter-background{
     margin: 0%;
     padding: 0%;
-    height: 72vh;
-    background-color: #ba9776;
+    height: 90vh;
+    background-color: #00000094;
 
     overflow: hidden;
     display: flex;
@@ -34,8 +52,9 @@
     
 }
 .b-cloud-image{
-    background-blend-mode: multiply;
-  height:  110vh;
+
+z-index: -1;
+  height:  104vh;
     transform-origin: 50% 50%;
 }
 .starter-button{
@@ -59,30 +78,32 @@
 }
 .shopping-option-container{
 
-    margin-top: 5rem;
+    margin-top: 15rem;
     margin-bottom: 10rem;
  
 }
+
 .option-text{
    
     font-family: DegReg;
-    padding-left: 8vw;
+
     height: 100%;
     width: 100%;
   
 }
 .shopping-options{
- 
+    z-index: 1;
     overflow: hidden;
     margin: .4rem;
     width: 41vw;
   border-radius: .81rem;
+  border: 2px solid black;
 
 }
 .shopping-options-1{
     
     background-size: cover;
-    background-image: url(../../assets/SinglesSkincareRender.png);
+   
     background-color: rgba(0, 0, 0, 0.1);
     background-blend-mode: multiply;
     transition-duration: 200ms;
@@ -134,9 +155,7 @@
     height: 10rem;
 }
 
-.optimized-image-container{
-    border: 2px solid black
-}
+
 .card{
     display: flex;
     justify-content: flex-end;
@@ -149,14 +168,21 @@
     .starter-background{
         margin: 0%;
         padding: 0%;
-        height: 70vh;
-        background-color: #baa18a;
+        height: 40vh;
+        background-color: #00000084;
         
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: end;
         
+    }
+    .starter-container{
+        height: 40vh;
+        padding: 0% 0 2rem 0;
+        align-items: center;
+        justify-content: end;
+
     }
     .b-cloud-image{
         background-blend-mode: multiply;
@@ -172,11 +198,13 @@
     .shopping-options{
         margin: .4rem;
         width: 90vw;
-        border: 1px solid black;
+  
 
     }
     .shopping-option-container{
+        
 
+        margin-top: 5rem; 
         margin-bottom: 5rem;
      
     }
@@ -193,6 +221,7 @@
         font-size: 2rem;
     }
     .starter-text:nth-child(2){
+        text-align: center;
         font-size: .9rem;
     }
     .intro-item-button-text{

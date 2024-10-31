@@ -15,29 +15,22 @@
 .video-container{
 
     border-radius: 2rem;
-    width: 120vw;
+    width: 90vw;
 
 }
 .video-mega-container{
     
  
     overflow: hidden;
-    height: 40rem;
-    width: 100vw;
+    height: 60rem;
+    width: 90vw;
     
 }
-.top-gradient-container{
-    z-index: 10;
-    height: 0;
-}
-.top-gradient{
-   width: 100vw;
-    height: 20rem;
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(255,255,255,0.0015903525026689) 84%, rgba(255,255,255,0) 100%);}
+
+
 @media screen and (max-width:500px) {
     .video-mega-container{
-        margin-top: 10rem;
+        margin-top: 4rem;
         height: 18rem;
  
         overflow: hidden;
@@ -48,8 +41,8 @@
     
     .video-container{
 
-        border-radius: 1rem;
-        width: 165vw;
+        border-radius: .1rem;
+        width: 100vw;
     }
     .product-page-title{
         font-family: DegReg;
@@ -59,6 +52,14 @@
         margin-top: 5rem;
         padding: 0;
     }
-    
+    .top-gradient-container{
+        z-index: 10;
+        height: 0;
+    }
+    .top-gradient{
+       width: 100vw;
+        height: 12rem;
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 45%, rgba(255,255,255,0.15903525026689) 84%, rgba(255,255,255,0) 100%);}
 
 }

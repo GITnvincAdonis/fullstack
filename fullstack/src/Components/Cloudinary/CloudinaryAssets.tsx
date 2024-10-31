@@ -1,4 +1,4 @@
-import { AdvancedImage, AdvancedVideo } from "@cloudinary/react";
+import { AdvancedVideo } from "@cloudinary/react";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { scale } from "@cloudinary/url-gen/actions/resize";
 
@@ -6,8 +6,9 @@ export function CImage(props: {
   CloudinaryImageID: string;
   classNames?: string;
   image_size: number;
+  loadFunc?: any;
 }) {
-  const { CloudinaryImageID, classNames, image_size } = props;
+  const { CloudinaryImageID, classNames, image_size, loadFunc } = props;
 
   const cld = new Cloudinary({
     cloud: {
@@ -20,10 +21,19 @@ export function CImage(props: {
       .image(CloudinaryImageID)
       .format("auto")
       .quality("auto:eco")
-      .resize(scale().width(image_size));
+      .resize(scale().width(image_size))
+      .toURL();
 
     return (
-      <AdvancedImage className={classNames} cldImg={myImage}></AdvancedImage>
+      <img
+      
+        onLoad={() => {
+          loadFunc();
+          console.log("loading");
+        }}
+        className={`${classNames}`}
+        src={`${myImage}`}
+      />
     );
   } catch (error) {
     console.log("an error occured trying to use image: " + error);
@@ -39,16 +49,12 @@ export function CVid(props: {
   classNames?: string;
 }) {
   const { CloudinaryVideoID, classNames } = props;
-
   const cld = new Cloudinary({
-    cloud: {
-      cloudName: `${import.meta.env.VITE_CLOUDINARY_NAME}`,
-    },
+    cloud: { cloudName: `${import.meta.env.VITE_CLOUDINARY_NAME}` },
   });
 
   try {
     const video = cld.video(CloudinaryVideoID).format("auto");
-
     return (
       <AdvancedVideo
         id="myVid"

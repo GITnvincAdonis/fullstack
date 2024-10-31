@@ -27,7 +27,7 @@ export default function Hovertext(props: { text: string; offset: number }) {
               key={"item" + index}
               animate={on ? { y: `-${offset}rem` } : { y: 0 }}
               transition={{
-                delay: (0.1 / text.length) * index,
+                delay: (0.2 / text.length) * index,
                 duration: 0.3,
               }}
             >
