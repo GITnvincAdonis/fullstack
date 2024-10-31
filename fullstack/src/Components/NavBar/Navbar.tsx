@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Popup from "../AddFeedback/AddPopup";
 import TopSlider from "./TopSlider/TopSlider";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [MenuinView, toggleView] = useState(false);
@@ -15,14 +16,18 @@ export default function Navbar() {
 
   return (
     <>
-   
       <SearchMenuContext.Provider value={SearchInView}>
         <TopSlider></TopSlider>
       </SearchMenuContext.Provider>
       <MenuContext.Provider value={MenuinView}>
         <Slider toggle={toggleView}></Slider>
       </MenuContext.Provider>
-      <div className="position-fixed navbar-container">
+      <motion.div
+        initial={{ y: "-5rem" }}
+        animate={{ y: 0 }}
+        transition={{ delay: 1, type: "tween", ease: "circInOut", duration: 1 }}
+        className="position-fixed navbar-container"
+      >
         <div className="navbar">
           <Link to={"/"} className="homepage-link">
             <div className="company-name">THE SKINCARE NAME</div>
@@ -46,7 +51,7 @@ export default function Navbar() {
             </MenuContext.Provider>
           </span>
         </div>
-      </div>
+      </motion.div>
       <Popup></Popup>
     </>
   );

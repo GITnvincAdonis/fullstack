@@ -26,7 +26,7 @@ export function CImage(props: {
 
     return (
       <img
-      
+        
         onLoad={() => {
           loadFunc();
           console.log("loading");

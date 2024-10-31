@@ -70,14 +70,16 @@ z-index: -1;
 
 }
 .intro-item-button-text{
-    
-    color: rgb(2, 2, 2);
+
+    color: rgb(232, 232, 232);
     font-family: BDOLight;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
+    color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
 
 }
 .shopping-option-container{
-
+    
     margin-top: 15rem;
     margin-bottom: 10rem;
  
@@ -92,7 +94,7 @@ z-index: -1;
   
 }
 .shopping-options{
-    z-index: 1;
+ 
     overflow: hidden;
     margin: .4rem;
     width: 41vw;
@@ -101,7 +103,7 @@ z-index: -1;
 
 }
 .shopping-options-1{
-    
+
     background-size: cover;
    
     background-color: rgba(0, 0, 0, 0.1);

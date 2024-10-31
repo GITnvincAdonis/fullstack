@@ -24,6 +24,8 @@ export default function Homepage() {
 
   return (
     <>
+      <Navbar />
+
       <div className="loader-wrapper">
         <motion.div
           animate={loadedImages < 3 ? { opacity: 1 } : { opacity: 0 }}
@@ -39,7 +41,6 @@ export default function Homepage() {
         transition={{ delay: 2 }}
       >
         <>
-          <Navbar />
           <div className=" starter-background-container  ">
             <div className="starter-background">
               <CImage
@@ -51,7 +52,7 @@ export default function Homepage() {
             </div>
           </div>
 
-          <div className=" starter-container">
+          <div className="  starter-container">
             <h1 className="starter-text text-center ">THE SKINCARE BRAND</h1>
             <h4 className="starter-text  pb-4">
               we care about giving you the best looking skin
@@ -59,12 +60,12 @@ export default function Homepage() {
             <SwipeButton
               textContent={
                 <Link to={"/home"}>
-                  <h2 className="text-white m-0 p-0 intro-item-button-text">
+                  <h5 className="text-white m-0 p-2 intro-item-button-text">
                     <Hovertext
-                      text="CHECK OUR PRODUCTS"
-                      offset={1.6}
+                      text={"CHECK OUR PRODUCTS"}
+                      offset={2.2}
                     ></Hovertext>
-                  </h2>
+                  </h5>
                 </Link>
               }
             ></SwipeButton>
@@ -76,7 +77,6 @@ export default function Homepage() {
                 <CImage
                   loadFunc={handleImageLoad}
                   image_size={1000}
-           
                   CloudinaryImageID="libs4amozqfjmwsp9xjc"
                 ></CImage>
 
@@ -106,7 +106,6 @@ export default function Homepage() {
                 <CImage
                   loadFunc={handleImageLoad}
                   image_size={1000}
-                  
                   CloudinaryImageID="v5eqwsliso9oehkixe0t"
                 ></CImage>
 
