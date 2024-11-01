@@ -11,6 +11,7 @@ import { CImage } from "../Cloudinary/CloudinaryAssets";
 import { motion } from "framer-motion";
 import PageLoader from "../PageLoader";
 
+
 interface itemInfo {
   id: number;
   name: string;
@@ -49,20 +50,16 @@ export default function ItemPage() {
     console.log(retrievedPagedItem);
     console.log([retrievedPagedItem].flat(1));
   }, [retrievedPagedItem]);
-  useEffect(() => {
-    return () => {
-      SetLoading(false);
-    };
-  }, []);
-  const [isLoaded, SetLoading] = useState(false);
+
+  const [loadedIms, SetLoading] = useState(0);
 
   function handleLoading() {
-    SetLoading(true);
+    SetLoading((prev) => prev + 1);
   }
 
   useEffect(() => {
-    console.log("is loaded?: " + isLoaded);
-  }, [isLoaded]);
+    console.log("loaded count: " + loadedIms);
+  }, [loadedIms]);
   return (
     <>
       {retrievedPagedItem && (
@@ -71,7 +68,7 @@ export default function ItemPage() {
 
           <motion.div
             initial={{ opacity: 1 }}
-            animate={!isLoaded ? { opacity: 1 } : { opacity: 0 }}
+            animate={loadedIms < 1 ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 30 }}
           >
             <PageLoader></PageLoader>
@@ -79,7 +76,7 @@ export default function ItemPage() {
 
           <motion.div
             initial={{ opacity: 0 }}
-            animate={!isLoaded ? { opacity: 0 } : { opacity: 1 }}
+            animate={!(loadedIms === 1) ? { opacity: 0 } : { opacity: 1 }}
             transition={{ duration: 0.3 }}
           >
             <div className=" product-item-container">
