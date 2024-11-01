@@ -68,8 +68,9 @@ export default function ItemPage() {
               <div className="placeholder placeholder-wave item-image-placeholder"></div>
             )}
             <motion.div
-              animate={!isLoaded ? { scale: 0 } : { scale: 1 }}
-              transition={{ duration: 0.01 }}
+              initial={{ opacity: 0 }}
+              animate={!isLoaded ? { opacity: 0 } : { opacity: 1 }}
+              transition={{ duration: 1 }}
             >
               <CImage
                 loadFunc={handleLoading}
