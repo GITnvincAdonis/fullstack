@@ -68,15 +68,14 @@ export default function ItemPage() {
       {retrievedPagedItem && (
         <>
           <Navbar></Navbar>
-          <div className="loader-wrapper">
-            <motion.div
-              initial={{ opacity: 1 }}
-              animate={!isLoaded ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 3 }}
-            >
-              <PageLoader></PageLoader>
-            </motion.div>
-          </div>
+
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={!isLoaded ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 30 }}
+          >
+            <PageLoader></PageLoader>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0 }}
