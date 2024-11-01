@@ -48,7 +48,11 @@ export default function ItemPage() {
     console.log(retrievedPagedItem);
     console.log([retrievedPagedItem].flat(1));
   }, [retrievedPagedItem]);
-
+  useEffect(() => {
+    return () => {
+      SetLoading(false);
+    };
+  }, []);
   const [isLoaded, SetLoading] = useState(false);
 
   function handleLoading() {
