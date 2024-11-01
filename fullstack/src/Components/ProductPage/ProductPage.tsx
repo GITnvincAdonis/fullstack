@@ -99,17 +99,7 @@ export default function ProductPage() {
           </div>
 
           <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
-          <span>
-            <Card
-              image_fn={IncremementLoadCards}
-              id={2}
-              name={"yoo"}
-              price={10000}
-              starCount={100}
-              reviewNumber={10000}
-              image_pub_id={"xxltd5vefhcfe3lp1kvd"}
-            />
-          </span>
+         
           {info?.map((info) => {
             console.log("star count " + info.starcount);
             console.log("review count" + info.review_count);
