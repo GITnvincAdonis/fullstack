@@ -54,6 +54,10 @@ export default function ItemPage() {
   function handleLoading() {
     SetLoading(true);
   }
+
+  useEffect(() => {
+    console.log("is loaded?: " + isLoaded);
+  }, [isLoaded]);
   return (
     <>
       {retrievedPagedItem && (

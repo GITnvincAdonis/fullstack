@@ -13,6 +13,12 @@
 }
 .item-image{
     border: 2px solid black;
+
+    width: 40vw;
+   
+}
+.item-image-placeholder{
+    border: 2px solid black;
     height: 40rem;
     width: 40vw;
    
@@ -35,6 +41,12 @@
         
     }
     .item-image{
+  
+        
+        width: 100%;
+        border: 2px solid black;
+    }
+    .item-image-placeholder{
   
         height: 40rem;
         width: 100%;
