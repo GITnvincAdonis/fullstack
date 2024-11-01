@@ -36,13 +36,14 @@ export default function ItemPage() {
 
     if (data) {
       console.log("paged item");
-      console.log([data].flat(1));
+      console.log(data);
       setItem(data);
     }
+  }, [data]);
+  useEffect(() => {
     console.log("state item");
     console.log(retrievedPagedItem);
-  }, [data]);
-
+  }, [retrievedPagedItem]);
   return (
     <>
       {retrievedPagedItem && (
