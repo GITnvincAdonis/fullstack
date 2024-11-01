@@ -5,7 +5,7 @@ import ItemInstruction from "./Instructions/ItemInstructions";
 import { usePageItemStore } from "../Utilities/PagedItemStore";
 import { useQuery } from "@tanstack/react-query";
 import { GetAnItem } from "../APIs";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface itemInfo {
   id: number;
@@ -20,12 +20,6 @@ export default function ItemPage() {
   const [retrievedPagedItem, setItem] = useState<itemInfo>();
 
   const PageID = usePageItemStore((state) => state.ID);
-  const ResetID = usePageItemStore((state) => state.DefaultCount);
-  useEffect(() => {
-    return () => {
-      ResetID();
-    };
-  }, []);
 
   const { data, isError, isLoading, error } = useQuery({
     queryFn: async () => GetAnItem(PageID),
@@ -37,12 +31,12 @@ export default function ItemPage() {
   if (isLoading) {
     console.log("loading");
   }
-  if (!error && data) {
+
+  if (data) {
     console.log("paged item");
     console.log(data);
     setItem(data);
   }
-
   return (
     <>
       {retrievedPagedItem && (
