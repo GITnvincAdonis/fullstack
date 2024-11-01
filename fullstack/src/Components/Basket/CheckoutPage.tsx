@@ -27,6 +27,13 @@ export default function CheckoutPage() {
       setlocalData(CountedData);
     } else setlocalData(DefaultItem);
   }, [CountedData]);
+  if (!CartItems) {
+    return (
+      <>
+        <div>had</div>
+      </>
+    );
+  }
   return (
     <>
       <Navbar />
@@ -34,26 +41,34 @@ export default function CheckoutPage() {
         <div className="c">
           <div className="checkout-items d-flex flex-column ">
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
+            {CartItems && (
+              <>
+                <Itemplaceholder />
+                <Itemplaceholder />
+                <Itemplaceholder />
+                <Itemplaceholder />
+              </>
+            )}
+            {CartItems &&
+              CartItems.flat(1).map((cart_item, index) => {
+                console.log(localData.flat(1));
+                console.log(localData.flat(1)[index].count);
+                const id = localData.flat(1)[index].id;
 
-            {CartItems.flat(1).map((cart_item, index) => {
-              console.log(localData.flat(1));
-              console.log(localData.flat(1)[index].count);
-              const id = localData.flat(1)[index].id;
-
-              return (
-                <>
-                  <span key={index}>
-                    <CheckoutItem
-                      name={cart_item.name}
-                      price={cart_item.price}
-                      count={localData.flat(1)[index].count}
-                      id={id}
-                      image_pub_id={cart_item.image_pub_id}
-                    />
-                  </span>
-                </>
-              );
-            })}
+                return (
+                  <>
+                    <span key={index}>
+                      <CheckoutItem
+                        name={cart_item.name}
+                        price={cart_item.price}
+                        count={localData.flat(1)[index].count}
+                        id={id}
+                        image_pub_id={cart_item.image_pub_id}
+                      />
+                    </span>
+                  </>
+                );
+              })}
           </div>
           <div className="payment-wrapper">
             <div className="payment-container border p-5">
@@ -94,3 +109,18 @@ export default function CheckoutPage() {
     </>
   );
 }
+const Itemplaceholder = () => {
+  return (
+    <>
+      <div className="d-flex placeholder-container">
+        {" "}
+        <div className="placeholder placeholder-wave placeholder-image" />
+        <div className="placeholder-body d-flex flex-column align-items-start">
+          <span className="placeholder placeholder-wave col-12 placeholder-lg lg-place "></span>
+          <span className="placeholder placeholder-wave col-12 placeholder-lg lg-place mt-1"></span>
+          <span className="placeholder placeholder-wave col-12 placeholder-lg lg-place mt-3"></span>
+        </div>
+      </div>
+    </>
+  );
+};

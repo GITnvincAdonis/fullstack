@@ -44,7 +44,6 @@ export default function Card(props: {
           </div>
           <div className="cloud-card-image-container">
             <CImage
-        
               image_size={400}
               classNames=" card-image"
               CloudinaryImageID={image_pub_id}
@@ -70,21 +69,21 @@ export function DefaultCard() {
       <div className="card-container ">
         <div className="card-image-container border ">
           <div className="placeholder col-7 glow-container placeholder-wave">
-            <span className="placeholder w-100  placeholder-container"></span>
+            <span className="placeholder w-100  placeholder-wrapper"></span>
           </div>
         </div>
 
         <div className="card-body pt-4 ">
           <Link to={"/item"} className="product-hyperlinks">
             <div className="placeholder-wave">
-              <span className="placeholder col-6  placeholder-container"></span>
+              <span className="placeholder col-6  placeholder-wrapper"></span>
             </div>
 
             <div className="placeholder-wave">
-              <span className="placeholder w-100  placeholder-container"></span>
+              <span className="placeholder w-100  placeholder-wrapper"></span>
             </div>
             <div className="placeholder-wave">
-              <motion.span className="placeholder w-25  placeholder-container"></motion.span>
+              <motion.span className="placeholder w-25  placeholder-wrapper"></motion.span>
             </div>
           </Link>
         </div>

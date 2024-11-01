@@ -54,6 +54,34 @@
     font-family: BDOLight;
     font-size: 1.2rem;
 }
+.placeholder-container{
+    width: 40rem;
+    height: 7rem;
+}
+.placeholder-image{
+    border:2px solid black;
+    height: 7rem;
+    width: 7rem;
+    opacity: .3;
+}
+.placeholder-body{
+    margin: 1rem;
+    width: 20rem;
+}
+
+
+.lg-place:nth-child(1){
+    height: 1.5rem;
+}
+.lg-place:nth-child(2){
+    height: 1rem;
+    width: 4rem;
+}
+.lg-place:nth-child(3){
+  
+    height: 0.5rem;
+    width: 6rem;
+}
 @media screen and (max-width:400px) {
     .c{
         width: 100%;
@@ -81,5 +109,9 @@
     }
     .payment-container{
         width: 100%;
+    }
+    .lg-place:nth-child(1){
+        height: 1rem;
+        width: 8rem;
     }
 }

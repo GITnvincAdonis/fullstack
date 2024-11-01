@@ -34,3 +34,28 @@
     
 
 }
+
+@font-face {
+    font-family: helvetica-bold;
+    src: url(../public/Helvetica/Helvetica-Bold.ttf);
+    
+
+}
+@font-face {
+    font-family: helvetica-light;
+    src: url(../public/Helvetica/Helvetica-BoldOblique.ttf);
+    
+
+}
+@font-face {
+    font-family: helvetica-normal;
+    src: url(../public/Helvetica//Helvetica.ttf);
+    
+
+}
+@font-face {
+    font-family: Michelia;
+    src: url(../public/Michelia/Michelia.ttf);
+    
+
+}

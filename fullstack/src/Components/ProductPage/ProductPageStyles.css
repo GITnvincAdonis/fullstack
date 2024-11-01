@@ -9,6 +9,8 @@
 .product-page-title{
     font-family: DegReg;
     margin-top: 5rem;
+    letter-spacing: -2px;
+    word-spacing: .7rem;
     width: 85%;
     text-align: center;
 }

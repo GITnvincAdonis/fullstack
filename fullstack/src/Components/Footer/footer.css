@@ -5,10 +5,9 @@
     background-color: rgb(55, 55, 55);
 }
 
-h4{
-    font-weight: 400;
-}
+
 .row-1,.row-2{
+    font-family: helvetica-normal;
     font-size: 1rem;
 }
 .footer-wrapper{
@@ -21,6 +20,7 @@ h4{
 }
 
 .column{
+    font-family: BDOLight;
     margin: 1rem 3rem;
 }
 .socials{
@@ -67,13 +67,19 @@ h4{
         align-items: start;
     }
     .column-header{
-        margin-top: 1rem;
+        margin: 0rem 0 0 0;
         font-size: 1rem;
+        
     }
+    .column{
+        margin-top: 0;
+    
+    }
+    
     .row-1,.row-2{
-        margin-top: .3rem;
+       scale:.8;
         transform-origin: 0 0;
-        scale: .7;
+        height: .6em;
         font-size: 1rem;
     }
     .socials{
