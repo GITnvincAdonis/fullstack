@@ -17,7 +17,7 @@ interface itemInfo {
 }
 
 export default function ItemPage() {
-  const [retrievedPagedItem, _setItem] = useState<itemInfo>();
+  const [retrievedPagedItem, setItem] = useState<itemInfo>();
 
   const PageID = usePageItemStore((state) => state.ID);
   const ResetID = usePageItemStore((state) => state.DefaultCount);
@@ -40,7 +40,7 @@ export default function ItemPage() {
   if (!error && data) {
     console.log("paged item");
     console.log(data);
-    //setItem(data);
+    setItem(data);
   }
 
   return (
