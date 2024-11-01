@@ -71,7 +71,7 @@ export default function ItemPage() {
           <div className="loader-wrapper">
             <motion.div
               animate={!isLoaded ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ delay: 2 }}
+              transition={{ delay: 3 }}
             >
               <PageLoader></PageLoader>
             </motion.div>
@@ -80,7 +80,6 @@ export default function ItemPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={!isLoaded ? { opacity: 0 } : { opacity: 1 }}
-            transition={{ duration: 1 }}
           >
             <div className=" product-item-container">
               <CImage
