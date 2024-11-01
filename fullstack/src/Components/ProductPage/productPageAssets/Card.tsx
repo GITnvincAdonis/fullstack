@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useAddfeedback, useCheckoutData } from "../../Utilities/Store";
 import { motion } from "framer-motion";
 import { CImage } from "../../Cloudinary/CloudinaryAssets";
+import { usePageItemStore } from "../../Utilities/PagedItemStore";
 
 export default function Card(props: {
   id: number;
@@ -22,6 +23,8 @@ export default function Card(props: {
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
 
   const toggleAddFeedback = useAddfeedback((state) => state.toggleClickOn);
+
+  const SetPagedItemID = usePageItemStore((state) => state.setID);
   return (
     <>
       <div className="card-container ">
@@ -56,7 +59,13 @@ export default function Card(props: {
 
         <div className="card-body ">
           <Review reviewNumber={reviewNumber}></Review>
-          <Link to={"/item"} className="product-hyperlinks">
+          <Link
+            to={"/item/"}
+            onClick={() => {
+              SetPagedItemID(id);
+            }}
+            className="product-hyperlinks"
+          >
             <h3 className="product-name m-0 mt-2">{name}</h3>
             <h3 className="product-price m-0">{`$${price}`}</h3>
           </Link>
