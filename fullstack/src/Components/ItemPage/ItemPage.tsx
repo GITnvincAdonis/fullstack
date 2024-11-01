@@ -69,7 +69,14 @@ export default function ItemPage() {
         <>
           <Navbar></Navbar>
           <div className=" product-item-container">
-            {!isLoaded && <PageLoader></PageLoader>}
+            <div className="loader-wrapper">
+              <motion.div
+                animate={!isLoaded ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ delay: 2 }}
+              >
+                <PageLoader></PageLoader>
+              </motion.div>
+            </div>
             <motion.div
               initial={{ opacity: 0 }}
               animate={!isLoaded ? { opacity: 0 } : { opacity: 1 }}
