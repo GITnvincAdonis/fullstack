@@ -42,8 +42,8 @@ export default function ItemPage() {
   }, [data]);
   useEffect(() => {
     console.log("state item");
+    console.log(retrievedPagedItem);
     console.log([retrievedPagedItem].flat(1));
-    console.log([retrievedPagedItem].flat(2));
   }, [retrievedPagedItem]);
   return (
     <>
