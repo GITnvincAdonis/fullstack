@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { CImage } from "../Cloudinary/CloudinaryAssets";
 
 import { motion } from "framer-motion";
+import PageLoader from "../PageLoader";
 
 interface itemInfo {
   id: number;
@@ -68,9 +69,7 @@ export default function ItemPage() {
         <>
           <Navbar></Navbar>
           <div className=" product-item-container">
-            {!isLoaded && (
-              <div className="placeholder placeholder-wave item-image-placeholder"></div>
-            )}
+            {!isLoaded && <PageLoader></PageLoader>}
             <motion.div
               initial={{ opacity: 0 }}
               animate={!isLoaded ? { opacity: 0 } : { opacity: 1 }}
