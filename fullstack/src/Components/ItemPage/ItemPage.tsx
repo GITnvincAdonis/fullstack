@@ -27,17 +27,21 @@ export default function ItemPage() {
     };
   }, []);
 
-  const { data, isError, isLoading, error } = useQuery({
-    queryFn: () => GetAnItem(PageID),
-    queryKey: ["fetchedID"],
-  });
-  if (isError) {
-    console.log(error.message);
-  }
-  if (isLoading) {
-    console.log("loading");
-  }
-  if (!error) setItem(data);
+  useEffect(() => {
+    if (PageID != -1) {
+      const { data, isError, isLoading, error } = useQuery({
+        queryFn: () => GetAnItem(PageID),
+        queryKey: ["fetchedID"],
+      });
+      if (isError) {
+        console.log(error.message);
+      }
+      if (isLoading) {
+        console.log("loading");
+      }
+      if (!error) setItem(data);
+    }
+  }, [PageID]);
 
   return (
     <>
