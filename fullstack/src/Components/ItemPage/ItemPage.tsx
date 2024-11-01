@@ -55,10 +55,15 @@ export default function ItemPage() {
   function handleLoading() {
     SetLoading((prev) => prev + 1);
   }
-
+  useEffect(() => {
+    return () => {
+      SetLoading(0);
+    };
+  }, []);
   useEffect(() => {
     console.log("loaded count: " + loadedIms);
   }, [loadedIms]);
+
   return (
     <>
       <Navbar></Navbar>
