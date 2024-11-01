@@ -36,7 +36,7 @@ export default function ItemPage() {
 
     if (data) {
       console.log("paged item");
-      console.log([data].flat(2));
+      console.log([data].flat(1));
       setItem(data);
     }
     console.log("state item");
