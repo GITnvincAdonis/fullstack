@@ -36,7 +36,9 @@ export function CheckOutDataContainer() {
 
   const isLoading = queries.some((query) => query.isLoading);
   const isError = queries.some((query) => query.isError);
-  const data = queries.map((query) => query.data).filter(Boolean) as itemInfo[];
+  const data = queries
+    .map((query) => query.data)
+    .filter(Boolean) as unknown as itemInfo[];
 
   // Use specific state variables as dependencies, not the whole `queries` object
   useEffect(() => {

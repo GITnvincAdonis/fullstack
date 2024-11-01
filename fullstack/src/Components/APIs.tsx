@@ -19,15 +19,17 @@ export const GetItems = async (): Promise<itemInfo[]> => {
   }
 };
 
-export const GetAnItem = async (id: number): Promise<itemInfo> => {
-  const DefaultItem: itemInfo = {
-    id: 1,
-    name: "yy",
-    price: 11,
-    starcount: 11,
-    review_count: 1,
-    image_pub_id: "yoo",
-  };
+export const GetAnItem = async (id: number): Promise<itemInfo[]> => {
+  const DefaultItem: itemInfo[] = [
+    {
+      id: 1,
+      name: "yy",
+      price: 11,
+      starcount: 11,
+      review_count: 1,
+      image_pub_id: "yoo",
+    },
+  ];
   try {
     const items = await fetch(
       `${import.meta.env.VITE_FETCH_ORIGIN}/products/${id}`

@@ -109,7 +109,7 @@ export function GetCheckoutItems(arrayOfItems: checkoutItem[]) {
   const isError = Newqueries.some((query) => query.isError);
   const data = Newqueries.map((query) => query.data).filter(
     Boolean
-  ) as itemInfo[];
+  ) as unknown as itemInfo[];
 
   // Use specific state variables as dependencies, not the whole `queries` object
   if (isLoading) console.log("some things are loading");

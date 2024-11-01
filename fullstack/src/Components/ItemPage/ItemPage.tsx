@@ -37,7 +37,7 @@ export default function ItemPage() {
     if (data) {
       console.log("paged item");
       console.log(data);
-      setItem(data);
+      setItem(data[0]);
     }
   }, [data]);
   useEffect(() => {
