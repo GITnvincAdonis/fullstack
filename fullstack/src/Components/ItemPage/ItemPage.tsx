@@ -79,7 +79,7 @@ export default function ItemPage() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={!(loadedIms === 1) ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ delay: 3 }}
+        transition={{ delay: 2 }}
       >
         <div className=" product-item-container">
           <CImage
