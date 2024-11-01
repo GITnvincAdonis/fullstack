@@ -30,7 +30,7 @@ export default function ItemPage() {
   useEffect(() => {
     if (PageID != -1) {
       const { data, isError, isLoading, error } = useQuery({
-        queryFn: () => GetAnItem(PageID),
+        queryFn: async () => await GetAnItem(PageID),
         queryKey: ["fetchedID"],
       });
       if (isError) {
