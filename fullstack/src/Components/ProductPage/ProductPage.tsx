@@ -8,6 +8,8 @@ import Footer from "../Footer/Footer";
 import { useQuery } from "@tanstack/react-query";
 import { GetItems } from "../APIs";
 import { CVid } from "../Cloudinary/CloudinaryAssets";
+import { useState } from "react";
+
 
 //const products = [1, 1, 1, 1, 1, 1];
 export default function ProductPage() {
@@ -21,15 +23,25 @@ export default function ProductPage() {
     queryKey: ["product-page-item"],
     staleTime: Infinity,
   });
+  const [loadedCards, SetLoadedCards] = useState(0);
 
+  function IncremementLoadCards() {
+    SetLoadedCards((prev) => prev + 1);
+  }
   if (isError) return <div>{`error: ${error}`}</div>;
-  if (isLoading)
-    // if (true)
+
+  if (isLoading || (info && loadedCards < info.length))
     return (
       <>
         <Navbar></Navbar>
 
         <div className="product-page-container mb-5 ">
+          <div className=" top-gradient-container">
+            <div className="top-gradient"></div>
+          </div>
+          <div className=" d-flex justify-content-center align-items-center vid-placeholder-wrapper ">
+            <div className=" placeholder vid-placeholder placeholder-wave"></div>
+          </div>
           <h1 className="product-page-title ">SHOP _SPECIFIC_ PRODUCTS</h1>
 
           <DefaultCard />
@@ -67,6 +79,7 @@ export default function ProductPage() {
           return (
             <span>
               <Card
+                image_fn={IncremementLoadCards}
                 id={info.id}
                 name={info.name}
                 price={info.price}

@@ -14,8 +14,10 @@ export default function Card(props: {
   starCount: number;
   reviewNumber: number;
   image_pub_id: string;
+  image_fn: CallableFunction;
 }) {
-  const { id, name, price, starCount, reviewNumber, image_pub_id } = props;
+  const { id, name, price, starCount, reviewNumber, image_pub_id, image_fn } =
+    props;
   console.log(starCount + id);
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
 
@@ -44,6 +46,7 @@ export default function Card(props: {
           </div>
           <div className="cloud-card-image-container">
             <CImage
+              loadFunc={image_fn}
               image_size={400}
               classNames=" card-image"
               CloudinaryImageID={image_pub_id}
