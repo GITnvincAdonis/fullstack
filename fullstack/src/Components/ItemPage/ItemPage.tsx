@@ -61,7 +61,7 @@ export default function ItemPage() {
           <Navbar></Navbar>
           <div className=" product-item-container">
             {!isLoaded && (
-              <div className="placeholder placeholder-wave item-image"></div>
+              <div className="placeholder placeholder-wave item-image-placeholder"></div>
             )}
             <motion.div
               animate={!isLoaded ? { scale: 0 } : { scale: 1 }}
