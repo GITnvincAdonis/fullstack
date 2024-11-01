@@ -8,6 +8,8 @@ import { GetAnItem } from "../APIs";
 import { useEffect, useState } from "react";
 import { CImage } from "../Cloudinary/CloudinaryAssets";
 
+import { motion } from "framer-motion";
+
 interface itemInfo {
   id: number;
   name: string;
@@ -46,17 +48,32 @@ export default function ItemPage() {
     console.log(retrievedPagedItem);
     console.log([retrievedPagedItem].flat(1));
   }, [retrievedPagedItem]);
+
+  const [isLoaded, SetLoading] = useState(false);
+
+  function handleLoading() {
+    SetLoading(true);
+  }
   return (
     <>
       {retrievedPagedItem && (
         <>
           <Navbar></Navbar>
           <div className=" product-item-container">
-            <CImage
-              CloudinaryImageID={`${retrievedPagedItem.image_pub_id}`}
-              image_size={1900}
-              classNames="item-image"
-            ></CImage>
+            {!isLoaded && (
+              <div className="placeholder placeholder-wave item-image"></div>
+            )}
+            <motion.div
+              animate={!isLoaded ? { scale: 0 } : { scale: 1 }}
+              transition={{ duration: 0.01 }}
+            >
+              <CImage
+                loadFunc={handleLoading}
+                CloudinaryImageID={`${retrievedPagedItem.image_pub_id}`}
+                image_size={1900}
+                classNames="item-image"
+              ></CImage>
+            </motion.div>
 
             <div className="item-body d-flex flex-column align-items-start ">
               <h1 className="item-name">{retrievedPagedItem.name}</h1>
