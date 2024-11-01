@@ -5,7 +5,7 @@ import ItemInstruction from "./Instructions/ItemInstructions";
 import { usePageItemStore } from "../Utilities/PagedItemStore";
 import { useQuery } from "@tanstack/react-query";
 import { GetAnItem } from "../APIs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface itemInfo {
   id: number;
@@ -25,18 +25,22 @@ export default function ItemPage() {
     queryFn: async () => GetAnItem(PageID),
     queryKey: ["fetchedID"],
   });
-  if (isError) {
-    console.log(error.message);
-  }
-  if (isLoading) {
-    console.log("loading");
-  }
 
-  if (data) {
-    console.log("paged item");
-    console.log(data);
-    setItem(data);
-  }
+  useEffect(() => {
+    if (isError) {
+      console.log(error.message);
+    }
+    if (isLoading) {
+      console.log("loading");
+    }
+
+    if (data) {
+      console.log("paged item");
+      console.log(data);
+      setItem(data);
+    }
+  }, [data]);
+
   return (
     <>
       {retrievedPagedItem && (
