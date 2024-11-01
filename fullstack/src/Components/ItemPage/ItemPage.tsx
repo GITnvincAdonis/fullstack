@@ -6,6 +6,7 @@ import { usePageItemStore } from "../Utilities/PagedItemStore";
 import { useQuery } from "@tanstack/react-query";
 import { GetAnItem } from "../APIs";
 import { useEffect, useState } from "react";
+import { CImage } from "../Cloudinary/CloudinaryAssets";
 
 interface itemInfo {
   id: number;
@@ -51,7 +52,12 @@ export default function ItemPage() {
         <>
           <Navbar></Navbar>
           <div className=" product-item-container">
-            <div className="item-image"></div>
+            <CImage
+              CloudinaryImageID={`${retrievedPagedItem.image_pub_id}`}
+              image_size={1900}
+              classNames="item-image"
+            ></CImage>
+
             <div className="item-body d-flex flex-column align-items-start ">
               <h1 className="item-name">{retrievedPagedItem.name}</h1>
               <Review reviewNumber={retrievedPagedItem.review_count}></Review>
