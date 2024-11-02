@@ -49,7 +49,7 @@ export default function ItemPage() {
     if (id) {
       console.log("url ID");
       console.log(id);
-      const data = FetchFunctionality(id); // Direct call since no promise
+      const data = FetchFunctionality(1); // Direct call since no promise
       console.log("DATA");
       console.log(data);
       //setRetrievedPagedItems(data);
