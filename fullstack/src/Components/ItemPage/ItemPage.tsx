@@ -29,7 +29,7 @@ export default function ItemPage() {
   const processURL = () => {
     const strippedURLID = searchbarParams.get("ID");
 
-    if (strippedURLID == "") {
+    if (!strippedURLID) {
       setSearchParams((prev) => {
         prev.set("ID", `${PageID}`);
         return prev;
@@ -40,19 +40,26 @@ export default function ItemPage() {
         return prev;
       });
     }
-    setRetrievedPagedItems(
-      FetchFunctionality(Number(searchbarParams.get("ID")))
-    );
   };
-  processURL();
 
+  useEffect(() => {
+    processURL();
+
+    const id = Number(searchbarParams.get("ID"));
+    if (id) {
+      const data = FetchFunctionality(id); // Direct call since no promise
+      setRetrievedPagedItems(data);
+    }
+  }, [PageID, searchbarParams]);
+
+
+
+  
   //state for loader
   const [loadedIms, SetLoading] = useState(false);
-
   function handleLoading() {
     SetLoading(true);
   }
-
   //default value setting
   useEffect(() => {
     SetLoading(false);
