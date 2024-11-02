@@ -31,7 +31,6 @@ export default function ItemPage() {
   );
   useEffect(() => {
     const strippedURLID = searchbarParams.get("ID");
-
     if (!strippedURLID) {
       setSearchParams(
         (prev) => {
