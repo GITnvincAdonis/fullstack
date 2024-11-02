@@ -24,7 +24,7 @@ interface itemInfo {
 export default function ItemPage() {
   const PageID = usePageItemStore((state) => state.ID);
   const [searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
-  const [retrievedPagedItem, setRetrievedPagedItems] = useState<itemInfo>();
+  const [retrievedPagedItem, _setRetrievedPagedItems] = useState<itemInfo>();
 
   const processURL = () => {
     const strippedURLID = searchbarParams.get("ID");
@@ -52,7 +52,7 @@ export default function ItemPage() {
       const data = FetchFunctionality(id); // Direct call since no promise
       console.log("DATA");
       console.log(data);
-      setRetrievedPagedItems(data);
+      //setRetrievedPagedItems(data);
     }
   }, [searchbarParams]);
 
@@ -123,7 +123,7 @@ function FetchFunctionality(URLID: number) {
   //DATA FETCHING
   const { data, isError, isLoading, error } = useQuery({
     queryFn: async () => GetAnItem(URLID),
-    queryKey: ["fetchedID"],
+    queryKey: ["fetchedID", URLID],
   });
   useEffect(() => {
     if (isError) {
