@@ -31,9 +31,9 @@ export default function ItemPage() {
   });
 
   useEffect(() => {
-    SetLoading(0);
+    SetLoading(false);
     return () => {
-      SetLoading(0);
+      SetLoading(false);
     };
   }, []);
 
@@ -57,13 +57,13 @@ export default function ItemPage() {
     console.log([retrievedPagedItem].flat(1));
   }, [retrievedPagedItem]);
 
-  const [loadedIms, SetLoading] = useState(0);
+  const [loadedIms, SetLoading] = useState(false);
 
   function handleLoading() {
-    SetLoading((prev) => prev + 1);
+    SetLoading(true);
   }
   useEffect(() => {
-    console.log("loaded count: " + loadedIms);
+    console.log("loaded?: " + loadedIms);
   }, [loadedIms]);
 
   return (
@@ -72,7 +72,7 @@ export default function ItemPage() {
 
       <motion.div
         initial={{ opacity: 1 }}
-        animate={loadedIms < 1 ? { opacity: 1 } : { opacity: 0 }}
+        animate={!loadedIms ? { opacity: 1 } : { opacity: 0 }}
         transition={{ delay: 2 }}
       >
         <PageLoader></PageLoader>
@@ -80,7 +80,7 @@ export default function ItemPage() {
 
       <motion.div
         initial={{ opacity: 0 }}
-        animate={!(loadedIms === 1) ? { opacity: 0 } : { opacity: 1 }}
+        animate={!loadedIms ? { opacity: 0 } : { opacity: 1 }}
         transition={{ delay: 2 }}
       >
         <div className=" product-item-container">
