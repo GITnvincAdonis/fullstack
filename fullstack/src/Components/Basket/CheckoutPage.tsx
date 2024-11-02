@@ -31,6 +31,13 @@ export default function CheckoutPage() {
   function incrementLoadedItems() {
     setLoadedItems((prev) => prev + 1);
   }
+
+  useEffect(() => {
+    console.log("loaded items");
+    console.log(loadedItems);
+    console.log("cart count");
+    console.log(CartItems.length);
+  }, [loadedItems, CartItems.length]);
   return (
     <>
       <Navbar />
