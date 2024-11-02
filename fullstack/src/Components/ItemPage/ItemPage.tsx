@@ -33,10 +33,13 @@ export default function ItemPage() {
     const strippedURLID = searchbarParams.get("ID");
 
     if (!strippedURLID) {
-      setSearchParams((prev) => {
-        prev.set("ID", `${PageID}`);
-        return prev;
-      });
+      setSearchParams(
+        (prev) => {
+          prev.set("ID", `${PageID}`);
+          return prev;
+        },
+        { replace: true }
+      );
     }
   }, [PageID, searchbarParams]);
 
