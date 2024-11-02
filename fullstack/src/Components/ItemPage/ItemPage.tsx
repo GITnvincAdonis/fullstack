@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import PageLoader from "../PageLoader";
 import { useSearchParams } from "react-router-dom";
 
-
 interface itemInfo {
   id: number;
   name: string;
@@ -24,13 +23,13 @@ interface itemInfo {
 
 export default function ItemPage() {
   const retrievedPagedItem = FetchFunctionality();
-
+  const PageID = usePageItemStore((state) => state.ID);
   //state for loader
   const [loadedIms, SetLoading] = useState(false);
 
   const [_searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
   setSearchParams((prev) => {
-    prev.set("ID", `${retrievedPagedItem?.id}`);
+    prev.set("ID", `${PageID}`);
     return prev;
   });
 
