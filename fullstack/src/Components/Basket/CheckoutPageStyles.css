@@ -68,7 +68,9 @@
     margin: 1rem;
     width: 20rem;
 }
-
+.placeholder-mega-wrapper{
+    height: 0;
+}
 
 .lg-place:nth-child(1){
     height: 1.5rem;
@@ -97,6 +99,10 @@
         padding: 0;
        height: max-content;
     }
+    
+.placeholder-mega-wrapper{
+    height: 0;
+}
     .checkout-title{
      
         margin-bottom: 0;

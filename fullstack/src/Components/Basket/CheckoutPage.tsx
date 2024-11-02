@@ -6,6 +6,7 @@ import Hovertext from "../HoverText/HoverText";
 import SwipeButton from "../button/Swipebutton";
 import { useCartItem } from "../Utilities/Store";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 type checkoutItem = {
   id: number;
@@ -47,14 +48,22 @@ export default function CheckoutPage() {
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
             {CartItems.length > 0 && loadedItems != CartItems.length && (
               <>
-                <Itemplaceholder />
-                <Itemplaceholder />
-                <Itemplaceholder />
-                <Itemplaceholder />
+                <div className="placeholder-mega-wrapper">
+                  <Itemplaceholder />
+                  <Itemplaceholder />
+                  <Itemplaceholder />
+                  <Itemplaceholder />
+                </div>
               </>
             )}
-            {loadedItems == CartItems.length &&
-              CartItems.flat(1).map((cart_item, index) => {
+            <motion.div
+              animate={
+                loadedItems == CartItems.length
+                  ? { opacity: 1 }
+                  : { opacity: 0 }
+              }
+            >
+              {CartItems.flat(1).map((cart_item, index) => {
                 console.log(localData.flat(1));
                 console.log(localData.flat(1)[index].count);
                 const id = localData.flat(1)[index].id;
@@ -74,6 +83,7 @@ export default function CheckoutPage() {
                   </>
                 );
               })}
+            </motion.div>
           </div>
           <div className="payment-wrapper">
             <div className="payment-container border p-5">
