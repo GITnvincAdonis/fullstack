@@ -58,7 +58,7 @@ export default function CheckoutPage() {
             )}
             <motion.div
               animate={
-                loadedItems == CartItems.length
+                loadedItems >= CartItems.length
                   ? { opacity: 1 }
                   : { opacity: 0 }
               }

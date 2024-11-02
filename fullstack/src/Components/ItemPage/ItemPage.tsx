@@ -24,22 +24,27 @@ interface itemInfo {
 export default function ItemPage() {
   const PageID = usePageItemStore((state) => state.ID);
   const [searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
-  const strippedURLID = searchbarParams.get("ID");
+  const [retrievedPagedItem, setRetrievedPagedItems] = useState<itemInfo>();
 
-  if (strippedURLID == "") {
-    setSearchParams((prev) => {
-      prev.set("ID", `${PageID}`);
-      return prev;
-    });
-  } else {
-    setSearchParams((prev) => {
-      prev.set("ID", `${strippedURLID}`);
-      return prev;
-    });
-  }
-  const retrievedPagedItem = FetchFunctionality(
-    Number(searchbarParams.get("ID"))
-  );
+  async () => {
+    const strippedURLID = searchbarParams.get("ID");
+
+    if (strippedURLID == "") {
+      setSearchParams((prev) => {
+        prev.set("ID", `${PageID}`);
+        return prev;
+      });
+    } else {
+      setSearchParams((prev) => {
+        prev.set("ID", `${strippedURLID}`);
+        return prev;
+      });
+    }
+    setRetrievedPagedItems(
+      FetchFunctionality(Number(searchbarParams.get("ID")))
+    );
+  };
+
   //state for loader
   const [loadedIms, SetLoading] = useState(false);
 
