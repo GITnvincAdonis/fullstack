@@ -27,13 +27,7 @@ export default function CheckoutPage() {
       setlocalData(CountedData);
     } else setlocalData(DefaultItem);
   }, [CountedData]);
-  if (!CartItems) {
-    return (
-      <>
-        <div>had</div>
-      </>
-    );
-  }
+
   return (
     <>
       <Navbar />
@@ -41,7 +35,7 @@ export default function CheckoutPage() {
         <div className="c">
           <div className="checkout-items d-flex flex-column ">
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
-            {CartItems && (
+            {CartItems.length == 0 && (
               <>
                 <Itemplaceholder />
                 <Itemplaceholder />
@@ -49,7 +43,7 @@ export default function CheckoutPage() {
                 <Itemplaceholder />
               </>
             )}
-            {CartItems &&
+            {CartItems.length > 0 &&
               CartItems.flat(1).map((cart_item, index) => {
                 console.log(localData.flat(1));
                 console.log(localData.flat(1)[index].count);
