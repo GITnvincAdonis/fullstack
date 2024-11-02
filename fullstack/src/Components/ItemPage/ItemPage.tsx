@@ -26,7 +26,7 @@ export default function ItemPage() {
   const [searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
   const [retrievedPagedItem, setRetrievedPagedItems] = useState<itemInfo>();
 
-  async () => {
+  const processURL = () => {
     const strippedURLID = searchbarParams.get("ID");
 
     if (strippedURLID == "") {
@@ -44,6 +44,7 @@ export default function ItemPage() {
       FetchFunctionality(Number(searchbarParams.get("ID")))
     );
   };
+  processURL();
 
   //state for loader
   const [loadedIms, SetLoading] = useState(false);
