@@ -31,6 +31,13 @@ export default function ItemPage() {
   });
 
   useEffect(() => {
+    SetLoading(0);
+    return () => {
+      SetLoading(0);
+    };
+  }, []);
+
+  useEffect(() => {
     if (isError) {
       console.log(error.message);
     }
@@ -55,11 +62,6 @@ export default function ItemPage() {
   function handleLoading() {
     SetLoading((prev) => prev + 1);
   }
-  useEffect(() => {
-    return () => {
-      SetLoading(0);
-    };
-  }, []);
   useEffect(() => {
     console.log("loaded count: " + loadedIms);
   }, [loadedIms]);
