@@ -5,8 +5,7 @@ import { useSearchMenuContext } from "../../Contexts/Contexts";
 import { motion } from "framer-motion";
 export default function TopSlider() {
   const SearchInView = useSearchMenuContext();
-  console.log(SearchInView);
-  console.log(Number(SearchInView));
+ 
   return (
     <>
       <motion.div
