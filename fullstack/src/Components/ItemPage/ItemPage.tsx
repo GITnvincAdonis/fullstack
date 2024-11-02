@@ -29,14 +29,6 @@ export default function ItemPage() {
     queryFn: async () => GetAnItem(PageID),
     queryKey: ["fetchedID"],
   });
-
-  useEffect(() => {
-    SetLoading(false);
-    return () => {
-      SetLoading(false);
-    };
-  }, []);
-
   useEffect(() => {
     if (isError) {
       console.log(error.message);
@@ -51,21 +43,28 @@ export default function ItemPage() {
       setItem(data[0]);
     }
   }, [data]);
-  useEffect(() => {
-    console.log("state item");
-    console.log(retrievedPagedItem);
-    console.log([retrievedPagedItem].flat(1));
-  }, [retrievedPagedItem]);
 
+
+
+  
   const [loadedIms, SetLoading] = useState(false);
-
   function handleLoading() {
     SetLoading(true);
   }
+
+
+
+
   useEffect(() => {
     console.log("loaded?: " + loadedIms);
   }, [loadedIms]);
 
+  useEffect(() => {
+    SetLoading(false);
+    return () => {
+      SetLoading(false);
+    };
+  }, []);
   return (
     <>
       <Navbar></Navbar>
