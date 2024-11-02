@@ -69,7 +69,18 @@
     font-family: BDOLight;
     font-weight: 100;
 }
+.paged-item-button-text{
+    padding: 0 6rem ;
+    font-size: 1.1rem;
+    font-family: DegReg;
+    word-spacing: 1px;
+
+    text-transform: uppercase;
+}
 @media screen and (max-width:400px) {
+    .paged-item-button-text{
+        padding: 0  ;
+    }
     .add-button-container{
      
         display: flex;
