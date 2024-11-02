@@ -24,9 +24,12 @@ interface itemInfo {
 export default function ItemPage() {
   const PageID = usePageItemStore((state) => state.ID);
   const [searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
-  const [retrievedPagedItem, _setRetrievedPagedItems] = useState<itemInfo>();
 
-  const processURL = () => {
+  //inital
+  const retrievedPagedItem = useFetchItem(
+    Number(searchbarParams.get("ID")) || PageID
+  );
+  useEffect(() => {
     const strippedURLID = searchbarParams.get("ID");
 
     if (!strippedURLID) {
@@ -34,27 +37,8 @@ export default function ItemPage() {
         prev.set("ID", `${PageID}`);
         return prev;
       });
-    } else {
-      setSearchParams((prev) => {
-        prev.set("ID", `${strippedURLID}`);
-        return prev;
-      });
     }
-  };
-
-  useEffect(() => {
-    processURL();
-
-    const id = Number(searchbarParams.get("ID"));
-    if (id) {
-      console.log("url ID");
-      console.log(id);
-      const data = FetchFunctionality(1); // Direct call since no promise
-      console.log("DATA");
-      console.log(data);
-      //setRetrievedPagedItems(data);
-    }
-  }, [searchbarParams]);
+  }, [PageID, searchbarParams]);
 
   //state for loader
   const [loadedIms, SetLoading] = useState(false);
@@ -117,12 +101,12 @@ export default function ItemPage() {
   );
 }
 
-function FetchFunctionality(_URLID: number) {
+function useFetchItem(URLID: number) {
   const [retrievedPagedItem, setItem] = useState<itemInfo>();
 
   //DATA FETCHING
   const { data, isError, isLoading, error } = useQuery({
-    queryFn: async () => GetAnItem(1),
+    queryFn: async () => GetAnItem(URLID),
     queryKey: ["fetchedID"],
   });
   useEffect(() => {
