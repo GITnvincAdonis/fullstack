@@ -117,13 +117,13 @@ export default function ItemPage() {
   );
 }
 
-function FetchFunctionality(URLID: number) {
+function FetchFunctionality(_URLID: number) {
   const [retrievedPagedItem, setItem] = useState<itemInfo>();
 
   //DATA FETCHING
   const { data, isError, isLoading, error } = useQuery({
-    queryFn: async () => GetAnItem(URLID),
-    queryKey: ["fetchedID", URLID],
+    queryFn: async () => GetAnItem(1),
+    queryKey: ["fetchedID"],
   });
   useEffect(() => {
     if (isError) {
