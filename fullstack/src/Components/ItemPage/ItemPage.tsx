@@ -10,6 +10,8 @@ import { CImage } from "../Cloudinary/CloudinaryAssets";
 
 import { motion } from "framer-motion";
 import PageLoader from "../PageLoader";
+import { useSearchParams } from "react-router-dom";
+
 
 interface itemInfo {
   id: number;
@@ -21,50 +23,29 @@ interface itemInfo {
 }
 
 export default function ItemPage() {
-  const [retrievedPagedItem, setItem] = useState<itemInfo>();
+  const retrievedPagedItem = FetchFunctionality();
 
-  const PageID = usePageItemStore((state) => state.ID);
-
-  const { data, isError, isLoading, error } = useQuery({
-    queryFn: async () => GetAnItem(PageID),
-    queryKey: ["fetchedID"],
-  });
-  useEffect(() => {
-    if (isError) {
-      console.log(error.message);
-    }
-    if (isLoading) {
-      console.log("loading");
-    }
-
-    if (data) {
-      console.log("paged item");
-      console.log(data);
-      setItem(data[0]);
-    }
-  }, [data]);
-
-
-
-  
+  //state for loader
   const [loadedIms, SetLoading] = useState(false);
+
+  const [_searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
+  setSearchParams((prev) => {
+    prev.set("ID", `${retrievedPagedItem?.id}`);
+    return prev;
+  });
+
   function handleLoading() {
     SetLoading(true);
   }
 
-
-
-
-  useEffect(() => {
-    console.log("loaded?: " + loadedIms);
-  }, [loadedIms]);
-
+  //default value setting
   useEffect(() => {
     SetLoading(false);
     return () => {
       SetLoading(false);
     };
   }, []);
+
   return (
     <>
       <Navbar></Navbar>
@@ -111,4 +92,31 @@ export default function ItemPage() {
       </motion.div>
     </>
   );
+}
+
+function FetchFunctionality() {
+  const [retrievedPagedItem, setItem] = useState<itemInfo>();
+
+  const PageID = usePageItemStore((state) => state.ID);
+
+  //DATA FETCHING
+  const { data, isError, isLoading, error } = useQuery({
+    queryFn: async () => GetAnItem(PageID),
+    queryKey: ["fetchedID"],
+  });
+  useEffect(() => {
+    if (isError) {
+      console.log(error.message);
+    }
+    if (isLoading) {
+      console.log("loading");
+    }
+
+    if (data) {
+      console.log("paged item");
+      console.log(data);
+      setItem(data[0]);
+    }
+  }, [data]);
+  return retrievedPagedItem;
 }
