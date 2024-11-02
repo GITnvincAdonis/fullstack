@@ -27,7 +27,7 @@ export default function ItemPage() {
   //state for loader
   const [loadedIms, SetLoading] = useState(false);
 
-  const [_searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
+  const [searchbarParams, setSearchParams] = useSearchParams({ ID: "" });
   setSearchParams((prev) => {
     prev.set("ID", `${PageID}`);
     return prev;
@@ -45,6 +45,12 @@ export default function ItemPage() {
     };
   }, []);
 
+  const [secondItem, setSecondItem] = useState<itemInfo>();
+  if (!retrievedPagedItem) {
+    const urlID = searchbarParams.get("ID");
+    const secondaryItem = URLFetchFunctionality(Number(urlID ? urlID : 0));
+    if (secondaryItem) setSecondItem(secondaryItem);
+  }
   return (
     <>
       <Navbar></Navbar>
@@ -65,15 +71,32 @@ export default function ItemPage() {
         <div className=" product-item-container">
           <CImage
             loadFunc={handleLoading}
-            CloudinaryImageID={`${retrievedPagedItem?.image_pub_id}`}
+            CloudinaryImageID={`${
+              retrievedPagedItem
+                ? retrievedPagedItem.image_pub_id
+                : secondItem?.image_pub_id
+            }`}
             image_size={1900}
             classNames="item-image"
           ></CImage>
 
           <div className="item-body d-flex flex-column align-items-start ">
-            <h1 className="item-name">{retrievedPagedItem?.name}</h1>
-            <Review reviewNumber={retrievedPagedItem?.review_count}></Review>
-            <h3 className="product-price m-0">${retrievedPagedItem?.price}</h3>
+            <h1 className="item-name">
+              {retrievedPagedItem ? retrievedPagedItem.name : secondItem?.name}
+            </h1>
+            <Review
+              reviewNumber={
+                retrievedPagedItem
+                  ? retrievedPagedItem.review_count
+                  : secondItem?.review_count
+              }
+            ></Review>
+            <h3 className="product-price m-0">
+              $
+              {retrievedPagedItem
+                ? retrievedPagedItem.price
+                : secondItem?.price}
+            </h3>
             <h3>ingredient list</h3>
             <p className="ingredient-list">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
@@ -95,12 +118,34 @@ export default function ItemPage() {
 
 function FetchFunctionality() {
   const [retrievedPagedItem, setItem] = useState<itemInfo>();
-
   const PageID = usePageItemStore((state) => state.ID);
-
   //DATA FETCHING
   const { data, isError, isLoading, error } = useQuery({
     queryFn: async () => GetAnItem(PageID),
+    queryKey: ["fetchedID"],
+  });
+  useEffect(() => {
+    if (isError) {
+      console.log(error.message);
+    }
+    if (isLoading) {
+      console.log("loading");
+    }
+
+    if (data) {
+      console.log("paged item");
+      console.log(data);
+      setItem(data[0]);
+    }
+  }, [data]);
+  return retrievedPagedItem;
+}
+function URLFetchFunctionality(ID: number) {
+  const [retrievedPagedItem, setItem] = useState<itemInfo>();
+
+  //DATA FETCHING
+  const { data, isError, isLoading, error } = useQuery({
+    queryFn: async () => GetAnItem(ID),
     queryKey: ["fetchedID"],
   });
   useEffect(() => {
