@@ -47,14 +47,15 @@ export default function ItemPage() {
 
     const id = Number(searchbarParams.get("ID"));
     if (id) {
+      console.log("url ID");
+      console.log(id);
       const data = FetchFunctionality(id); // Direct call since no promise
+      console.log("DATA");
+      console.log(data);
       setRetrievedPagedItems(data);
     }
-  }, [PageID, searchbarParams]);
+  }, [searchbarParams]);
 
-
-
-  
   //state for loader
   const [loadedIms, SetLoading] = useState(false);
   function handleLoading() {
