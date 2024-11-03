@@ -33,7 +33,7 @@ export default function Slider(props: { toggle: any }) {
       },
     ];
 
-    if (CountedData) {
+    if (CartItems) {
       setlocalData(CountedData);
       CountedData.map((_item, index) => {
         console.log("debugging Counted data");
@@ -49,7 +49,7 @@ export default function Slider(props: { toggle: any }) {
         setTotalCost((prev) => prev + itemCount * itemPrice);
       });
     } else setlocalData(DefaultItem);
-  }, [CountedData]);
+  }, [CartItems]);
 
   return (
     <>
