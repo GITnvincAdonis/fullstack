@@ -57,10 +57,9 @@ export default function ProductPage() {
 
   return (
     <>
+      <Navbar></Navbar>
       {info && loadedCards < info.length && (
         <>
-          <Navbar></Navbar>
-
           <div className="product-page-container mb-5 ">
             <div className=" top-gradient-container">
               <div className="top-gradient"></div>
@@ -85,8 +84,6 @@ export default function ProductPage() {
           info && loadedCards < info.length ? { opacity: 0 } : { opacity: 1 }
         }
       >
-        <Navbar></Navbar>
-
         <div className="product-page-container mb-5 ">
           <div className=" top-gradient-container">
             <div className="top-gradient"></div>

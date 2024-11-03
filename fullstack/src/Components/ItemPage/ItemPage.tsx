@@ -11,6 +11,8 @@ import { CImage } from "../Cloudinary/CloudinaryAssets";
 import { motion } from "framer-motion";
 import PageLoader from "../PageLoader";
 import { useSearchParams } from "react-router-dom";
+import SwipeButton from "../button/Swipebutton";
+import { useAddfeedback, useCheckoutData } from "../Utilities/Store";
 
 interface itemInfo {
   id: number;
@@ -55,6 +57,9 @@ export default function ItemPage() {
     };
   }, []);
 
+  const AddToCart = useCheckoutData((state) => state.incrementAsync);
+  const toggleAddFeedback = useAddfeedback((state) => state.toggleClickOn);
+
   return (
     <>
       <Navbar></Navbar>
@@ -84,6 +89,22 @@ export default function ItemPage() {
             <h1 className="item-name">{retrievedPagedItem?.name}</h1>
             <Review reviewNumber={retrievedPagedItem?.review_count}></Review>
             <h3 className="product-price m-0">${retrievedPagedItem?.price}</h3>
+
+            <div
+              onClick={() => {
+                AddToCart(Number(searchbarParams.get("ID")) || PageID);
+              }}
+              className="border"
+            >
+              <span
+                onClick={() => {
+                  toggleAddFeedback(true);
+                }}
+              >
+                <SwipeButton textContent={<div>Add to Cart</div>}></SwipeButton>
+              </span>
+            </div>
+
             <h3>ingredient list</h3>
             <p className="ingredient-list">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
