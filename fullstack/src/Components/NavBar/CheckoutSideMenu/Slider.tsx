@@ -45,13 +45,15 @@ export default function Slider(props: { toggle: any }) {
       CartItems.map((_item, index) => {
         const iPrice = CartItems.flat(1)[index].price;
         const ICount = localData.flat(1)[index].count;
+        console.log("item count");
+        console.log(ICount);
         console.log("item total");
         console.log(iPrice * ICount);
         total += iPrice * ICount;
       });
       setTotalCost(total);
     }
-  }, [CartItems, CountedData]);
+  }, [CartItems, CountedData, localData]);
 
   return (
     <>
