@@ -37,7 +37,12 @@ export default function Slider(props: { toggle: any }) {
   }, [CountedData]);
 
   useEffect(() => {
-    if (CartItems) console.log(CartItems.length);
+    if (CartItems) {
+      console.log(CartItems.length);
+      CartItems.map((_item, index) => {
+        console.log(CartItems[index].price * localData.flat(1)[index].count);
+      });
+    }
   }, [CartItems]);
 
   return (
