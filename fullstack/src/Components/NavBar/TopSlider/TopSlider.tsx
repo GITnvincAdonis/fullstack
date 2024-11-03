@@ -48,7 +48,7 @@ export default function TopSlider() {
             />
           </div>
 
-          <div className="mt-4 d-flex">
+          <div className="mt-4 d-flex flex-column">
             {data?.map((item) => {
               return (
                 <>
