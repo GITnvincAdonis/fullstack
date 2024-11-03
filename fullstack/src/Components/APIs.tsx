@@ -43,3 +43,18 @@ export const GetAnItem = async (id: number): Promise<itemInfo[]> => {
     return DefaultItem;
   }
 };
+
+export const GetSearchItems = async (Input: string): Promise<itemInfo[]> => {
+  try {
+    const items = await fetch(
+      `${import.meta.env.VITE_FETCH_ORIGIN}/products/search/${Input}`
+    );
+    const data = items.json();
+
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};

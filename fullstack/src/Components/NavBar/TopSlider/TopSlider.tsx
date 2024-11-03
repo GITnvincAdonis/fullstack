@@ -1,11 +1,22 @@
 import "./TopSliderStyles.css";
 import { SearchIcon } from "../../SVGs/NavbarSVG";
-
+import { useQuery } from "@tanstack/react-query";
+import { GetSearchItems } from "../../APIs";
 import { useSearchMenuContext } from "../../Contexts/Contexts";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 export default function TopSlider() {
   const SearchInView = useSearchMenuContext();
- 
+
+  const [searchString, _setSearchString] = useState("nia");
+  const { data } = useQuery({
+    queryFn: async () => GetSearchItems(searchString),
+    queryKey: ["searchItem", searchString],
+  });
+  useEffect(() => {
+    if (data) console.log(data);
+  }, [data]);
+  
   return (
     <>
       <motion.div

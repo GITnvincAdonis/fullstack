@@ -3,6 +3,7 @@ const app = express();
 require("dotenv").config()
 const cors = require("cors");
 const pool = require("./db");
+const { parse } = require("dotenv");
 
 
 
@@ -25,6 +26,19 @@ app.post("/products", async(req, res)=>{
 app.get("/products", async(req, res)=>{
     try {
         const products = await pool.query("SELECT * FROM items")
+        console.log(products.rows)
+        res.json(products.rows)
+        
+    } catch (error) {
+        console.error(error.message)
+    }
+})
+
+app.get("/products/search/:string", async(req, res)=>{
+    
+    const string = parse(req.params.string)
+    try {
+        const products = await pool.query("SELECT * FROM items WHERE name ILIKE '%$1%' LIMIT 2",[string])
         console.log(products.rows)
         res.json(products.rows)
         
