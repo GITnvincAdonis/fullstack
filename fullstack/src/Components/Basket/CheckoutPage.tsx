@@ -27,6 +27,11 @@ export default function CheckoutPage() {
 
     if (CountedData) {
       setlocalData(CountedData);
+
+      CountedData.map((_item, index) => {
+        const itemCount = localData.flat(1)[index].count;
+        setTotalCost((prev) => prev + itemCount * CartItems[index].price);
+      });
     } else setlocalData(DefaultItem);
   }, [CountedData]);
   const [loadedItems, setLoadedItems] = useState(0);
@@ -69,7 +74,6 @@ export default function CheckoutPage() {
                 const itemCount = localData.flat(1)[index].count;
                 const id = localData.flat(1)[index].id;
 
-                setTotalCost((prev) => prev + itemCount * cart_item.price);
                 return (
                   <>
                     <span key={index}>

@@ -35,6 +35,10 @@ export default function Slider(props: { toggle: any }) {
 
     if (CountedData) {
       setlocalData(CountedData);
+      CountedData.map((_item, index) => {
+        const itemCount = localData.flat(1)[index].count;
+        setTotalCost((prev) => prev + itemCount * CartItems[index].price);
+      });
     } else setlocalData(DefaultItem);
   }, [CountedData]);
 
@@ -85,7 +89,6 @@ export default function Slider(props: { toggle: any }) {
               const itemCount = localData.flat(1)[index].count;
               const id = localData.flat(1)[index].id;
 
-              setTotalCost((prev) => prev + itemCount * cart_item.price);
               return (
                 <>
                   <SliderItem
