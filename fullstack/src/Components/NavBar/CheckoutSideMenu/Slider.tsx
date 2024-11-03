@@ -23,8 +23,6 @@ export default function Slider(props: { toggle: any }) {
   const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
   const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
 
-  const [totalCost, setTotalCost] = useState(0);
-
   useEffect(() => {
     const DefaultItem: checkoutItem[] = [
       {
@@ -33,23 +31,10 @@ export default function Slider(props: { toggle: any }) {
       },
     ];
 
-    if (CartItems) {
+    if (CountedData) {
       setlocalData(CountedData);
-      CountedData.map((_item, index) => {
-        console.log("debugging Counted data");
-        console.log(CountedData.flat(1));
-        console.log(CountedData.flat(1)[index].count);
-
-        console.log("debugging price");
-        console.log(CartItems);
-        console.log(CartItems[index].price);
-
-        const itemCount = CountedData.flat(1)[index].count;
-        const itemPrice = CartItems.flat(1)[index].price;
-        setTotalCost((prev) => prev + itemCount * itemPrice);
-      });
     } else setlocalData(DefaultItem);
-  }, [CartItems]);
+  }, [CountedData]);
 
   return (
     <>
@@ -95,13 +80,14 @@ export default function Slider(props: { toggle: any }) {
 
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(localData.flat(1));
-              const itemCount = localData.flat(1)[index].count;
+              console.log(localData.flat(1)[index].count);
               const id = localData.flat(1)[index].id;
 
+              console.log(localData.flat(1)[index].count * cart_item.price);
               return (
                 <>
                   <SliderItem
-                    count={itemCount}
+                    count={localData.flat(1)[index].count}
                     id={id}
                     name={cart_item.name}
                     price={cart_item.price}
@@ -119,7 +105,7 @@ export default function Slider(props: { toggle: any }) {
           >
             <div>
               <h3 className="slider-item-total">SUB-TOTAL</h3>
-              <h3 className="slider-item-price m-0">${totalCost}</h3>
+              <h3 className="slider-item-price m-0">$---,---,---</h3>
             </div>
             <Link to="/Checkout">
               <SwipeButton
