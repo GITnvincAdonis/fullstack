@@ -13,8 +13,12 @@
     margin: 0%;
 }
 .checkout-items{
-    height: 80vh;
-    width: 40vw;
+   
+    width: 100vw;
+}
+.payment-wrapper{
+    position: fixed;
+    right: 10rem;
 }
 .payment-container{
     height: 40rem;
@@ -85,6 +89,10 @@
     width: 6rem;
 }
 @media screen and (max-width:400px) {
+    .payment-wrapper{
+        position: relative;
+        right: 0;
+    }
     .c{
         width: 100%;
         display: flex;

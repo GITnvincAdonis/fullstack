@@ -40,10 +40,10 @@ export default function CheckoutPage() {
       <Navbar />
       <div className="checkout-container ">
         <div className="c">
-          <div className="checkout-items d-flex flex-column ">
+          <div className="checkout-items d-flex flex-column align-items-start ">
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
 
-            <motion.div className="d-flex flex-column">
+            <motion.div className="d-flex flex-column ">
               {CartItems.flat(1).map((cart_item, index) => {
                 console.log(localData.flat(1));
                 const itemCount = localData.flat(1)[index].count;
@@ -65,8 +65,8 @@ export default function CheckoutPage() {
               })}
             </motion.div>
           </div>
-          <div className="payment-wrapper">
-            <div className="payment-container border p-5">
+          <div className="payment-wrapper border">
+            <div className="payment-container p-5">
               <h3 className="list-item-total">SUB-TOTAL</h3>
               <h4 className="list-item-shipping">*excludes shipping</h4>
               <h3 className="list-item-price m-0">${totalCost}</h3>
