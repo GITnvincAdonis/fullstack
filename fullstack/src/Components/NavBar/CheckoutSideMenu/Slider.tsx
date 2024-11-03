@@ -11,7 +11,6 @@ import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import { useCartItem } from "../../Utilities/Store";
 
-
 type checkoutItem = {
   id: number;
   count: number;
@@ -84,11 +83,11 @@ export default function Slider(props: { toggle: any }) {
             </h2>
 
             {CartItems.flat(1).map((cart_item, index) => {
-              console.log(localData.flat(1));
-              console.log(localData.flat(1)[index].count);
+              //console.log(localData.flat(1));
+              //console.log(localData.flat(1)[index].count);
               const id = localData.flat(1)[index].id;
 
-              console.log(localData.flat(1)[index].count * cart_item.price);
+              //console.log(localData.flat(1)[index].count * cart_item.price);
               return (
                 <>
                   <SliderItem
