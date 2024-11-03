@@ -41,14 +41,9 @@ export default function Slider(props: { toggle: any }) {
   useEffect(() => {
     if (CartItems) {
       let total = 0;
-      console.log(CartItems.length);
       CartItems.map((_item, index) => {
         const iPrice = CartItems.flat(1)[index].price;
         const ICount = localData.flat(1)[index].count;
-        console.log("item count");
-        console.log(ICount);
-        console.log("item total");
-        console.log(iPrice * ICount);
         total += iPrice * ICount;
       });
       setTotalCost(total);

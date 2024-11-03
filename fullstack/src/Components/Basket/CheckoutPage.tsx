@@ -18,33 +18,29 @@ export default function CheckoutPage() {
   const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
   const [totalCost, setTotalCost] = useState(0);
   useEffect(() => {
-    const DefaultItem: checkoutItem[] = [
-      {
-        id: 1,
-        count: 1,
-      },
-    ];
-
+    const DefaultItem: checkoutItem[] = [{ id: 1, count: 1 }];
     if (CountedData) {
       setlocalData(CountedData);
-
-      CountedData.map((_item, index) => {
-        const itemCount = localData.flat(1)[index].count;
-        setTotalCost((prev) => prev + itemCount * CartItems[index].price);
-      });
     } else setlocalData(DefaultItem);
   }, [CountedData]);
+
+  
   const [loadedItems, setLoadedItems] = useState(0);
   function incrementLoadedItems() {
     setLoadedItems((prev) => prev + 1);
   }
 
   useEffect(() => {
-    console.log("loaded items");
-    console.log(loadedItems);
-    console.log("cart count");
-    console.log(CartItems.length);
-  }, [loadedItems, CartItems.length]);
+    if (CartItems) {
+      let total = 0;
+      CartItems.map((_item, index) => {
+        const iPrice = CartItems.flat(1)[index].price;
+        const ICount = localData.flat(1)[index].count;
+        total += iPrice * ICount;
+      });
+      setTotalCost(total);
+    }
+  }, [CartItems, CountedData, localData]);
   return (
     <>
       <Navbar />
