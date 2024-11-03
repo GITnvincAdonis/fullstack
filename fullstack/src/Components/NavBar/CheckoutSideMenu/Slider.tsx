@@ -40,8 +40,13 @@ export default function Slider(props: { toggle: any }) {
         console.log(CountedData.flat(1));
         console.log(CountedData.flat(1)[index].count);
 
+        console.log("debugging price");
+        console.log(CartItems.flat(1));
+        console.log(CartItems.flat(1)[index].price);
+
         const itemCount = CountedData.flat(1)[index].count;
-        setTotalCost((prev) => prev + itemCount * CartItems[index].price);
+        const itemPrice = CartItems.flat(1)[index].price;
+        setTotalCost((prev) => prev + itemCount * itemPrice);
       });
     } else setlocalData(DefaultItem);
   }, [CountedData]);
