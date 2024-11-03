@@ -14,8 +14,9 @@ type checkoutItem = {
 };
 export default function CheckoutPage() {
   const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
-  const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
 
+  const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
+  const [totalCost, setTotalCost] = useState(0);
   useEffect(() => {
     const DefaultItem: checkoutItem[] = [
       {
@@ -65,9 +66,10 @@ export default function CheckoutPage() {
             >
               {CartItems.flat(1).map((cart_item, index) => {
                 console.log(localData.flat(1));
-                console.log(localData.flat(1)[index].count);
+                const itemCount = localData.flat(1)[index].count;
                 const id = localData.flat(1)[index].id;
 
+                setTotalCost((prev) => prev + itemCount * cart_item.price);
                 return (
                   <>
                     <span key={index}>
@@ -75,7 +77,7 @@ export default function CheckoutPage() {
                         image_fn={incrementLoadedItems}
                         name={cart_item.name}
                         price={cart_item.price}
-                        count={localData.flat(1)[index].count}
+                        count={itemCount}
                         id={id}
                         image_pub_id={cart_item.image_pub_id}
                       />
@@ -89,7 +91,7 @@ export default function CheckoutPage() {
             <div className="payment-container border p-5">
               <h3 className="list-item-total">SUB-TOTAL</h3>
               <h4 className="list-item-shipping">*excludes shipping</h4>
-              <h3 className="list-item-price m-0">$---,---,---</h3>
+              <h3 className="list-item-price m-0">${totalCost}</h3>
 
               <div className="credit-checkout ">
                 <SwipeButton

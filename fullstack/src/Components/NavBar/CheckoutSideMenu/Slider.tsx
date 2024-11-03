@@ -23,6 +23,8 @@ export default function Slider(props: { toggle: any }) {
   const { localdata: CartItems, Checkoutitems: CountedData } = useCartItem();
   const [localData, setlocalData] = useState<checkoutItem[]>(CountedData);
 
+  const [totalCost, setTotalCost] = useState(0);
+
   useEffect(() => {
     const DefaultItem: checkoutItem[] = [
       {
@@ -80,12 +82,14 @@ export default function Slider(props: { toggle: any }) {
 
             {CartItems.flat(1).map((cart_item, index) => {
               console.log(localData.flat(1));
-              console.log(localData.flat(1)[index].count);
+              const itemCount = localData.flat(1)[index].count;
               const id = localData.flat(1)[index].id;
+
+              setTotalCost((prev) => prev + itemCount * cart_item.price);
               return (
                 <>
                   <SliderItem
-                    count={localData.flat(1)[index].count}
+                    count={itemCount}
                     id={id}
                     name={cart_item.name}
                     price={cart_item.price}
@@ -103,7 +107,7 @@ export default function Slider(props: { toggle: any }) {
           >
             <div>
               <h3 className="slider-item-total">SUB-TOTAL</h3>
-              <h3 className="slider-item-price m-0">$---,---,---</h3>
+              <h3 className="slider-item-price m-0">${totalCost}</h3>
             </div>
             <Link to="/Checkout">
               <SwipeButton

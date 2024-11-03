@@ -54,16 +54,16 @@ export default function Homepage() {
 
           <div className="  starter-container">
             <h1 className="starter-text text-center ">THE SKINCARE BRAND</h1>
-            <h4 className="starter-text  pb-4">
+            <h4 className="starter-text  pb-1">
               we care about giving you the best looking skin
             </h4>
             <SwipeButton
               textContent={
                 <Link to={"/home"}>
-                  <h5 className="text-white m-0 p-2 intro-item-button-text">
+                  <h5 className="text-white m-0 p-1 intro-item-button-text">
                     <Hovertext
                       text={"CHECK OUR PRODUCTS"}
-                      offset={2.2}
+                      offset={1.5}
                     ></Hovertext>
                   </h5>
                 </Link>
