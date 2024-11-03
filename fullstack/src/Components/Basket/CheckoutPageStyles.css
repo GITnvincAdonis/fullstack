@@ -88,7 +88,19 @@
     height: 0.5rem;
     width: 6rem;
 }
-@media screen and (max-width:400px) {
+.modal-container{
+    border: none;
+    background: none;
+}
+.empty-cart-placeholder{
+    height: 30rem;
+    width: 40vw;
+}
+@media screen and (max-width:800px) {
+    .empty-cart-placeholder{
+        height: 40rem;
+        width:80vw;
+    }
     .payment-wrapper{
         position: relative;
         right: 0;

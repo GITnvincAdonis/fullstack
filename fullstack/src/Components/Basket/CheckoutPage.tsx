@@ -7,6 +7,7 @@ import SwipeButton from "../button/Swipebutton";
 import { useCartItem } from "../Utilities/Store";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 type checkoutItem = {
   id: number;
@@ -38,6 +39,45 @@ export default function CheckoutPage() {
   return (
     <>
       <Navbar />
+      <div
+        className="modal fade "
+        id="exampleModal"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        data-bs-backdrop="true"
+      >
+        <div
+          className="modal-dialog-scrollable modal-dialog-centered modal-dialog "
+          style={{ zIndex: -100 }}
+        >
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-2" id="exampleModalLabel">
+                IN DEVELOPMENT
+              </h1>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">
+              SAAS configuration in development. Project thus far is only a
+              proof of concept
+            </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="checkout-container ">
         <div className="c">
           <div className="checkout-items d-flex flex-column align-items-start ">
@@ -63,6 +103,24 @@ export default function CheckoutPage() {
                   </>
                 );
               })}
+              {CartItems.length === 0 && (
+                <div className="empty-cart-placeholder  d-flex flex-column justify-content-center align-items-center">
+                  <div className="fs-1">CART EMPTY</div>
+                  <div className="mb-4">return to Product page</div>
+                  <SwipeButton
+                    textContent={
+                      <Link to={"/home"}>
+                        <h5 className="text-black m-0 p-1 intro-item-button-text">
+                          <Hovertext
+                            text={"CHECK OUR PRODUCTS"}
+                            offset={1.5}
+                          ></Hovertext>
+                        </h5>
+                      </Link>
+                    }
+                  ></SwipeButton>
+                </div>
+              )}
             </motion.div>
           </div>
           <div className="payment-wrapper border">
@@ -72,11 +130,17 @@ export default function CheckoutPage() {
               <h3 className="list-item-price m-0">${totalCost}</h3>
 
               <div className="credit-checkout ">
-                <SwipeButton
-                  textContent={
-                    <Hovertext text="Checkout" offset={1.5}></Hovertext>
-                  }
-                ></SwipeButton>
+                <button
+                  className="modal-container"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  <SwipeButton
+                    textContent={
+                      <Hovertext text="Checkout" offset={1.5}></Hovertext>
+                    }
+                  ></SwipeButton>
+                </button>
               </div>
               <div className="credit-cards-container border mb-5">
                 <div className="credit-card"></div>
