@@ -88,13 +88,13 @@ export default function ItemPage() {
           <div className="item-body d-flex flex-column align-items-start ">
             <h1 className="item-name">{retrievedPagedItem?.name}</h1>
             <Review reviewNumber={retrievedPagedItem?.review_count}></Review>
-            <h3 className="product-price m-0">${retrievedPagedItem?.price}</h3>
+            <h3 className="product-price mt-2">${retrievedPagedItem?.price}</h3>
 
             <div
               onClick={() => {
                 AddToCart(Number(searchbarParams.get("ID")) || PageID);
               }}
-              className="border"
+              className="border mt-3"
             >
               <span
                 onClick={() => {
