@@ -4,19 +4,19 @@ import { useQuery } from "@tanstack/react-query";
 import { GetSearchItems } from "../../APIs";
 import { useSearchMenuContext } from "../../Contexts/Contexts";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 export default function TopSlider() {
   const SearchInView = useSearchMenuContext();
 
   const [searchString, _setSearchString] = useState("nia");
-  const { data } = useQuery({
+  const { data, isError, error, isLoading } = useQuery({
     queryFn: async () => GetSearchItems(searchString),
     queryKey: ["searchItem", searchString],
   });
-  useEffect(() => {
-    if (data) console.log(data);
-  }, [data]);
-  
+
+  if (isError) return <div>{`error: ${error}`}</div>;
+  if (isLoading) console.log("search loading");
+
   return (
     <>
       <motion.div
@@ -32,6 +32,9 @@ export default function TopSlider() {
             placeholder="Search"
           />
         </div>
+        {data?.map((item) => {
+          return <div>{`${item}`}</div>;
+        })}
         <motion.div
           animate={SearchInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.61 * Number(SearchInView) }}
