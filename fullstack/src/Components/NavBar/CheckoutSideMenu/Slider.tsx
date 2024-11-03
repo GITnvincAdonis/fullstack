@@ -51,7 +51,7 @@ export default function Slider(props: { toggle: any }) {
       });
       setTotalCost(total);
     }
-  }, [CountedData]);
+  }, [CartItems, CountedData]);
 
   return (
     <>
