@@ -40,7 +40,9 @@ export default function Slider(props: { toggle: any }) {
     if (CartItems) {
       console.log(CartItems.length);
       CartItems.map((_item, index) => {
-        console.log(CartItems[index].price * localData.flat(1)[index].count);
+        console.log(CartItems[index].price);
+        console.log(localData.flat(1)[index].count);
+        console.log(localData[index]);
       });
     }
   }, [CartItems]);
