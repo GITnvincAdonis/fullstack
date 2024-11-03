@@ -24,12 +24,6 @@ export default function CheckoutPage() {
     } else setlocalData(DefaultItem);
   }, [CountedData]);
 
-  
-  const [loadedItems, setLoadedItems] = useState(0);
-  function incrementLoadedItems() {
-    setLoadedItems((prev) => prev + 1);
-  }
-
   useEffect(() => {
     if (CartItems) {
       let total = 0;
@@ -48,23 +42,8 @@ export default function CheckoutPage() {
         <div className="c">
           <div className="checkout-items d-flex flex-column ">
             <h3 className="checkout-title ">{"CHECKOUT ITEMS"}</h3>
-            {CartItems.length > 0 && loadedItems != CartItems.length && (
-              <>
-                <div className="placeholder-mega-wrapper">
-                  <Itemplaceholder />
-                  <Itemplaceholder />
-                  <Itemplaceholder />
-                  <Itemplaceholder />
-                </div>
-              </>
-            )}
-            <motion.div
-              animate={
-                loadedItems >= CartItems.length
-                  ? { opacity: 1 }
-                  : { opacity: 0 }
-              }
-            >
+
+            <motion.div className="d-flex flex-column">
               {CartItems.flat(1).map((cart_item, index) => {
                 console.log(localData.flat(1));
                 const itemCount = localData.flat(1)[index].count;
@@ -74,7 +53,6 @@ export default function CheckoutPage() {
                   <>
                     <span key={index}>
                       <CheckoutItem
-                        image_fn={incrementLoadedItems}
                         name={cart_item.name}
                         price={cart_item.price}
                         count={itemCount}
@@ -126,18 +104,3 @@ export default function CheckoutPage() {
     </>
   );
 }
-const Itemplaceholder = () => {
-  return (
-    <>
-      <div className="d-flex placeholder-container">
-        {" "}
-        <div className="placeholder placeholder-wave placeholder-image" />
-        <div className="placeholder-body d-flex flex-column align-items-start">
-          <span className="placeholder placeholder-wave col-12 placeholder-lg lg-place "></span>
-          <span className="placeholder placeholder-wave col-12 placeholder-lg lg-place mt-1"></span>
-          <span className="placeholder placeholder-wave col-12 placeholder-lg lg-place mt-3"></span>
-        </div>
-      </div>
-    </>
-  );
-};

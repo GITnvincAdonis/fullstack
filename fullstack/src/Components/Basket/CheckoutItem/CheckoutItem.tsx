@@ -1,6 +1,9 @@
 import "./CheckoutItemStyles.css";
 import QuantityController from "../../SVGs/QuantityController";
 import { CImage } from "../../Cloudinary/CloudinaryAssets";
+import { useState } from "react";
+
+import { motion } from "framer-motion";
 
 export default function CheckoutItem(props: {
   name: string;
@@ -8,15 +11,25 @@ export default function CheckoutItem(props: {
   id: number;
   count: number;
   image_pub_id: string;
-  image_fn: CallableFunction;
 }) {
-  const { name, price, id, count, image_pub_id, image_fn } = props;
-
+  const { name, price, id, count, image_pub_id } = props;
+  const [itemLoaded, setloaded] = useState(false);
+  function TrueToggleLoaded() {
+    setloaded(true);
+  }
   return (
     <>
-      <div className="d-inline-flex m-1 ">
+      <div className="d-inline-flex m-1  ">
+        <motion.div
+          animate={itemLoaded ? { opacity: 0 } : { opacity: 1 }}
+          className="placeholder-item-image-wrapper  "
+        >
+          <div className="placeholder-item-image placeholder placeholder-wave">
+            ada
+          </div>
+        </motion.div>
         <CImage
-          loadFunc={image_fn}
+          loadFunc={TrueToggleLoaded}
           image_size={300}
           classNames="c-item-image"
           CloudinaryImageID={image_pub_id}

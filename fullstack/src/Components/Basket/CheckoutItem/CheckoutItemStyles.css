@@ -3,6 +3,7 @@
     margin-right: 2rem;
     border-radius: .4rem;
     height: 7rem;
+    width:  7rem;
    transform-origin: 0 0;
 
 }
@@ -28,6 +29,14 @@
     margin-left: .3rem;
     transform-origin: 0 0;
     scale: .42;
+}
+.placeholder-item-image-wrapper{
+    height: 0;
+    width: 0;
+}
+.placeholder-item-image{
+    width: 7rem;
+    height: 7rem;
 }
 @media screen and (max-width:400px) {
     .item-count-wrapper{
