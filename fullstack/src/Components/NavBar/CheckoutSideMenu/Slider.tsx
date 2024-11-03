@@ -41,8 +41,8 @@ export default function Slider(props: { toggle: any }) {
         console.log(CountedData.flat(1)[index].count);
 
         console.log("debugging price");
-        console.log(CartItems.flat(1));
-        console.log(CartItems.flat(1)[index].price);
+        console.log(CartItems);
+        console.log(CartItems[index].price);
 
         const itemCount = CountedData.flat(1)[index].count;
         const itemPrice = CartItems.flat(1)[index].price;
