@@ -11,6 +11,7 @@ import Hovertext from "../../HoverText/HoverText";
 import SwipeButton from "../../button/Swipebutton";
 import { useCartItem } from "../../Utilities/Store";
 
+
 type checkoutItem = {
   id: number;
   count: number;
@@ -35,6 +36,10 @@ export default function Slider(props: { toggle: any }) {
       setlocalData(CountedData);
     } else setlocalData(DefaultItem);
   }, [CountedData]);
+
+  useEffect(() => {
+    if (CartItems) console.log(CartItems.length);
+  }, [CartItems]);
 
   return (
     <>
