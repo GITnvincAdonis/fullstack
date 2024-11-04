@@ -27,7 +27,10 @@ export default function TopSlider() {
   const SetPagedItemID = usePageItemStore((state) => state.setID);
   const AddToCart = useCheckoutData((state) => state.incrementAsync);
   const toggleAddFeedback = useAddfeedback((state) => state.toggleClickOn);
-
+  const [itemLoaded, setloaded] = useState(false);
+  function TrueToggleLoaded() {
+    setloaded(true);
+  }
   return (
     <>
       <motion.div
@@ -51,8 +54,17 @@ export default function TopSlider() {
           <div className="mt-4 d-flex flex-column">
             {data?.map((item) => {
               return (
-                <>
+                <div className="d-flex">
+                  <motion.div
+                    animate={itemLoaded ? { opacity: 0 } : { opacity: 1 }}
+                    className="search-placeholder-item-image-wrapper  "
+                  >
+                    <div className="search-placeholder-item-image placeholder placeholder-wave">
+                      ada
+                    </div>
+                  </motion.div>
                   <CImage
+                    loadFunc={TrueToggleLoaded}
                     classNames="search-item-image"
                     image_size={100}
                     CloudinaryImageID={item.image_pub_id}
@@ -87,7 +99,7 @@ export default function TopSlider() {
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               );
             })}
           </div>
