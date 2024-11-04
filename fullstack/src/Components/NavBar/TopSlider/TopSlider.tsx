@@ -1,5 +1,4 @@
 import "./TopSliderStyles.css";
-import { SearchIcon } from "../../SVGs/NavbarSVG";
 import { useQuery } from "@tanstack/react-query";
 import { GetSearchItems } from "../../APIs";
 import { useSearchMenuContext } from "../../Contexts/Contexts";
@@ -39,11 +38,10 @@ export default function TopSlider() {
         transition={{ duration: 0.51, type: "tween", ease: "easeInOut" }}
         className="search-slider-container"
       >
-        <div className="search-slider d-flex flex-column">
+        <div className="search-slider d-flex flex-column justify-content-start">
           <div className="d-flex ">
-            <SearchIcon size={40} />
             <input
-              className="form-control no-border input-form"
+              className="form-control input-form"
               placeholder="Search"
               onChange={(e) => {
                 setSearchString(e.target.value || "");
@@ -52,6 +50,15 @@ export default function TopSlider() {
           </div>
 
           <div className="mt-4 d-flex flex-column">
+            {searchString != "" && data?.length == 0 && (
+              <>
+                <div>
+                  <div className="text-center empty-search-result-placeholder">
+                    No Item Matching Search
+                  </div>
+                </div>
+              </>
+            )}
             {data?.map((item) => {
               return (
                 <div className="d-flex">

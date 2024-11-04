@@ -115,7 +115,7 @@ export default function Slider(props: { toggle: any }) {
             initial={{ opacity: 0 }}
             animate={visible ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="d-flex justify-content-around slider-bottom-container"
+            className="d-flex justify-content-around slider-bottom-container pb-5 "
           >
             <div>
               <h3 className="slider-item-total">SUB-TOTAL</h3>
