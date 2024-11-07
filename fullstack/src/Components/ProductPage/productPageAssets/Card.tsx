@@ -51,7 +51,7 @@ export default function Card(props: {
           <div className="cloud-card-image-container">
             <CImage
               loadFunc={image_fn}
-              image_size={400}
+              image_size={1000}
               classNames=" card-image"
               CloudinaryImageID={image_pub_id}
             ></CImage>
